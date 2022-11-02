@@ -1,0 +1,20 @@
+
+
+.ql-editor,
+.ql-toolbar.ql-snow{
+    direction: rtl;
+    text-align: right !important
+}
+
+.ql-header.ql-picker{
+    width: 65px !important;
+}
+
+.ql-header.ql-picker .ql-picker-label{
+    padding-left: 2px;
+    padding-right: 16px;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+    margin-right: 0 !important;
+}

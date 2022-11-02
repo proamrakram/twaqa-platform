@@ -1,0 +1,10 @@
+{
+    "The age field is required": "حقل العمر مطلوب",
+    "The first name field is required": "حقل الاسم الأول مطلوب",
+    "The second name field is required": "حقل الاسم الثاني مطلوب",
+    "The email field is required": "حقل الايميل مطلوب",
+    "The password field is required": "حقل كلمة السر مطلوب",
+    "The country field is required": "حقل الدولة مطلوب",
+    "The city field is required": "حقل المدينة مطلوب",
+    "The gender field is required": "حقل النوع مطلوب"
+}
