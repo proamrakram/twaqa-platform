@@ -85,6 +85,11 @@
 <script src="{{ asset('website/assets/js/datepicker.min.js') }}"></script>
 <script src="{{ asset('website/assets/js/main.js') }}"></script>
 
+{{-- Qualification --}}
+@stack('scriptrepeater')
+@stack('teacher-video-audio-script')
+
+
 </body>
 
 </html>

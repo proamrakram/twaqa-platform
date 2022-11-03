@@ -25,10 +25,17 @@ Route::controller(HomeController::class)->prefix('')->as('')->group(function () 
         #Teacher Pages
         Route::get('/teachers', 'teachers')->name('teachers');
         Route::get('/teacher-data-basic', 'teacherDataBasic')->name('teacher.data.basic');
+        Route::get('/teacher-qualifications', 'teacherQualifications')->name('teacher.qualifications');
+        Route::get('/teacher-certificates', 'teacherCertificates')->name('teacher.certificates');
+        Route::get('/teacher-ejazat', 'teacherEjazat')->name('teacher.ejazat');
+        Route::get('/teacher-video-audio', 'teacherVideoAudio')->name('teacher.video.audio');
+        Route::get('/teacher-account-details', 'teacherAccountDetails')->name('teacher.account.details');
 
         #Teacher Updating Routes
         Route::controller(ServicesController::class)->group(function () {
-            Route::post('/update-teacher/{form}', 'updateTeacher')->name('teacher.update');
+            Route::post('/update-teacher/{form}/{id?}', 'updateTeacher')->name('teacher.update');
+            Route::post('/store-teacher/{form}', 'storeTeacher')->name('teacher.store');
+            Route::get('/delete-teacher/{form}/{id?}', 'deleteTeacher')->name('teacher.delete');
         });
     });
 

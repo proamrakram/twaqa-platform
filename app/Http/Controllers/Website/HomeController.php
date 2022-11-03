@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Services\UserService;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -21,6 +19,65 @@ class HomeController extends Controller
     {
         return view('Website.pages.index');
     }
+
+    #Teacher
+    public function teachers()
+    {
+        return view('Website.pages.teacher.teachers');
+    }
+
+    public function teacherDataBasic()
+    {
+        $user = auth()->user();
+        return view('Website.pages.teacher.teacher-data-basic', compact(['user']));
+    }
+
+    public function teacherQualifications()
+    {
+        $user = auth()->user();
+        $qualifications = $user->qualifications->where('is_delete', '0');
+        return view('Website.pages.teacher.teacher-qualifications', compact(['user', 'qualifications']));
+    }
+
+    public function teacherCertificates()
+    {
+        $user = auth()->user();
+        $teacher_certificates = $user->teacherCertificates->where('is_delete', '0');
+        return view('Website.pages.teacher.teacher-certificates', compact(['teacher_certificates', 'user']));
+    }
+
+    public function teacherEjazat()
+    {
+        $user = auth()->user();
+        $ejazats = $user->ejazats->where('is_delete', '0');
+        return view('Website.pages.teacher.teacher-ejazat', compact(['ejazats', 'user']));
+    }
+
+    public function teacherVideoAudio()
+    {
+        $user = auth()->user();
+        $teacher_video_audio = $user->ejazat->where('is_delete', '0');
+        return view('Website.pages.teacher.teacher-video-audio', compact(['ejazats', 'user']));
+    }
+
+    public function teacherAccountDetails()
+    {
+        $user = auth()->user();
+        return view('Website.pages.teacher.teacher-account-details', compact(['user']));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function aboutUs()
     {
@@ -40,11 +97,6 @@ class HomeController extends Controller
     public function packages()
     {
         return view('Website.pages.packages');
-    }
-
-    public function teachers()
-    {
-        return view('Website.pages.teachers');
     }
 
     public function vidWatch()
@@ -72,11 +124,6 @@ class HomeController extends Controller
         return view('Website.auth.signUp');
     }
 
-    public function teacherDataBasic()
-    {
-        $user = auth()->user();
-        return view('Website.pages.teacher-data-basic', compact(['user']));
-    }
 
     public function allSubject()
     {

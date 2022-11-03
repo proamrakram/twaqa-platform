@@ -20,6 +20,8 @@
     <link href="{{ asset('website/assets/css/owl.carousel.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('website/assets/css/datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('website/assets/css/main.css') }}" rel="stylesheet">
+    @stack('teacher-video-audio-style')
+
 </head>
 
 <body>
@@ -267,35 +269,76 @@
         </div>
     </nav>
 
-    @auth
+
+
+    @if (session('success'))
         <div class="container mt-4">
-            <div class="alert alert-warning" role="alert">
-                <h5 class='fw-bold'>أرجو منك عزيزي ان تقوم بإمكال بياناتك على ملفك الشخصي: </h5>
-                <ul class='mb-0'>
-                    @if (check_basic_teacher_data())
-                        <li>
-                            <a href="{{ route('teacher.data.basic') }}" class='text-decoration-none text-dark'> إكمال
-                                البيانات
-                                الشخصية </a>
-                        </li>
-                    @endif
-                </ul>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>إشعار! </strong>{{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
+    @endif
+    @if (session('error'))
+        <div class="container mt-4">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>إشعار! </strong>{{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
+    @auth
+        @if (check_basic_teacher_data())
+            <div class="container mt-4">
+
+
+                <div class="alert alert-warning" role="alert">
+                    <h5 class='fw-bold'>أرجو منك عزيزي ان تقوم بإمكال بياناتك على ملفك الشخصي: </h5>
+                    <ul class='mb-0'>
+                        @if (check_basic_teacher_data())
+                            <li>
+                                <a href="{{ route('teacher.data.basic') }}" class='text-decoration-none text-dark'> إكمال
+                                    البيانات
+                                    الشخصية </a>
+                            </li>
+                        @endif
+
+                        @if (!check_qualifications())
+                            <li><a href="{{ route('teacher.qualifications') }}" class='text-decoration-none text-dark'>
+                                    إكمال المؤهلات </a></li>
+                        @endif
+
+                        @if (!check_certificates())
+                            <li><a href="{{ route('teacher.certificates') }}" class='text-decoration-none text-dark'>
+                                    إكمال الشهادات </a></li>
+                        @endif
+
+                        @if (!check_ejazats())
+                            <li><a href="{{ route('teacher.ejazat') }}" class='text-decoration-none text-dark'> إكمال
+                                    الاجازات </a>
+                            </li>
+                        @endif
+
+
+
+
+
+                        {{-- <li><a href="{{ route('teacher.video.audio') }}" class='text-decoration-none text-dark'> إرفاق
+                                ملف صوت وفيديو
+                            </a></li> --}}
+
+
+                        {{-- <li><a href="{{route()}}calander_lessons.php" class='text-decoration-none text-dark'> الأوقات المتاحة </a></li> --}}
+
+
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+        @endif
+
     @endauth
-
-
-    {{-- @if ($check_basic_teacher_data)
-    <li>
-        <a href="teacher-qualifications.php" class='text-decoration-none text-dark'> إكمال المؤهلات
-            الدراسية </a>
-    </li>
-@endif
-
-
-<li><a href="teacher-certificates.php" class='text-decoration-none text-dark'> إكمال الشهادات </a>
-</li>
-<li><a href="teacher-ejazat.php" class='text-decoration-none text-dark'> إكمال الاجازات </a></li>
-<li><a href="teacher-video-audio.php" class='text-decoration-none text-dark'> إرفاق ملف صوت وفيديو
-    </a></li>
-<li><a href="calander_lessons.php" class='text-decoration-none text-dark'> الأوقات المتاحة </a></li> --}}

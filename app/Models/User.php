@@ -43,7 +43,9 @@ class User extends Authenticatable
         'is_delete',
         'available_balance',
         'suspended_balance',
-        'active'
+        'active',
+        'description',
+        'birthday'
     ];
 
     /**
@@ -77,6 +79,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\WorkHour');
     }
 
+    public function scopeActive($query)
+    {
+        $query->where('is_delete', '0');
+    }
+
     public function setImgAttribute($img)
     {
         if (!is_null($img)) {
@@ -103,18 +110,37 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Lesson', 'teacher_id');
     }
 
+    public function qualifications()
+    {
+        return $this->hasMany(Qualification::class, 'user_id', 'id');
+    }
+
+    public function teacherCertificates()
+    {
+        return $this->hasMany(TeacherCertificate::class, 'user_id', 'id');
+    }
+
+    public function ejazats()
+    {
+        return $this->hasMany(Ejazat::class, 'user_id', 'id');
+    }
+
     public function scopeEmptyBasicTeacherData($query)
     {
-        $check = $query->where('user_type', 'teacher')->where('description', null)
-            ->orWhere('birthday', null)
-            ->orWhere('position', null)
-            ->orWhere('phonenumber', null)
-            ->orWhere('phonenumber2', null)
-            ->orWhere('whatsapp', null)
-            ->orWhere('facebook', null)
-            ->orWhere('twitter', null)
-            ->first();
+        $user = $query
+            ->where('id', $this->id)
+            ->where('user_type', 'teacher')->first();
 
-        return $check;
+        if ($user) {
+            if (
+                !$user->birthday || !$user->description || !$user->position ||
+                !$user->phonenumber || !$user->phonenumber2 ||
+                !$user->whatsapp || !$user->facebook || !$user->twitter
+            ) {
+                return $user;
+            }
+        }
+
+        return false;
     }
 }

@@ -29,10 +29,10 @@
 <div class="teacher-link mb-3">
     <div class="row g-0 align-items-center justify-content-center text-center bg-white menu-items">
         <div class="col"><a href="{{ route('teacher.data.basic') }}" class=''> البيانات الأساسية </a></div>
-        <div class="col"><a href="teacher-qualifications.php"> المؤهلات الدراسية </a></div>
-        <div class="col"><a href="teacher-certificates.php"> الشهادات </a></div>
-        <div class="col"><a href="teacher-ejazat.php"> الإجازات </a></div>
-        <div class="col"><a href="teacher-video-audio.php"> الفيديو والصوت </a></div>
-        <div class="col"><a href="teacher-account-details.php"> بيانات الحساب </a></div>
+        <div class="col"><a href="{{ route('teacher.qualifications') }}"> المؤهلات الدراسية </a></div>
+        <div class="col"><a href="{{ route('teacher.certificates') }}"> الشهادات </a></div>
+        <div class="col"><a href="{{ route('teacher.ejazat') }} "> الإجازات </a></div>
+        <div class="col"><a href="{{ route('teacher.video.audio') }}"> الفيديو والصوت </a></div>
+        <div class="col"><a href="{{route('teacher.account.details')}}"> بيانات الحساب </a></div>
     </div>
 </div>

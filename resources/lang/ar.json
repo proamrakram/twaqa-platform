@@ -6,5 +6,16 @@
     "The password field is required": "حقل كلمة السر مطلوب",
     "The country field is required": "حقل الدولة مطلوب",
     "The city field is required": "حقل المدينة مطلوب",
-    "The gender field is required": "حقل النوع مطلوب"
+    "The gender field is required": "حقل النوع مطلوب",
+    "Your photo has been updated successfully": "لقد تم تحديث صورتك بنجاح!!",
+    "Your phone numbers has been updated successfully": "لقد تم تحديث ارقام هاتفك بنجاح!!",
+    "Your basic data has been updated successfully": "!لقد تم تحديث بياناتك الاساسية بنجاح!!",
+    "Your links has been updated successfully": "لقد تم تحديث روابطك بنجاح!!",
+    "Your qualifications has been updated successfully": "لقد تم تحديث مؤهلاتك العلمية بنجاح!!",
+    "Your certificates has been updated successfully": "لقد تم تحديث شهاداتك بنجاح!!",
+    "Your ejazat has been updated successfully": "لقد تم تحديث إيجازاتك بنجاح!!",
+    "Your email has been updated successfully": "لقد تم تحديث البريد الالكتروني بنجاح",
+    "Your password has been updated successfully": "لقد تم تحديث كلمة السر بنجاح"
+
+
 }

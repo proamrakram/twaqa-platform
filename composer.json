@@ -29,7 +29,12 @@
         },
 
         "files": [
-            "app/Helpers/check_basic_teacher_data.php"
+            "app/Helpers/check_basic_teacher_data.php",
+            "app/Helpers/check_qualifications.php",
+            "app/Helpers/check_ejazats.php",
+            "app/Helpers/check_certificates.php"
+
+
         ]
     },
     "autoload-dev": {

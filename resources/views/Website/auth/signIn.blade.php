@@ -33,6 +33,9 @@
                                         <label for=""> البريد الإلكتروني <span class='star'><i
                                                     class="fa-solid fa-star-of-life"></i></span> </label>
                                         <input type="email" name="email" class='input-style'>
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
 
                                     <div class="col-12 position-relative reset-password">
@@ -41,6 +44,9 @@
                                         <input type="password" name="password" class='input-style'>
                                         <i
                                             class="fa-regular d-block fa-eye position-absolute top-50 start-0 translate-middle-y ps-4 pt-4"></i>
+                                        @error('password')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
 
                                     <div class="col-12 text-center">
