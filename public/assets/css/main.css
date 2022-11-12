@@ -1,0 +1,91 @@
+
+@font-face {
+    font-family: 'DINNextLTArabic-Regular';
+    src: url('../fonts/DINNextLTArabic-Regular.ttf');
+}
+
+
+body,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'DINNextLTArabic-Regular';
+}
+
+
+table{
+    border: 1px solid #e0dfdf;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table th{
+    font-weight: bold;
+    background: #009ef71c;
+    color: #5b5b5b;  
+}
+
+.table th,
+.table td{
+    padding:  13px !important;
+}
+
+div.dataTables_wrapper div.dataTables_paginate .pagination .previous,
+div.dataTables_wrapper div.dataTables_paginate .pagination .next{
+    display: none;
+}
+
+
+.btns-datatables-export a{
+    padding: 0 10px 4px !important;
+    font-size: 13px;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+.form-floating > .form-control, .form-floating > .form-select{
+    height: 53px;
+}
+
+.SelectTypeCourse{display: none;}
+ 
+.ql-container.ql-snow .ql-editor{
+    min-height: 150px;
+}
+
+.ql-header.ql-picker{
+    width: 65px !important;
+}
+
+.sm-padding{
+    padding: 0px 5px 3px !important;
+    font-size: 12px;
+}
+
+.price label {
+    font-size: 12px;  
+}
+
+.table.dataTable.mt-0{margin-top: 0 !important;}
+
+[dir='ltr'] .ql-container.ql-snow .ql-editor{
+    text-align: left !important;
+}
+
+[dir='ltr'] .ql-editor.ql-blank:before{
+    left: 20px !important;
+}
+
+[dir='ltr'] .ql-editor, 
+[dir='ltr'] .ql-toolbar.ql-snow{
+    direction: ltr;
+    text-align: left !important;
+}
+
+[dir='ltr'] .ql-header.ql-picker .ql-picker-label{
+    padding-left: 16px;
+}
