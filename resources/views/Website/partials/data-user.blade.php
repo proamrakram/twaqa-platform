@@ -2,7 +2,7 @@
     <div class="teacher shadow-box bg-white  rounded-lg pb-5">
         <div class="heading d-flex justify-content-center position-relative pt-4">
             <div class="img align-self-center position-relative">
-                <img src="assets/img/user_teacher.jpg" alt="">
+                <img src="{{ getUserImage() }}" alt="">
                 <div class="btns-play">
                     <a class="icon" href="teacher-data-basic.php#editProfileImage"> <i class="fa-solid fa-camera"></i>
                     </a>
@@ -10,8 +10,8 @@
             </div>
         </div>
         <div class="content text-center pt-4">
-            <h3 class='h4 mb-0 teacher-name'> <a href="#" class='text-decoration-none clr-royal-blue'> محمد سليمان
-                    عمران </a> </h3>
+            <h3 class='h4 mb-0 teacher-name'> <a href="#"
+                    class='text-decoration-none clr-royal-blue'>{{ getUserName() }}</a> </h3>
             <div class="d-flex align-items-center justify-content-center">
                 <div class='stars'>
                     <i class="fa-solid fa-star"></i>
@@ -33,6 +33,6 @@
         <div class="col"><a href="{{ route('teacher.certificates') }}"> الشهادات </a></div>
         <div class="col"><a href="{{ route('teacher.ejazat') }} "> الإجازات </a></div>
         <div class="col"><a href="{{ route('teacher.video.audio') }}"> الفيديو والصوت </a></div>
-        <div class="col"><a href="{{route('teacher.account.details')}}"> بيانات الحساب </a></div>
+        <div class="col"><a href="{{ route('teacher.account.details') }}"> بيانات الحساب </a></div>
     </div>
 </div>

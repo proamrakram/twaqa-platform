@@ -16,6 +16,8 @@
                         <div class="profile-data-user ">
                             @include('Website.partials.data-user')
                         </div>
+
+
                         <div class="profile-data-user-boxes content-user mt-5">
 
                             <div class="box mb-4">
@@ -42,7 +44,7 @@
 
                                         <div class="input border-bottom p-3">
                                             <label for=""> الإسم </label>
-                                            <input type="text" name="full_name" value="{{ $user->full_name }}" disabled
+                                            <input type="text" name="name" value="{{ $user->name }}" disabled
                                                 class='form-input'>
                                         </div>
 
@@ -215,6 +217,7 @@
                                 </form>
                             </div> <!-- End Box -->
                         </div>
+
                     </div>
                 </div>
             </div>

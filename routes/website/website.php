@@ -30,6 +30,9 @@ Route::controller(HomeController::class)->prefix('')->as('')->group(function () 
         Route::get('/teacher-ejazat', 'teacherEjazat')->name('teacher.ejazat');
         Route::get('/teacher-video-audio', 'teacherVideoAudio')->name('teacher.video.audio');
         Route::get('/teacher-account-details', 'teacherAccountDetails')->name('teacher.account.details');
+        Route::get('/teacher-salary', 'teacherSalary')->name('teacher.salary');
+        Route::get('/teacher-courses', 'teacherCourses')->name('teacher-courses');
+
 
         #Teacher Updating Routes
         Route::controller(ServicesController::class)->group(function () {

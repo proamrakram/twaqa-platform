@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#070947" />
 
-    <title>Twaqa </title>
+    <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -21,6 +21,7 @@
     <link href="{{ asset('website/assets/css/datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('website/assets/css/main.css') }}" rel="stylesheet">
     @stack('teacher-video-audio-style')
+    @stack('teacher-courses-styles')
 
 </head>
 
@@ -289,7 +290,8 @@
     @endif
 
     @auth
-        @if (check_basic_teacher_data())
+
+        @if (check_basic_teacher_data() || !check_qualifications() || !check_certificates() || !check_ejazats())
             <div class="container mt-4">
 
 

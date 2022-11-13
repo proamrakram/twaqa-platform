@@ -1,7 +1,8 @@
 @extends('Website.partials.layout')
 @section('content')
     @push('teacher-video-audio-style')
-        <link href='assets/css/pekeUpload.css' />
+        <link href='{{ asset('website/assets/css/pekeUpload.css') }}' />
+        @livewireStyles()
     @endpush
 
     <div class="page page-data mb-5">
@@ -20,58 +21,9 @@
                         <div class="profile-data-user ">
                             @include('Website.partials.data-user')
                         </div>
-                        <div class="profile-data-user-boxes content-user mt-5">
-                            <ul class="list-unstyled p-0 d-flex flex-column col bg-white rounded"
-                                data-text-success='تم الرفع بنجاح' id="files">
-                                <!-- <li class="text-muted text-center empty">No files uploaded.</li> -->
-                            </ul>
-                            <div class="bg-white border rounded-3 mb-3">
-                                <div
-                                    class="d-flex align-items-center justify-content-between border-bottom p-4 uploade-file">
-                                    <h5 class='mb-0'>فيديو تعريفي</h5>
-                                    <div class="d-flex align-items-center">
-                                        <select name="" id="" class='upload-media'>
-                                            <option value="insert-url"> وضع رابط </option>
-                                            <option value="upload-url"> رفع فيديو </option>
-                                        </select>
-                                        <div class="insert-url position-relative hide-box">
-                                            <input type="text" placeholder='قم بوضع الرابط'>
-                                        </div>
-                                        <div id="" class="drag-and-drop-zone dm-uploader upload-url hide-box">
-                                            <input type="file" title='Click to add Files' data-type='video' />
-                                            <span
-                                                class='text position-absolute top-50 start-0 translate-middle-y d-flex align-items-center'>
-                                                <i class="fa-brands fa-youtube ms-1"></i>
-                                                رفع فيديو
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="d-flex align-items-center justify-content-between border-bottom p-4 uploade-file">
-                                    <h5 class='mb-0'> ملف صوتي </h5>
-                                    <div class="d-flex align-items-center">
-                                        <select name="" id="" class='upload-media'>
-                                            <option value="insert-url"> وضع رابط </option>
-                                            <option value="upload-url"> رفع ملف صوتي </option>
-                                        </select>
-                                        <div class="insert-url position-relative hide-box">
-                                            <input type="text" placeholder='قم بوضع الرابط'>
-                                        </div>
-                                        <div id="" class="drag-and-drop-zone dm-uploader upload-url hide-box">
-                                            <input type="file" title='Click to add Files' data-type='audio' />
-                                            <span
-                                                class='text position-absolute top-50 start-0 translate-middle-y d-flex align-items-center'>
-                                                <i class="fa-solid fa-microphone ms-1"></i>
-                                                رفع ملف صوتي
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
+                        @livewire('teacher-video-audio')
 
-                        </div>
                     </div>
                 </div>
             </div>
@@ -80,7 +32,8 @@
 
 
     @push('teacher-video-audio-script')
-        <script src='assets/js/pekeUpload.min.js'></script>
+        @livewireScripts()
+        <script src='{{ asset('website/assets/js/pekeUpload.min.js') }} '></script>
 
         <!-- File item template -->
         <script type="text/html" id="files-template">
@@ -107,7 +60,7 @@
 
         <!-- Debug item template -->
         <script type="text/html" id="debug-template">
-    <li class="list-group-item text-%%color%%"><strong>%%date%%</strong>: %%message%%</li>
-</script>
+            <li class="list-group-item text-%%color%%"><strong>%%date%%</strong>: %%message%%</li>
+        </script>
     @endpush
 @endsection

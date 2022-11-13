@@ -56,7 +56,7 @@ class HomeController extends Controller
     public function teacherVideoAudio()
     {
         $user = auth()->user();
-        $teacher_video_audio = $user->ejazat->where('is_delete', '0');
+        $ejazats = $user->ejazats->where('is_delete', '0');
         return view('Website.pages.teacher.teacher-video-audio', compact(['ejazats', 'user']));
     }
 
@@ -66,7 +66,17 @@ class HomeController extends Controller
         return view('Website.pages.teacher.teacher-account-details', compact(['user']));
     }
 
+    public function teacherSalary()
+    {
+        $user = auth()->user();
+        return view('Website.pages.teacher.teacher-salary', compact(['user']));
+    }
 
+    public function teacherCourses()
+    {
+        $user = auth()->user();
+        return view('Website.pages.teacher.teacher-courses', compact(['user']));
+    }
 
 
 

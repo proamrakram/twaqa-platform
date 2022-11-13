@@ -88,7 +88,7 @@
 {{-- Qualification --}}
 @stack('scriptrepeater')
 @stack('teacher-video-audio-script')
-
+@stack('teacher-courses-scripts')
 
 </body>
 

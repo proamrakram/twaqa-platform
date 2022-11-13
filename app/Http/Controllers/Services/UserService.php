@@ -45,7 +45,7 @@ class UserService extends Controller
         $user = User::find(auth()->id());
 
         $user->update([
-            'full_name' => $this->request->full_name,
+            'name' => $this->request->name,
             'gender' => $this->request->gender,
             'description' => $this->request->description,
             'birthday' => $this->request->birthday,

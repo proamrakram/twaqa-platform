@@ -20,14 +20,12 @@ class User extends Authenticatable
     protected $fillable = [
         'img',
         'full_name',
-        //'first_name',
-        //'second_name',
         'description',
         'birthday',
         'age',
-        'country_id',
-        'currency_id',
+        'state',
         'email',
+        'email_verified_at',
         'phonenumber',
         'phonenumber2',
         'whatsapp',
@@ -35,22 +33,25 @@ class User extends Authenticatable
         'twitter',
         'position',
         'parent_position',
-        //'qualification',
         'registered_at',
         'department',
         'gender',
         'password',
-        'course_category_id',
+        'category',
         'user_type',
+        'is_delete',
+        'active',
+        'address',
+        'country_id',
+        'currency_id',
+        'course_category_id',
         'link',
         'vedio',
         'vedio_type',
         'voice',
         'voice_type',
-        'is_delete',
         'available_balance',
         'suspended_balance',
-        'active',
     ];
 
     /**
@@ -71,6 +72,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function certificates()
+    {
+        return $this->hasMany('App\Models\Certificate');
+    }
+
 
     public function working_hours()
     {
@@ -103,11 +111,6 @@ class User extends Authenticatable
     }
 
 
-    public function country()
-    {
-        return $this->belongsTo('App\Models\Country', 'country_id');
-    }
-
     public function lessons()
     {
         return $this->hasMany('App\Models\Lesson', 'teacher_id');
@@ -138,7 +141,7 @@ class User extends Authenticatable
             if (
                 !$user->birthday || !$user->description || !$user->position ||
                 !$user->phonenumber || !$user->phonenumber2 ||
-                !$user->whatsapp || !$user->facebook || !$user->twitter
+                !$user->whatsapp || !$user->facebook || !$user->twitter || !$user->full_name
             ) {
                 return $user;
             }

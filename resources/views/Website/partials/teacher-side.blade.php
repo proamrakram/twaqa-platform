@@ -6,8 +6,8 @@
 <div class="rounded-3 overflow-hidden bg-white border menu-items sidebar-links-user">
     <a href="teacher-home.php" class=''> الرئيسية  </a>
     <a href="{{route('teacher.data.basic')}}" class=''> البيانات الشخصية  </a>
-    <a href="salary.php"> الراتب<span class='fw-bold position-absolute top-50 start-0 translate-middle-y ms-3'>  <span class='font-number'>1500 </span>    ج.م</span>  </a>
-    <a href="teacher-courses.php"> الكورسات </a>
+    <a href="{{route('teacher.salary')}}"> الراتب<span class='fw-bold position-absolute top-50 start-0 translate-middle-y ms-3'>  <span class='font-number'>1500 </span>    ج.م</span>  </a>
+    <a href="{{route('teacher-courses')}}"> الكورسات </a>
     <a href="teacher-stds.php"> الطلاب </a>
     <a href="subjects.php"> المواد </a>
     <a href="chat.php"> الدردشة </a>
