@@ -2,8 +2,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb py-3 mb-0">
-                <li class="breadcrumb-item"><a href="#"> الملف الشخصي </a></li>
-                <li class="breadcrumb-item active" aria-current="page"> إسم المعلم </li>
+                <li class="breadcrumb-item"><a href="{{route('teacher.home')}}"> الملف الشخصي </a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{getUserName()}} </li>
             </ol>
         </nav>
         <div class="heading-page shadow-box  bg-white rounded-lg mb-4 p-4"

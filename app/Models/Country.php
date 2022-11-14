@@ -9,10 +9,10 @@ class Country extends Model
 {
     use HasFactory;
 
-    protected $fillalbe = [
+    protected $fillable = [
         'country_name_en',
         'country_name_ar',
-        'country_name_fr',
+        'country_name_sp',
         'country_flag',
         'country_code',
         'status',
@@ -24,6 +24,11 @@ class Country extends Model
         return $this->hasMany(Qualification::class, 'country_id', 'id');
     }
 
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'country_id', 'id');
+    }
+
     public function getCountryNameAttribute()
     {
         $lang = session('lang');
@@ -33,9 +38,23 @@ class Country extends Model
         } elseif ($lang == 'en') {
             return $this->attributes['country_name_en'];
         } elseif ($lang == 'fr') {
-            return $this->attributes['country_name_fr'];
+            return $this->attributes['country_name_sp'];
         } else {
             return $this->attributes['country_name_ar'];
         }
+    }
+
+    public function scopeData($query)
+    {
+        return $query->select([
+            'id',
+            'country_name_en',
+            'country_name_ar',
+            'country_name_sp',
+            'country_flag',
+            'country_code',
+            'status',
+            'is_delete',
+        ]);
     }
 }

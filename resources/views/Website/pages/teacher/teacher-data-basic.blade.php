@@ -44,7 +44,7 @@
 
                                         <div class="input border-bottom p-3">
                                             <label for=""> الإسم </label>
-                                            <input type="text" name="name" value="{{ $user->name }}" disabled
+                                            <input type="text" name="name" value="{{ $user->full_name }}" disabled
                                                 class='form-input'>
                                         </div>
 

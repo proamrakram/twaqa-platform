@@ -22,6 +22,7 @@
     <link href="{{ asset('website/assets/css/main.css') }}" rel="stylesheet">
     @stack('teacher-video-audio-style')
     @stack('teacher-courses-styles')
+    @stack('calander-lessons-styles')
 
 </head>
 
@@ -50,17 +51,16 @@
                             <li><a href="{{ route('vision.mision') }}"> رسالتنا ورؤيتنا </a></li>
                         </ul>
                     </li>
-                    <li class="nav-item menu-dropdown">
-                        <a class="nav-link" href="courses.php" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            الكورسات
-                        </a>
-                        <ul class="">
+                    {{-- <li class="nav-item menu-dropdown"> --}}
+                    <a class="nav-link" href="{{ route('courses') }}" role="button">
+                        الكورسات
+                    </a>
+                    {{-- <ul class="">
                             <li><a href="{{ route('courses') }}">All</a></li>
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
 
                     <li class="nav-item"> <a class="nav-link" href="{{ route('packages') }}">الأسعار </a> </li>
@@ -244,12 +244,21 @@
                                             alt="">
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a> الملف الشخصي </a>
-                                        </li>
-                                        <li>
-                                            <a href=""> الاعدادات </a>
-                                        </li>
+
+                                        @if (auth()->user()->user_type == 'teacher')
+                                            <li>
+                                                <a href="{{ route('teacher.home') }}"> الملف الشخصي </a>
+                                            </li>
+                                        @endif
+
+                                        @if (auth()->user()->user_type == 'student')
+                                            <li>
+                                                <a href="#"> الملف الشخصي </a>
+                                            </li>
+                                        @endif
+
+
+
                                         <li>
                                             <form action="{{ route('logout') }}" method="POST">
                                                 @csrf
@@ -291,56 +300,57 @@
 
     @auth
 
-        @if (check_basic_teacher_data() || !check_qualifications() || !check_certificates() || !check_ejazats())
-            <div class="container mt-4">
+        @if (auth()->user()->user_type == 'teacher')
+
+            @if (check_basic_teacher_data() || !check_qualifications() || !check_certificates() || !check_ejazats())
+                <div class="container mt-4">
 
 
-                <div class="alert alert-warning" role="alert">
-                    <h5 class='fw-bold'>أرجو منك عزيزي ان تقوم بإمكال بياناتك على ملفك الشخصي: </h5>
-                    <ul class='mb-0'>
-                        @if (check_basic_teacher_data())
-                            <li>
-                                <a href="{{ route('teacher.data.basic') }}" class='text-decoration-none text-dark'> إكمال
-                                    البيانات
-                                    الشخصية </a>
-                            </li>
-                        @endif
+                    <div class="alert alert-warning" role="alert">
+                        <h5 class='fw-bold'>أرجو منك عزيزي ان تقوم بإمكال بياناتك على ملفك الشخصي: </h5>
+                        <ul class='mb-0'>
+                            @if (check_basic_teacher_data())
+                                <li>
+                                    <a href="{{ route('teacher.data.basic') }}" class='text-decoration-none text-dark'>
+                                        إكمال
+                                        البيانات
+                                        الشخصية </a>
+                                </li>
+                            @endif
 
-                        @if (!check_qualifications())
-                            <li><a href="{{ route('teacher.qualifications') }}" class='text-decoration-none text-dark'>
-                                    إكمال المؤهلات </a></li>
-                        @endif
+                            @if (!check_qualifications())
+                                <li><a href="{{ route('teacher.qualifications') }}"
+                                        class='text-decoration-none text-dark'>
+                                        إكمال المؤهلات </a></li>
+                            @endif
 
-                        @if (!check_certificates())
-                            <li><a href="{{ route('teacher.certificates') }}" class='text-decoration-none text-dark'>
-                                    إكمال الشهادات </a></li>
-                        @endif
+                            @if (!check_certificates())
+                                <li><a href="{{ route('teacher.certificates') }}" class='text-decoration-none text-dark'>
+                                        إكمال الشهادات </a></li>
+                            @endif
 
-                        @if (!check_ejazats())
-                            <li><a href="{{ route('teacher.ejazat') }}" class='text-decoration-none text-dark'> إكمال
-                                    الاجازات </a>
-                            </li>
-                        @endif
-
-
-
+                            @if (!check_ejazats())
+                                <li><a href="{{ route('teacher.ejazat') }}" class='text-decoration-none text-dark'> إكمال
+                                        الاجازات </a>
+                                </li>
+                            @endif
 
 
-                        {{-- <li><a href="{{ route('teacher.video.audio') }}" class='text-decoration-none text-dark'> إرفاق
+
+
+
+                            {{-- <li><a href="{{ route('teacher.video.audio') }}" class='text-decoration-none text-dark'> إرفاق
                                 ملف صوت وفيديو
                             </a></li> --}}
 
 
-                        {{-- <li><a href="{{route()}}calander_lessons.php" class='text-decoration-none text-dark'> الأوقات المتاحة </a></li> --}}
+                            {{-- <li><a href="{{route()}}calander_lessons.php" class='text-decoration-none text-dark'> الأوقات المتاحة </a></li> --}}
 
 
-
-
-
-
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            @endif
         @endif
 
     @endauth

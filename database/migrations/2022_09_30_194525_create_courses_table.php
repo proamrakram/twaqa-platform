@@ -19,7 +19,7 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             $table->integer('hours');
             $table->integer('period');
-            $table->string('students');
+            $table->json('students');
             $table->integer('teacher_id');
             $table->enum('department',['children','men','women']);
             $table->integer('category');

@@ -20,10 +20,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::controller(HomeController::class)->prefix('')->as('')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::post('/get-cities-by-country', 'getCitiesByCountry')->name('get.cities.by.country');
+    Route::get('instructions', 'instructions')->name('instructions');
+    Route::get('absence-policy', 'absencePolicy')->name('absence.policy');
+
 
     Route::middleware('auth')->group(function () {
         #Teacher Pages
         Route::get('/teachers', 'teachers')->name('teachers');
+        Route::get('/teacher-home', 'teacherHome')->name('teacher.home');
         Route::get('/teacher-data-basic', 'teacherDataBasic')->name('teacher.data.basic');
         Route::get('/teacher-qualifications', 'teacherQualifications')->name('teacher.qualifications');
         Route::get('/teacher-certificates', 'teacherCertificates')->name('teacher.certificates');
@@ -32,7 +37,18 @@ Route::controller(HomeController::class)->prefix('')->as('')->group(function () 
         Route::get('/teacher-account-details', 'teacherAccountDetails')->name('teacher.account.details');
         Route::get('/teacher-salary', 'teacherSalary')->name('teacher.salary');
         Route::get('/teacher-courses', 'teacherCourses')->name('teacher-courses');
+        Route::get('/teacher-stds', 'teacherStds')->name('teacher.stds');
+        Route::get('/teacher-single/{teacher}', 'teacherSingle')->name('teacher.single');
 
+
+
+        Route::get('/books', 'books')->name('books');
+        Route::get('/videos', 'videos')->name('videos');
+        Route::get('/certificates', 'certificates')->name('certificates');
+        Route::get('/subjects', 'subjects')->name('subjects');
+        Route::get('/teacher-forms', 'teacherForms')->name('teacher.forms');
+
+        Route::get('/calander-lessons', 'calanderLessons')->name('calander.lessons');
 
         #Teacher Updating Routes
         Route::controller(ServicesController::class)->group(function () {
@@ -41,16 +57,6 @@ Route::controller(HomeController::class)->prefix('')->as('')->group(function () 
             Route::get('/delete-teacher/{form}/{id?}', 'deleteTeacher')->name('teacher.delete');
         });
     });
-
-
-
-
-
-
-
-
-
-
 
 
     Route::get('/about-us', 'aboutUs')->name('about.us');

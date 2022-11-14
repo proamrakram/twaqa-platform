@@ -6,8 +6,8 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="#"> الرئيسية </a></li>
-                        <li class="breadcrumb-item" aria-current="page"> <a href="#"> من نحن </a> </li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> الرئيسية </a></li>
+                        <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('about.us') }}"> من نحن </a> </li>
                         <li class="breadcrumb-item active" aria-current="page"> الكورسات </li>
                     </ol>
                 </nav>
@@ -21,111 +21,34 @@
 
         <div class="profile-data pt-5 page-package">
             <div class="container">
-
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden text-center mb-3">
-                            <a href="#" class='img'>
-                                <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                            </a>
-                            <div class="content p-3">
-                                <h3 class="fw-bold"><a href="#" class='text-decoration-none text-dark'> كورس القرأن
-                                        الكريم وعلومه </a></h3>
-                                <p>
-                                    برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط
-                                    وإتقان
-                                </p>
-                                <div class="price fw-bold d-flex justify-content-center">
-                                    <div class="normal-price ps-3">750.00 ج.م</div>
-                                    <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م
-                                        </span> </div>
-                                </div>
-                                <div class="btns pt-3">
-                                    <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                                    <a href="#" class="btn-green text-white  btn-lg"> <i
-                                            class='fa-regular fa-plus'></i> إشترك الأن </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden text-center mb-3">
-                            <a href="#" class='img'>
-                                <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                            </a>
-                            <div class="content p-3">
-                                <h3 class="fw-bold"><a href="#" class='text-decoration-none text-dark'> كورس القرأن
-                                        الكريم وعلومه </a></h3>
-                                <p>
-                                    برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط
-                                    وإتقان
-                                </p>
-                                <div class="price fw-bold d-flex justify-content-center">
-                                    <div class="normal-price ps-3">750.00 ج.م</div>
-                                    <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م
-                                        </span> </div>
-                                </div>
-                                <div class="btns pt-3">
-                                    <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                                    <a href="#" class="btn-green text-white  btn-lg"> <i
-                                            class='fa-regular fa-plus'></i> إشترك الأن </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden text-center mb-3">
-                            <a href="#" class='img'>
-                                <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                            </a>
-                            <div class="content p-3">
-                                <h3 class="fw-bold"><a href="#" class='text-decoration-none text-dark'> كورس القرأن
-                                        الكريم وعلومه </a></h3>
-                                <p>
-                                    برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط
-                                    وإتقان
-                                </p>
-                                <div class="price fw-bold d-flex justify-content-center">
-                                    <div class="normal-price ps-3">750.00 ج.م</div>
-                                    <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م
-                                        </span> </div>
-                                </div>
-                                <div class="btns pt-3">
-                                    <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                                    <a href="#" class="btn-green text-white  btn-lg"> <i
-                                            class='fa-regular fa-plus'></i> إشترك الأن </a>
+                    @foreach ($courses as $course)
+                        <div class="col-md-4">
+                            <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden text-center mb-3">
+                                <a href="#" class='img'>
+                                    <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
+                                </a>
+                                <div class="content p-3">
+                                    <h3 class="fw-bold"><a href="#"
+                                            class='text-decoration-none text-dark'>{{ $course->name }} </a></h3>
+                                    <p>
+                                        {{ $course->description }}
+                                    </p>
+                                    <div class="price fw-bold d-flex justify-content-center">
+                                        <div class="normal-price ps-3">750.00 ج.م</div>
+                                        <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م
+                                            </span> </div>
+                                    </div>
+                                    <div class="btns pt-3">
+                                        <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
+                                        <a href="#" class="btn-green text-white  btn-lg"> <i
+                                                class='fa-regular fa-plus'></i> إشترك الأن </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden text-center mb-3">
-                            <a href="#" class='img'>
-                                <img src="{{asset('website/assets/img/img_slider.png')}}" alt="">
-                            </a>
-                            <div class="content p-3">
-                                <h3 class="fw-bold"><a href="#" class='text-decoration-none text-dark'> كورس القرأن
-                                        الكريم وعلومه </a></h3>
-                                <p>
-                                    برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط
-                                    وإتقان
-                                </p>
-                                <div class="price fw-bold d-flex justify-content-center">
-                                    <div class="normal-price ps-3">750.00 ج.م</div>
-                                    <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م
-                                        </span> </div>
-                                </div>
-                                <div class="btns pt-3">
-                                    <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                                    <a href="#" class="btn-green text-white  btn-lg"> <i
-                                            class='fa-regular fa-plus'></i> إشترك الأن </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
 

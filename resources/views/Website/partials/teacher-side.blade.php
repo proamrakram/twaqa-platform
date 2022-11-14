@@ -4,21 +4,23 @@
 </span>
 
 <div class="rounded-3 overflow-hidden bg-white border menu-items sidebar-links-user">
-    <a href="teacher-home.php" class=''> الرئيسية  </a>
+    <a href="{{route('teacher.home')}}" class=''> الرئيسية  </a>
     <a href="{{route('teacher.data.basic')}}" class=''> البيانات الشخصية  </a>
     <a href="{{route('teacher.salary')}}"> الراتب<span class='fw-bold position-absolute top-50 start-0 translate-middle-y ms-3'>  <span class='font-number'>1500 </span>    ج.م</span>  </a>
     <a href="{{route('teacher-courses')}}"> الكورسات </a>
-    <a href="teacher-stds.php"> الطلاب </a>
-    <a href="subjects.php"> المواد </a>
-    <a href="chat.php"> الدردشة </a>
-    <a href="teacher-forms.php"> الإستمارات </a>
-    <a href="calander_lessons.php"> جداول الحصص </a>
-    <a href="certificates.php"> شهادات التقدير </a>
-    <a href="instructions.php"> التعليمات </a>
-    <a href="absence-policy.php"> سياسة الغياب </a>
+    <a href="{{route('teacher.stds')}}"> الطلاب </a>
+    <a href="{{route('subjects')}}"> المواد </a>
+    <a href="#"> الدردشة </a>
+    <a href="{{route('teacher.forms')}}"> الإستمارات </a>
+    <a href="{{route('calander.lessons')}}"> جداول الحصص </a>
+    <a href="{{route('certificates')}}"> شهادات التقدير </a>
+    <a href="{{route('instructions')}}"> التعليمات </a>
+    <a href="{{ route('absence.policy') }}"> سياسة الغياب </a>
     <a href="#"> المصحف المعلم </a>
-    <a href="books.php"> الكتب </a>
-    <a href="videos.php"> الفيديوهات </a>
-    <a href="#" class='logout'> تسجبل الخروج </a>
+    <a href="{{route('books')}}"> الكتب </a>
+    <a href="{{route('videos')}}"> الفيديوهات </a>
+    <form action="{{route('logout')}}" method="POST">
+        <button type="submit" style=" background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" class="logout me-4"> تسجبل الخروج </button>
+    </form>
 </div>
 

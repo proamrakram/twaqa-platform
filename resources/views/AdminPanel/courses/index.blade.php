@@ -13,7 +13,7 @@
                 </ol>
                 <a href="{{route('admin.courses.create')}}" class="btn btn-success py-2 rounded fw-bolder"> اضافة جديد </a>
             </div>
-           
+
             <div class="card">
                 <div class="card-body fs-6 p-5 text-gray-700">
                     <div class="d-flex align-items-center justify-content-between">
@@ -38,16 +38,16 @@
                                 تصدير Excel
                                 </a>
                             </div>
-                            
+
                             <div class="menu-item ">
                                 <a href="#" class="menu-link  btn btn-secondary" data-kt-export="pdf">
                                     تصدير PDF
                                 </a>
                             </div>
-                        </div>                        
-                        <div id="kt_datatable_example_buttons" class="d-none"></div>                        
+                        </div>
+                        <div id="kt_datatable_example_buttons" class="d-none"></div>
                     </div>
-            
+
                     <table class="table align-middle border rounded table-row-dashed fs-6 g-5" id="kt_datatable_teachers">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase">
@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                 @if($course->students != null)
-                                    @foreach(explode(",", $course->students) as $student)
+                                    @foreach($course->students as $student)
                                     <span class="badge badge-light-dark"> {{\App\Models\User::find($student)->name}} </span>
                                     @endforeach
                                     @endif
@@ -85,12 +85,12 @@
                                 <td class="text-center pe-0"> {{$course->hours}}   </td>
                                 <td class="text-end">
                                 {{$course->course_type->title}}
-                                </td>     
+                                </td>
                                 <td class="text-end">
                                     <div class="btn-actions d-flex align-items-center justify-content-end">
                                         <label class="me-5 form-check form-switch form-check-custom form-check-solid d-inline-block">
                                             <input class="form-check-input h-20px w-40px" type="checkbox" value="1" onclick="window.location='{{ route("admin.courses.changeStatus",["id"=>$course->id]) }}'" id="flexSwitchCheckChecked" @if($course->active == 1) checked="" @endif/>
-                                        </label>                                    
+                                        </label>
                                         <a href="{{route('admin.courses.edit',['id'=>$course->id])}}">
                                             <span class="svg-icon svg-icon-2 svg-icon-primary  ">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +98,7 @@
                                                     <path d="M10.9256 11.1882C10.5351 10.7977 10.5351 10.1645 10.9256 9.77397L18.0669 2.6327C18.8479 1.85165 20.1143 1.85165 20.8953 2.6327L21.3665 3.10391C22.1476 3.88496 22.1476 5.15129 21.3665 5.93234L14.2252 13.0736C13.8347 13.4641 13.2016 13.4641 12.811 13.0736L10.9256 11.1882Z" fill="currentColor"/>
                                                     <path d="M8.82343 12.0064L8.08852 14.3348C7.8655 15.0414 8.46151 15.7366 9.19388 15.6242L11.8974 15.2092C12.4642 15.1222 12.6916 14.4278 12.2861 14.0223L9.98595 11.7221C9.61452 11.3507 8.98154 11.5055 8.82343 12.0064Z" fill="currentColor"/>
                                                 </svg>
-                                            </span>                
+                                            </span>
                                         </a>
                                         <a data-action="{{route('admin.courses.delete',['id'=>$course->id])}}" class="rm" data-name="{{$course->name}}">
                                             <span class="svg-icon svg-icon-2   svg-icon-danger ">
@@ -126,7 +126,7 @@
 <script src='assets/js/pdfmake.js'></script>
 <script src='assets/js/vfs_fonts.js'></script>
 <script>
-   
+
     "use strict";
 
 // Class definition
@@ -174,7 +174,7 @@ var KTDatatablesExample = function () {
                 {
                     extend: 'pdfHtml5',
                     title: documentTitle,
-                    
+
                 }
             ]
         }).container().appendTo($('#kt_datatable_example_buttons'));
@@ -222,9 +222,9 @@ var KTDatatablesExample = function () {
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
     KTDatatablesExample.init();
-});    
+});
 
- 
+
 $("body").on("click", ".rm", function() {
 
 

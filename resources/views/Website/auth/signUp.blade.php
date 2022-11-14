@@ -19,15 +19,6 @@
         </header>
         <!-- End Header -->
 
-
-
-
-
-
-
-
-
-
         <div class="profile-data pt-5 page-register">
             <div class="container">
                 <div class="row justify-content-center">
@@ -74,7 +65,9 @@
                                             </span>
                                         </label>
                                         <select name="country_id" id="country_id" class="select2 input-style">
-                                            <option value="country">حدد الدولة</option>
+                                            @foreach (getCountries() as $country)
+                                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('country_id')
                                             <small class="text-danger">{{ $message }}</small>
@@ -89,7 +82,9 @@
                                         </label>
 
                                         <select name="city_id" id="city_id" class="select2 input-style">
-                                            <option value="city">المدينة</option>
+
+                                            <option value="">اختار الدولة اولا</option>
+
                                         </select>
                                         @error('city_id')
                                             <small class="text-danger">{{ $message }}</small>
@@ -119,7 +114,7 @@
                                         <label for="user_type"> التسجيل كـ <span class='star'><i
                                                     class="fa-solid fa-star-of-life"></i></span> </label>
                                         <select name="user_type" id="user_type" class="select2 input-style">
-                                            <option value="student">طالب</option>
+                                            {{-- <option value="student">طالب</option> --}}
                                             <option value="teacher">معلم</option>
                                         </select>
                                         @error('user_type')
@@ -193,4 +188,37 @@
         </svg>
 
     </div> <!-- End Page -->
+
+    @push('signUp')
+        <script>
+            $(document).ready(function() {
+                $('#country_id').on('change', function() {
+
+                    var country_id = this.value;
+                    console.log(country_id);
+
+                    $("#city_id").html('');
+
+                    $.ajax({
+                        url: "{{ url('/get-cities-by-country') }}",
+                        type: "POST",
+                        data: {
+                            country_id: country_id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        dataType: 'json',
+                        success: function(result) {
+
+                            $('#city_id').html('<option value="">اختر المدينة</option>');
+                            $.each(result.states, function(key, value) {
+                                $("#city_id").append('<option value="' + value.id +
+                                    '">' + value.city_name_ar + '</option>');
+                            });
+                        }
+                    });
+
+                });
+            });
+        </script>
+    @endpush
 @endsection

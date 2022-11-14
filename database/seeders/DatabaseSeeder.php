@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             WebsiteSettingSeeder::class,
             CurrencySeeder::class,
             CountrySeeder::class,
+            CitySeeder::class,
             UserSeeder::class,
+
         ]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -73,13 +72,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function certificates()
-    {
-        return $this->hasMany('App\Models\Certificate');
-    }
-
-
     public function working_hours()
     {
         return $this->hasMany('App\Models\WorkHour');
@@ -110,6 +102,11 @@ class User extends Authenticatable
         return asset('storage/images/profile') . '/' . $img;
     }
 
+
+    public function country()
+    {
+        return $this->belongsTo('App\Models\Country', 'country_id');
+    }
 
     public function lessons()
     {

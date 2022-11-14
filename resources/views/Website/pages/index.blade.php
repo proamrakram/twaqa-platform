@@ -35,16 +35,16 @@
                             <div class="row g-0">
                                 <div class="col-md-4 first">
                                     <select name="" id="" class='select2'>
-                                        <option value=""> التخصص </option>
-                                        <option value=""> التخصص </option>
-                                        <option value=""> التخصص </option>
+                                        @foreach (getCoursesTypes() as $course_type)
+                                            <option value="{{ $course_type->id }}"> {{ $course_type->title }} </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4 ">
                                     <select name="" id="" class='select2'>
-                                        <option value=""> إسم المعلم </option>
-                                        <option value=""> إسم المعلم </option>
-                                        <option value=""> إسم المعلم </option>
+                                        @foreach (getTeachers() as $teacher)
+                                            <option value="{{ $teacher->id }}">{{ $teacher->full_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-3 last">
@@ -63,10 +63,12 @@
                 </form>
             </div>
 
-            <div class="btns d-flex align-items-center justify-content-center mb-5 pb-5">
-                <a href="#" class='btn-green ms-2 btn-lg'> حساب جديد </a>
-                <a href="#" class='btn-outline btn-lg'> حصة تجريبية </a>
-            </div>
+            @guest
+                <div class="btns d-flex align-items-center justify-content-center mb-5 pb-5">
+                    <a href="#" class='btn-green ms-2 btn-lg'> حساب جديد </a>
+                    <a href="#" class='btn-outline btn-lg'> حصة تجريبية </a>
+                </div>
+            @endguest
 
             <br>
 
@@ -238,105 +240,34 @@
         <h2 class="h1 clr-royal-blue fw-bold pt-3 "> كورساتنا المميزة </h2>
         <div class="owl-carousel">
 
-            <div class="item">
-                <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden">
-                    <a href="#" class='img'>
-                        <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                    </a>
-                    <div class="content p-3">
-                        <h3 class="fw-bold"> <a href="#" class='text-decoration-none text-dark'> كورس القرأن الكريم
-                                وعلومه </a> </h3>
-                        <p>
-                            برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط وإتقان
-                        </p>
-                        <div class="price fw-bold d-flex justify-content-center">
-                            <div class="normal-price ps-3">750.00 ج.م</div>
-                            <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م </span>
-                            </div>
-                        </div>
-                        <div class="btns pt-3">
-                            <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                            <a href="#" class="btn-green text-white  btn-lg"> <i class='fa-regular fa-plus'></i>
-                                إشترك الأن </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="item">
-                <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden">
-                    <a href="#" class='img'>
-                        <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                    </a>
-                    <div class="content p-3">
-                        <h3 class="fw-bold"> <a href="#" class='text-decoration-none text-dark'> كورس القرأن الكريم
-                                وعلومه </a> </h3>
-                        <p>
-                            برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط وإتقان
-                        </p>
-                        <div class="price fw-bold d-flex justify-content-center">
-                            <div class="normal-price ps-3">750.00 ج.م</div>
-                            <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م </span>
+            @foreach (getCourses() as $course)
+                <div class="item">
+                    <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden">
+                        <a href="#" class='img'>
+                            <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
+                        </a>
+                        <div class="content p-3">
+                            <h3 class="fw-bold"> <a href="#" class='text-decoration-none text-dark'>
+                                    {{ $course->name }}</a> </h3>
+                            <p>
+                                {{ $course->description }}
+                            </p>
+                            <div class="price fw-bold d-flex justify-content-center">
+                                <div class="normal-price ps-3">750.00 ج.م</div>
+                                <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="btns pt-3">
-                            <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                            <a href="#" class="btn-green text-white  btn-lg"> <i class='fa-regular fa-plus'></i>
-                                إشترك الأن </a>
+                            <div class="btns pt-3">
+                                <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
+                                <a href="#" class="btn-green text-white  btn-lg"> <i
+                                        class='fa-regular fa-plus'></i>
+                                    إشترك الأن </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="item">
-                <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden">
-                    <a href="#" class='img'>
-                        <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                    </a>
-                    <div class="content p-3">
-                        <h3 class="fw-bold"> <a href="#" class='text-decoration-none text-dark'> كورس القرأن الكريم
-                                وعلومه </a> </h3>
-                        <p>
-                            برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط وإتقان
-                        </p>
-                        <div class="price fw-bold d-flex justify-content-center">
-                            <div class="normal-price ps-3">750.00 ج.م</div>
-                            <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م </span>
-                            </div>
-                        </div>
-                        <div class="btns pt-3">
-                            <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                            <a href="#" class="btn-green text-white  btn-lg"> <i class='fa-regular fa-plus'></i>
-                                إشترك الأن </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="course shadow-box bg-white my-4 rounded-lg overflow-hidden">
-                    <a href="#" class='img'>
-                        <img src="{{ asset('website/assets/img/img_slider.png') }}" alt="">
-                    </a>
-                    <div class="content p-3">
-                        <h3 class="fw-bold"> <a href="#" class='text-decoration-none text-dark'> كورس القرأن الكريم
-                                وعلومه </a> </h3>
-                        <p>
-                            برنامج شامل ، ومتكامل ، ومميز لحفظ القرآن الكريم ، يمهد الطريق لمن أراد حفظ القرآن بضبط وإتقان
-                        </p>
-                        <div class="price fw-bold d-flex justify-content-center">
-                            <div class="normal-price ps-3">750.00 ج.م</div>
-                            <div class="discount-price"> <span class="text-decoration-line-through"> 1500 ج.م </span>
-                            </div>
-                        </div>
-                        <div class="btns pt-3">
-                            <a href="#" class="btn-outline btn-main-clr mb-2 btn-lg"> حصة تجريبية </a>
-                            <a href="#" class="btn-green text-white  btn-lg"> <i class='fa-regular fa-plus'></i>
-                                إشترك الأن </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="text-center">
             <a href="#" class="btn-outline ms-2 btn-lg d-inline-block mt-5  clr-royal-blue"> عرض المزيد </a>
@@ -348,62 +279,75 @@
 
         <h2 class="h1 clr-royal-blue fw-bold pt-3 text-center"> معلمون مُتميزون </h2>
         <div class="owl-carousel">
-            <div class="item">
-                <div class="teacher box-content-vid shadow-box bg-white my-4 rounded-lg">
-                    <div class="heading d-flex justify-content-around position-relative">
-                        <span class='completed'> جدول مكتمل <i class="fa-solid fa-check"></i> </span>
-                        <div class="img align-self-center position-relative">
-                            <a href="teacher-single.php">
-                                <img src="{{ asset('website/assets/img/user_teacher.jpg') }}" alt="">
-                            </a>
-                            <div class="btns-play">
-                                <div class="icon"><i class="fa-solid fa-play"></i></div>
+
+            @foreach (getOutstandingTeachers() as $teacher)
+                <div class="item">
+                    <div class="teacher box-content-vid shadow-box bg-white my-4 rounded-lg">
+                        <div class="heading d-flex justify-content-around position-relative">
+                            <span class='completed'> جدول مكتمل <i class="fa-solid fa-check"></i> </span>
+                            <div class="img align-self-center position-relative">
+                                <a href="teacher-single.php">
+                                    <img src="{{ asset('website/assets/img/user_teacher.jpg') }}" alt="">
+                                </a>
+                                <div class="btns-play">
+                                    <div class="icon"><i class="fa-solid fa-play"></i></div>
+                                </div>
+                            </div>
+                            <div class="price-teacher">
+                                <span class='font-number fw-bold'> 15 </span>
+                                <span>جـــنيه</span>
+                                <span>للساعة</span>
+                            </div>
+                            <div class="btns-link d-flex justify-content-around">
+                                <a href="#" class='btn-green text-white  btn-lg btn-show-vid'
+                                    data-vid-id='bTqVqk7FSmY' data-bs-toggle="modal" data-bs-target="#vidInfoTeacher"> <i
+                                        class="fa-brands fa-youtube"></i> شاهد فيديو </a>
+                                <a href="#" class='btn-outline btn-lg clr-royal-blue btn-play-audio'
+                                    data-url='https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3'>
+                                    <i class="fa-solid fa-microphone"></i> إسمع صوتي </a>
                             </div>
                         </div>
-                        <div class="price-teacher">
-                            <span class='font-number fw-bold'> 15 </span>
-                            <span>جـــنيه</span>
-                            <span>للساعة</span>
-                        </div>
-                        <div class="btns-link d-flex justify-content-around">
-                            <a href="#" class='btn-green text-white  btn-lg btn-show-vid' data-vid-id='bTqVqk7FSmY'
-                                data-bs-toggle="modal" data-bs-target="#vidInfoTeacher"> <i
-                                    class="fa-brands fa-youtube"></i> شاهد فيديو </a>
-                            <a href="#" class='btn-outline btn-lg clr-royal-blue btn-play-audio'
-                                data-url='https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3'> <i
-                                    class="fa-solid fa-microphone"></i> إسمع صوتي </a>
-                        </div>
-                    </div>
-                    <div class="content text-center pt-4">
-                        <h3 class='h4 mb-0 title'> <a href="teacher-single.php"
-                                class='text-decoration-none clr-royal-blue'> محمد سليمان عمران </a> </h3>
-                        <p class='mb-2'>جمهورية مصر العربية</p>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <div class='stars'>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                        <div class="content text-center pt-4">
+                            <h3 class='h4 mb-0 title'> <a href="{{ route('teacher.single', $teacher->id) }}"
+                                    class='text-decoration-none clr-royal-blue'>{{ $teacher->full_name }}</a> </h3>
+                            <p class='mb-2'>{{ getCountryName($teacher->country_id) }}</p>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class='stars'>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <span class='me-2 font-number fw-bold'>10</span>
                             </div>
-                            <span class='me-2 font-number fw-bold'>10</span>
-                        </div>
-                        <div class="desc py-3 px-4">
-                            <p class='mb-0'>معلم ومُحفظ للقرآن الكريم بالتجويد حاصل على شهادة من الحرم النبوي لحفظ القرآن
-                                الكريم.</p>
-                        </div>
-                        <div class="tags text-center mb-4 mt-2">
-                            <a href="#"> القرأن الكريم وعلومه </a>
-                            <a href="#"> الفقه الإسلامي </a>
-                            <a href="#"> السنة النبوية </a>
+                            <div class="desc py-3 px-4">
+                                <p class='mb-0'>
+                                    {{ $teacher->description }}
+                                </p>
+
+                            </div>
+                            <div class="tags text-center mb-4 mt-2">
+                                @foreach (getTeacherCourses($teacher->id) as $course)
+                                    <a href="#">{{ $course->name }} </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
+
+
+
+
         </div>
+
         <div class="text-center my-3">
             <a href="#" class="btn-green text-white d-inline-block btn-lg"> عرض المزيد </a>
         </div>
+
+
+
 
         <!-- Modal Video vidInfoTeacher -->
         <div class="modal fade" id="vidInfoTeacher" tabindex="-1" aria-labelledby="vidInfoTeacherLabel"
@@ -430,6 +374,7 @@
                 <source src="" type="audio/mp3">
             </audio>
         </div>
+
     </section>
 
     <!-- Watch Video -->
