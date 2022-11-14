@@ -21,6 +21,7 @@ class UserService extends Controller
     public function teacherImage()
     {
         $user = User::find(auth()->id());
+
         $user->update([
             'img' => $this->request->image
         ]);

@@ -37,7 +37,7 @@ class HomeController extends Controller
             }
 
             if (auth()->user()->user_type == 'teacher') {
-                return redirect()->route('index');
+                return redirect()->route('teacher.home');
             }
 
             if (auth()->user()->user_type == 'supervisor') {

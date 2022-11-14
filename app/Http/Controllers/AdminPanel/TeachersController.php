@@ -310,7 +310,7 @@ class TeachersController extends Controller
         TeacherCertificate::updateOrCreate([
           'id' => $certificate['id']
         ], [
-          
+
         'certificate_name' => $certificate['certificate_name'],
         'specialization' => $certificate['specialization'],
         'university' => $certificate['university'],

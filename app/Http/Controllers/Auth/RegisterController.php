@@ -82,12 +82,10 @@ class RegisterController extends Controller
         return User::create([
             'full_name' => $data['first_name'] . ' ' . $data['second_name'],
             'password' => Hash::make($data['password']),
-            // 'second_name' => $data['second_name'],
-            // 'first_name' => $data['first_name'],
-            'country' => $data['country_id'],
+            'country_id' => $data['country_id'],
+            'state' => $data['city_id'],
             'gender' => $data['gender'],
             'email' => $data['email'],
-            'state' => $data['city_id'],
             'registered_at' => now(),
             'user_type' => $data['user_type'],
             'age' => $data['age'],
@@ -95,17 +93,6 @@ class RegisterController extends Controller
             'active' => 1,
             'suspended_balance' => 0.0,
             'available_balance' => 0.0,
-            // 'phonenumber',
-            // 'phonenumber2',
-            // 'whatsapp',
-            // 'facebook',
-            // 'twitter',
-            // 'position',
-            // 'parent_position',
-            // 'qualification',
-            // 'department',
-            // 'category',
-            // 'img',
         ]);
     }
 }
