@@ -32,4 +32,10 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Models\User','teacher_id');
     }
+
+    
+    public function attendance_records()
+    {
+        return $this->hasMany('App\Models\AttendanceRecord');
+    }
 }

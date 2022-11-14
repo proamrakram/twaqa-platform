@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserLessonsTable extends Migration
+class CreateAttendanceRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUserLessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_lessons', function (Blueprint $table) {
+        Schema::create('attendance_records', function (Blueprint $table) {
             $table->id();
             $table->integer('lesson_id');
             $table->integer('user_id');
-            $table->enum('status',['pending','attend','unexcused_absence','excused_absence']);
+            $table->integer('course_id');
+            $table->integer('teacher_id');
+            $table->enum('status',['attend','unexcused_absence','excused_absence'])->nullable();
             $table->timestamps();
         });
     }
