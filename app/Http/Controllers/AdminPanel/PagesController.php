@@ -38,22 +38,156 @@ class PagesController extends Controller
     return $this->update($request);
   }
 
-  public function policy()
+  public function teacher_absence_policy()
   {
     $pages = $this->pages;
-    return view('AdminPanel.pages.policy')->with('pages', $pages);
+    return view('AdminPanel.pages.teacher_absence_policy')->with('pages', $pages);
   }
 
-  public function  update_policy(Request $request)
+  public function  update_teacher_absence_policy(Request $request)
   {
 
     $this->validate($request, [
-      'policy_title_ar' => 'nullable|string|max:255',
-      'policy_title_en' => 'nullable|string|max:255',
-      'policy_title_sp' => 'nullable|string|max:255',
-      'policy_description_ar' => 'nullable|string',
-      'policy_description_en' => 'nullable|string',
-      'policy_description_sp' => 'nullable|string',
+      'teacher_absence_policy_title_ar' => 'nullable|string|max:255',
+      'teacher_absence_policy_title_en' => 'nullable|string|max:255',
+      'teacher_absence_policy_title_sp' => 'nullable|string|max:255',
+      'teacher_absence_policy_description_ar' => 'nullable|string',
+      'teacher_absence_policy_description_en' => 'nullable|string',
+      'teacher_absence_policy_description_sp' => 'nullable|string',
+    ]);
+
+    return $this->update($request);
+  }
+
+
+  
+  public function teacher_instructions()
+  {
+    $pages = $this->pages;
+    return view('AdminPanel.pages.teacher_instructions')->with('pages', $pages);
+  }
+
+  public function  update_teacher_instructions(Request $request)
+  {
+
+    $this->validate($request, [
+      'teacher_instructions_title_ar' => 'nullable|string|max:255',
+      'teacher_instructions_title_en' => 'nullable|string|max:255',
+      'teacher_instructions_title_sp' => 'nullable|string|max:255',
+      'teacher_instructions_description_ar' => 'nullable|string',
+      'teacher_instructions_description_en' => 'nullable|string',
+      'teacher_instructions_description_sp' => 'nullable|string',
+    ]);
+
+    return $this->update($request);
+  }
+
+
+  
+  public function user_privacy()
+  {
+    $pages = $this->pages;
+    return view('AdminPanel.pages.user_privacy')->with('pages', $pages);
+  }
+
+  public function  update_user_privacy(Request $request)
+  {
+
+    $this->validate($request, [
+      'user_privacy_title_ar' => 'nullable|string|max:255',
+      'user_privacy_title_en' => 'nullable|string|max:255',
+      'user_privacy_title_sp' => 'nullable|string|max:255',
+      'user_privacy_description_ar' => 'nullable|string',
+      'user_privacy_description_en' => 'nullable|string',
+      'user_privacy_description_sp' => 'nullable|string',
+    ]);
+
+    return $this->update($request);
+  }
+
+  
+  public function user_absence()
+  {
+    $pages = $this->pages;
+    return view('AdminPanel.pages.user_absence')->with('pages', $pages);
+  }
+
+  public function  update_user_absence(Request $request)
+  {
+
+    $this->validate($request, [
+      'user_absence_title_ar' => 'nullable|string|max:255',
+      'user_absence_title_en' => 'nullable|string|max:255',
+      'user_absence_title_sp' => 'nullable|string|max:255',
+      'user_absence_description_ar' => 'nullable|string',
+      'user_absence_description_en' => 'nullable|string',
+      'user_absence_description_sp' => 'nullable|string',
+    ]);
+
+    return $this->update($request);
+  }
+
+  
+  public function user_exams()
+  {
+    $pages = $this->pages;
+    return view('AdminPanel.pages.user_exams')->with('pages', $pages);
+  }
+
+  public function  update_user_exams(Request $request)
+  {
+
+    $this->validate($request, [
+      'user_exams_title_ar' => 'nullable|string|max:255',
+      'user_exams_title_en' => 'nullable|string|max:255',
+      'user_exams_title_sp' => 'nullable|string|max:255',
+      'user_exams_description_ar' => 'nullable|string',
+      'user_exams_description_en' => 'nullable|string',
+      'user_exams_description_sp' => 'nullable|string',
+    ]);
+
+    return $this->update($request);
+  }
+
+  
+  public function user_subscriptions()
+  {
+    $pages = $this->pages;
+    return view('AdminPanel.pages.user_subscriptions')->with('pages', $pages);
+  }
+
+  public function  update_user_subscriptions(Request $request)
+  {
+
+    $this->validate($request, [
+      'user_subscriptions_title_ar' => 'nullable|string|max:255',
+      'user_subscriptions_title_en' => 'nullable|string|max:255',
+      'tuser_subscriptions_title_sp' => 'nullable|string|max:255',
+      'user_subscriptions_description_ar' => 'nullable|string',
+      'user_subscriptions_description_en' => 'nullable|string',
+      'user_subscriptions_description_sp' => 'nullable|string',
+    ]);
+
+    return $this->update($request);
+  }
+
+  
+  public function user_certificates()
+  {
+    $pages = $this->pages;
+    return view('AdminPanel.pages.user_certificates')->with('pages', $pages);
+  }
+
+  public function  update_user_certificates(Request $request)
+  {
+
+    $this->validate($request, [
+      'user_certificates_title_ar' => 'nullable|string|max:255',
+      'user_certificates_title_en' => 'nullable|string|max:255',
+      'user_certificates_title_sp' => 'nullable|string|max:255',
+      'user_certificates_description_ar' => 'nullable|string',
+      'user_certificates_description_en' => 'nullable|string',
+      'user_certificates_description_sp' => 'nullable|string',
     ]);
 
     return $this->update($request);

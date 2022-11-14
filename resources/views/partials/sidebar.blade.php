@@ -317,11 +317,71 @@
                         </div>  
                         
                         <div class="menu-item">
-                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'policy') active @endif" href="{{route('admin.pages.policy')}}">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'teacher-absence-policy') active @endif" href="{{route('admin.pages.teacher-absence-policy')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title"> سياسية الغياب  </span>
+                                <span class="menu-title"> سياسة الغياب للمعلمين  </span>
+                            </a>
+                        </div> 
+
+                        
+                        <div class="menu-item">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'teacher-instructions') active @endif" href="{{route('admin.pages.teacher-instructions')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> التعليمات للمعلمين  </span>
+                            </a>
+                        </div> 
+
+                        
+                        <div class="menu-item">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'user-privacy') active @endif" href="{{route('admin.pages.user-privacy')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> سياسة الخصوصية للطلاب  </span>
+                            </a>
+                        </div> 
+
+                        
+                        <div class="menu-item">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'user-absence') active @endif" href="{{route('admin.pages.user-absence')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> سياسة الغياب للطلاب  </span>
+                            </a>
+                        </div> 
+
+                        
+                        <div class="menu-item">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'user-exams') active @endif" href="{{route('admin.pages.user-exams')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> الامتحانات للطلاب  </span>
+                            </a>
+                        </div> 
+
+                        
+                        <div class="menu-item">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'user-subscriptions') active @endif" href="{{route('admin.pages.user-subscriptions')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> الاشتراكات للطلاب  </span>
+                            </a>
+                        </div> 
+
+                        
+                        <div class="menu-item">
+                            <a class="menu-link @if(Request::segment(2) == 'pages' && Request::segment(3) == 'user-certificates') active @endif" href="{{route('admin.pages.user-certificates')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> الشهادات و التكريمات للطلاب  </span>
                             </a>
                         </div> 
                         

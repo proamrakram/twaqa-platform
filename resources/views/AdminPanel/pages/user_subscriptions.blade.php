@@ -12,11 +12,11 @@
                 <ol class="breadcrumb breadcrumb-dot text-muted fs-6 fw-semibold">
                     <li class="breadcrumb-item pe-3 "><a href="#" class="pe-3 text-muted">الرئيسية</a></li>
                     <li class="breadcrumb-item pe-3"><a href="#" class="pe-3 text-muted"> الصفحات  </a></li>
-                    <li class="breadcrumb-item pe-3 text-primary"> سياسية الغياب </li>
+                    <li class="breadcrumb-item pe-3 text-primary"> الاشتراكات للطلاب </li>
                 </ol>
             </div> 
             
-            <form  method="post" action="{{ route('admin.pages.update-policy') }}" enctype="multipart/form-data">
+            <form  method="post" action="{{ route('admin.pages.update-user-subscriptions') }}" enctype="multipart/form-data">
                     @csrf
                 <div class="card ">
                     <div class="card-header card-header-stretch justify-content-center">
@@ -41,16 +41,16 @@
                             <div class="tab-pane fade show active" id="paeg_ar" role="tabpanel">
                                 <div class="mb-3">
                                     <label class="form-label fw-bolder">  اسم الصفحة  </label>
-                                    <input type="text" name="policy_title_ar" value="{{$pages['policy_title_ar'] ?? ''}}" class="form-control form-control-solid   @error('policy_title_ar') is-invalid @enderror">
-                                    @error('policy_title_ar')
+                                    <input type="text" name="user_subscriptions_title_ar" value="{{$pages['user_subscriptions_title_ar'] ?? ''}}" class="form-control form-control-solid   @error('user_subscriptions_title_ar') is-invalid @enderror">
+                                    @error('user_subscriptions_title_ar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror                          
                                 </div>
                                 <div class="content-page">
-                                <textarea name="policy_description_ar" id="summary-ckeditor-ar" class="form-control @error('policy_description_ar') is-invalid @enderror " rows="20"> {{ $pages['policy_description_ar'] ?? '' }}</textarea>
-                                    @error('policy_description_ar')
+                                <textarea name="user_subscriptions_description_ar" id="summary-ckeditor-ar" class="form-control @error('user_subscriptions_description_ar') is-invalid @enderror " rows="20"> {{ $pages['user_subscriptions_description_ar'] ?? '' }}</textarea>
+                                    @error('user_subscriptions_description_ar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -62,16 +62,16 @@
                             <div class="tab-pane fade" id="paeg_en" role="tabpanel" dir='ltr'>
                                 <div class="mb-3">
                                     <label class="form-label fw-bolder">  Page Title  </label>
-                                    <input type="text" name="policy_title_en" value="{{$pages['policy_title_en'] ?? ''}}" class="form-control form-control-solid   @error('policy_title_en') is-invalid @enderror">
-                                    @error('policy_title_en')
+                                    <input type="text" name="user_subscriptions_title_en" value="{{$pages['user_subscriptions_title_en'] ?? ''}}" class="form-control form-control-solid   @error('user_subscriptions_title_en') is-invalid @enderror">
+                                    @error('user_subscriptions_title_en')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror                            
                                 </div>
                                 <div class="content-page">
-                                <textarea name="policy_description_en" id="summary-ckeditor-en" class="form-control @error('policy_description_en') is-invalid @enderror " rows="20"> {{ $pages['policy_description_en'] ?? '' }}</textarea>
-                                    @error('policy_description_en')
+                                <textarea name="user_subscriptions_description_en" id="summary-ckeditor-en" class="form-control @error('user_subscriptions_description_en') is-invalid @enderror " rows="20"> {{ $pages['user_subscriptions_description_en'] ?? '' }}</textarea>
+                                    @error('user_subscriptions_description_en')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -83,16 +83,16 @@
                             <div class="tab-pane fade" id="paeg_sp" role="tabpanel" dir='ltr'>
                                 <div class="mb-3">
                                     <label class="form-label fw-bolder">  Título de la página  </label>
-                                    <input type="text" name="policy_title_sp" value="{{$pages['policy_title_sp'] ?? ''}}" class="form-control form-control-solid   @error('policy_title_sp') is-invalid @enderror">
-                                    @error('policy_title_sp')
+                                    <input type="text" name="user_subscriptions_title_sp" value="{{$pages['user_subscriptions_title_sp'] ?? ''}}" class="form-control form-control-solid   @error('user_subscriptions_title_sp') is-invalid @enderror">
+                                    @error('user_subscriptions_title_sp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
                                 <div class="content-page">  
-                                    <textarea name="policy_description_sp" id="summary-ckeditor-sp" class="form-control @error('policy_description_sp') is-invalid @enderror " rows="20"> {{ $pages['policy_description_sp'] ?? '' }}</textarea>
-                                    @error('policy_description_sp')
+                                    <textarea name="user_subscriptions_description_sp" id="summary-ckeditor-sp" class="form-control @error('user_subscriptions_description_sp') is-invalid @enderror " rows="20"> {{ $pages['user_subscriptions_description_sp'] ?? '' }}</textarea>
+                                    @error('user_subscriptions_description_sp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
