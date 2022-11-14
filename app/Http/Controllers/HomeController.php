@@ -40,6 +40,7 @@ class HomeController extends Controller
                 return redirect()->route('teacher.home');
             }
 
+
             if (auth()->user()->user_type == 'supervisor') {
                 return redirect()->route('admin.supervisors.index');
             }
