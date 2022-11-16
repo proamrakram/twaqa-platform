@@ -232,7 +232,109 @@
                                     @enderror
                                 </label>
                             </div>
+                            <div class="card mt-4">
+                                <div class="card-body fs-6 p-5 text-gray-700">
+                                    <h3 class='mb-5'> المؤهلات الدراسية </h3>
+                                    <!--begin::Repeater-->
+                                    <div class='certificate'>
+                                        <!--begin::Form group-->
+                                        <div class="form-group">
+                                            <div data-repeater-list="qualification">
+                                                <?php $i = 0 ?>
 
+                                                <div data-repeater-item>
+                                                    <div class="form-group row  ">
+                                                        <div class="col-md-3">
+                                                            <label class="form-label"> درجة المؤهل الدراسي </label>
+
+                                                            <input type="hidden" class="form-control mb-2 " name="id">
+                                                            <input type="text" name="qualification_degree" class="form-control mb-2 mb-md-0" placeholder="درجة المؤهل الدراسي " />
+
+                                                            @error('qualification.'.$i.'.qualification_degree')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="form-label">الجامعة</label>
+                                                            <div class="row gx-2">
+                                                                <div class="col-6">
+                                                                    <input type="text" name="university" class="form-control mb-2" placeholder="الجامعة" />
+
+                                                                    @error('qualification.'.$i.'.university')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <input type="text" name="specialization" class="form-control mb-2" placeholder="التخصص" />
+
+                                                                    @error('qualification.'.$i.'.specialization')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label class="form-label">الدولة</label>
+                                                            <div class="row gx-2">
+                                                                <div class="col-12">
+                                                                    <select name="country_id" class="form-select form-select-solid" data-control="select2" data-dropdown-css-class="w-200px" data-placeholder="اختر .." data-hide-search="true">
+                                                                        <option></option>
+                                                                        @foreach($countries as $country)
+                                                                        <option value="{{$country->id}}">{{$country->country_name}} </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    @error('qualification.'.$i.'.country_id')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label class="form-label">السنة</label>
+                                                            <div class="row gx-2">
+                                                                <div class="col-12">
+                                                                    <input type="text" name="year" class=" form-control mb-2" placeholder="السنة" />
+
+                                                                    @error('qualification.'.$i.'.year')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8 py-4 d-block">
+                                                                <i class="la la-trash-o"></i> حذف
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <!--end::Form group-->
+
+                                        <div class="form-group mt-2">
+                                            <a href="javascript:;" data-repeater-create class="btn btn-light-info">
+                                                <i class="la la-plus"></i> اضف جديد
+                                            </a>
+                                        </div>
+                                        <!--end::Form group-->
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="card mt-4">
                                 <div class="card-body fs-6 p-5 text-gray-700">
                                     <h3 class='mb-5'> الشهادات </h3>
@@ -246,10 +348,10 @@
                                                 <div data-repeater-item>
                                                     <div class="form-group row  ">
                                                         <div class="col-md-3">
-                                                            <label class="form-label"> درجة المؤهل الدراسي </label>
+                                                            <label class="form-label"> اسم الشهادة</label>
 
                                                             <input type="hidden" class="form-control mb-2 " name="id">
-                                                            <input type="text" name="certificate_name" class="form-control mb-2 mb-md-0" placeholder="درجة المؤهل الدراسي " />
+                                                            <input type="text" name="certificate_name" class="form-control mb-2 mb-md-0" placeholder="اسم الشهادة" />
 
                                                             @error('certificate.'.$i.'.certificate_name')
                                                             <span class="invalid-feedback" role="alert">

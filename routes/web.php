@@ -119,6 +119,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('/teachers/update/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'update'])->name('admin.teachers.update');
     Route::post('/teachers/update-password/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'update_password'])->name('admin.teachers.update-password');
     Route::post('/teachers/update-certificates/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'update_certificates'])->name('admin.teachers.update-certificates');
+    Route::post('/teachers/update-qualifications/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'update_qualifications'])->name('admin.teachers.update-qualifications');
     Route::post('/teachers/update-working-hours/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'update_working_hours'])->name('admin.teachers.update-working-hours');
     Route::get('/teachers/delete/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'destroy'])->name('admin.teachers.delete');
     Route::get('/teachers/change-status/{id}', [App\Http\Controllers\AdminPanel\TeachersController::class, 'change_status'])->name('admin.teachers.changeStatus');
@@ -130,6 +131,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('/supervisors/update/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'update'])->name('admin.supervisors.update');
     Route::post('/supervisors/update-password/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'update_password'])->name('admin.supervisors.update-password');
     Route::post('/supervisors/update-certificates/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'update_certificates'])->name('admin.supervisors.update-certificates');
+    Route::post('/supervisors/update-qualifications/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'update_qualifications'])->name('admin.supervisors.update-qualifications');
     Route::post('/supervisors/update-working-hours/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'update_working_hours'])->name('admin.supervisors.update-working-hours');
     Route::get('/supervisors/delete/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'destroy'])->name('admin.supervisors.delete');
     Route::get('/supervisors/change-status/{id}', [App\Http\Controllers\AdminPanel\SupervisorsController::class, 'change_status'])->name('admin.supervisors.changeStatus');

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\Country;
 use App\Models\CourseCategory;
+use App\Models\Qualification;
 use App\Models\TeacherCertificate;
 use App\Models\User;
 use App\Models\WorkHour;
@@ -64,6 +65,15 @@ class SupervisorsController extends Controller
         
         'certificate' => 'required|array',
         'working_hours' => 'required|array',
+
+        
+      'qualification' => 'required|array',
+      'qualification.*.qualification_degree' => 'required|string|max:255',
+      'qualification*.university' => 'required|string|max:255',
+      'qualification*.specialization' => 'required|string|max:255',
+      'qualification*.country_id' => 'required|exists:countries,id',
+      'qualification*.year' => 'required|numeric',
+
         'certificate.*.certificate_name' => 'required|string|max:255',
         'certificate*.university' => 'required|string|max:255',
         'certificate*.specialization' => 'required|string|max:255',
@@ -138,6 +148,18 @@ if(is_null($request->avatar)){
   
     ]);
     
+  }
+  
+  foreach ($request->qualification as $qualification) {
+    Qualification::create([
+      'qualification_degree' => $qualification['qualification_degree'],
+      'specialization' => $qualification['specialization'],
+      'university' => $qualification['university'],
+      'country_id' => $qualification['country_id'],
+      'year' => $qualification['year'],
+      'user_id' => $user->id,
+
+    ]);
   }
 
   
@@ -261,6 +283,60 @@ if(is_null($request->avatar)){
      return redirect()->route('admin.supervisors.index');
   }
 
+
+  public function update_qualifications(Request $request, $id)
+  {
+
+    $user = User::find($id);
+    if (is_null($user)  || $user->is_delete == 1  || $user->user_type != 'supervisor') {
+      $this->massage('error', 'Not found', 'غير موجود', 'No encontrado');
+      return redirect()->back();
+    }
+
+    $this->validate($request, [
+      'qualification.*.qualification_degree' => 'required|string|max:255',
+      'qualification*.university' => 'required|string|max:255',
+      'qualification*.specialization' => 'required|string|max:255',
+      'qualification*.country_id' => 'required|exists:countries,id',
+      'qualification*.year' => 'required|numeric',
+
+    ]);
+
+
+    $array = array();
+    foreach ($request->qualification as $r) {
+      $array[] = $r['id'];
+    }
+    $result = array_diff($user->qualifications->pluck(['id'])->toArray(), $array);
+    foreach ($result as $r) {
+      $qualification = Qualification::find($r);
+      $qualification->delete();
+    }
+
+
+    foreach ($request->qualification as $qualification) {
+      Qualification::updateOrCreate([
+          'id' => $qualification['id']
+        ], [
+
+        'qualification_degree' => $qualification['qualification_degree'],
+        'specialization' => $qualification['specialization'],
+        'university' => $qualification['university'],
+        'country_id' => $qualification['country_id'],
+        'year' => $qualification['year'],
+          'user_id' => $user->id,
+
+        ]);
+    }
+
+    $this->massage(
+      'success',
+      'The data has been modified successfully',
+      'تم تعديل البيانات بنجاح ',
+      'Los datos han sido modificados con éxito'
+    );
+    return redirect()->route('admin.supervisors.index');
+  }
 
   public function update_certificates(Request $request, $id)
   {
