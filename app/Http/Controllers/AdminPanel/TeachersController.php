@@ -297,60 +297,6 @@ class TeachersController extends Controller
   }
 
 
-  public function update_qualifications(Request $request, $id)
-  {
-
-    $user = User::find($id);
-    if (is_null($user)  || $user->is_delete == 1  || $user->user_type != 'teacher') {
-      $this->massage('error', 'Not found', 'غير موجود', 'No encontrado');
-      return redirect()->back();
-    }
-
-    $this->validate($request, [
-      'qualification.*.qualification_degree' => 'required|string|max:255',
-      'qualification*.university' => 'required|string|max:255',
-      'qualification*.specialization' => 'required|string|max:255',
-      'qualification*.country_id' => 'required|exists:countries,id',
-      'qualification*.year' => 'required|numeric',
-
-    ]);
-
-
-    $array = array();
-    foreach ($request->qualification as $r) {
-      $array[] = $r['id'];
-    }
-    $result = array_diff($user->qualifications->pluck(['id'])->toArray(), $array);
-    foreach ($result as $r) {
-      $qualification = Qualification::find($r);
-      $qualification->delete();
-    }
-
-
-    foreach ($request->qualification as $qualification) {
-      Qualification::updateOrCreate([
-          'id' => $qualification['id']
-        ], [
-
-        'qualification_degree' => $qualification['qualification_degree'],
-        'specialization' => $qualification['specialization'],
-        'university' => $qualification['university'],
-        'country_id' => $qualification['country_id'],
-        'year' => $qualification['year'],
-          'user_id' => $user->id,
-
-        ]);
-    }
-
-    $this->massage(
-      'success',
-      'The data has been modified successfully',
-      'تم تعديل البيانات بنجاح ',
-      'Los datos han sido modificados con éxito'
-    );
-    return redirect()->route('admin.teachers.index');
-  }
-
 
   public function update_certificates(Request $request, $id)
   {
