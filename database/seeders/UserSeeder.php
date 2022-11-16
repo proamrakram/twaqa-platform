@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
            // 'first_name' => 'amr',
             //'second_name' => 'akram',
             'country_id' => 1,
+            'city_id' => 1,
             'phonenumber' => '0599916672',
             'phonenumber2' => '0569062255',
             'whatsapp' => 'https://www.whatsapp.com',

@@ -156,5 +156,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/balance-period-hold', [App\Http\Controllers\AdminPanel\WebsiteSettingsController::class, 'balance_period_hold'])->name('admin.balance-period-hold');
     Route::post('/balance-period-hold', [App\Http\Controllers\AdminPanel\WebsiteSettingsController::class, 'update_balance_period_hold'])->name('admin.balance-period-hold.update');
     /////////////////////////////////////////////
+    Route::get('/countries', [App\Http\Controllers\AdminPanel\CountriesController::class, 'index'])->name('admin.countries.index');
+    Route::get('/countries/create', [App\Http\Controllers\AdminPanel\CountriesController::class, 'create'])->name('admin.countries.create');
+    Route::post('/countries/store', [App\Http\Controllers\AdminPanel\CountriesController::class, 'store'])->name('admin.countries.store');
+    Route::get('/countries/edit/{id}', [App\Http\Controllers\AdminPanel\CountriesController::class, 'edit'])->name('admin.countries.edit');
+    Route::post('/countries/update/{id}', [App\Http\Controllers\AdminPanel\CountriesController::class, 'update'])->name('admin.countries.update');
+    Route::get('/countries/delete/{id}', [App\Http\Controllers\AdminPanel\CountriesController::class, 'destroy'])->name('admin.countries.delete');
+    Route::get('/countries/change-status/{id}', [App\Http\Controllers\AdminPanel\CountriesController::class, 'change_status'])->name('admin.countries.changeStatus');
+    /////////////////////////////////////////////
+    Route::get('/cities', [App\Http\Controllers\AdminPanel\CitiesController::class, 'index'])->name('admin.cities.index');
+    Route::get('/cities/create', [App\Http\Controllers\AdminPanel\CitiesController::class, 'create'])->name('admin.cities.create');
+    Route::post('/cities/store', [App\Http\Controllers\AdminPanel\CitiesController::class, 'store'])->name('admin.cities.store');
+    Route::get('/cities/edit/{id}', [App\Http\Controllers\AdminPanel\CitiesController::class, 'edit'])->name('admin.cities.edit');
+    Route::post('/cities/update/{id}', [App\Http\Controllers\AdminPanel\CitiesController::class, 'update'])->name('admin.cities.update');
+    Route::get('/cities/delete/{id}', [App\Http\Controllers\AdminPanel\CitiesController::class, 'destroy'])->name('admin.cities.delete');
+    Route::get('/cities/change-status/{id}', [App\Http\Controllers\AdminPanel\CitiesController::class, 'change_status'])->name('admin.cities.changeStatus');
+    /////////////////////////////////////////////
+    
+
+
     Route::get('/reports/profits', [App\Http\Controllers\AdminPanel\ReportsController::class, 'profits'])->name('admin.reports.profits');
 });

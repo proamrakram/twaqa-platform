@@ -29,6 +29,28 @@ class Country extends Model
         return $this->hasMany(City::class, 'country_id', 'id');
     }
 
+    
+    public function setCountryFlagAttribute($country_flag)
+    {
+        if (!is_null($country_flag)) {
+            if (gettype($country_flag) != 'string') {
+                $i = $country_flag->store('images/countries', 'public');
+                $this->attributes['country_flag'] = $country_flag->hashName();
+            } else {
+                $this->attributes['country_flag'] = $country_flag;
+            }
+        }
+    }
+
+    public function getCountryFlagAttribute($country_flag)
+    {
+        if (is_null($country_flag)) {
+            return   asset('assets/media/300-1.jpg');
+        }
+        return asset('storage/images/countries') . '/' . $country_flag;
+    }
+
+
     public function getCountryNameAttribute()
     {
         $lang = session('lang');

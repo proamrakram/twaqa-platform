@@ -426,7 +426,7 @@
                     </div>
                 </div>                
             
-                <div data-kt-menu-trigger="click"  class="@if(Request::segment(2) == 'settings' || Request::segment(2) == 'currencies' || Request::segment(2) == 'balance-period-hold') here show @endif  menu-item {{ (request()->is('dashboard/settings*')) ? 'here show' : '' }}  menu-accordion ">
+                <div data-kt-menu-trigger="click"  class="@if(Request::segment(2) == 'settings' || Request::segment(2) == 'countries'|| Request::segment(2) == 'cities'|| Request::segment(2) == 'currencies' || Request::segment(2) == 'balance-period-hold') here show @endif  menu-item {{ (request()->is('dashboard/settings*')) ? 'here show' : '' }}  menu-accordion ">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -447,6 +447,30 @@
                             <span class="bullet bullet-dot"></span>
                         </span>
                                 <span class="menu-title">الاعدادات العامة</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="menu-sub menu-sub-accordion ">
+                        <div class="menu-item">
+                            <a
+                                class="menu-link @if(Request::segment(2) == 'countries') active @endif" href="{{route('admin.countries.index')}}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                                <span class="menu-title">الدول</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-sub menu-sub-accordion ">
+                        <div class="menu-item">
+                            <a
+                                class="menu-link @if(Request::segment(2) == 'cities') active @endif" href="{{route('admin.cities.index')}}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                                <span class="menu-title">المدن</span>
                             </a>
                         </div>
                     </div>

@@ -48,6 +48,7 @@ class CreateUsersTable extends Migration
             #new columns
             $table->string('address')->nullable();
             $table->integer('country_id')->nullable();
+            $table->integer('city_id')->nullable();
             $table->integer('currency_id')->nullable();
             $table->integer('course_category_id')->default(0)->nullable();
 
