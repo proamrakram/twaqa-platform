@@ -6,9 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Services\UserService;
 use App\Models\City;
 use App\Models\Course;
+use App\Models\CourseCategory;
 use App\Models\CourseType;
+use App\Models\Faq;
+use App\Models\LessonType;
+use App\Models\Page;
+use App\Models\Testimonial;
 use App\Models\User;
+use App\Models\WebsiteSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -23,7 +30,17 @@ class HomeController extends Controller
     public function index()
     {
         $courses_types = CourseType::all();
-        return view('Website.pages.index', compact(['courses_types']));
+
+        $faqs = Faq::getQuestions();
+        $testimonials = Testimonial::lang();
+        $courses_categories = CourseCategory::active()->get();
+        $lessons_types = LessonType::active()->get();
+
+        $vision = Page::getPageContent('vision');
+        $message = Page::getPageContent('message');
+        $about_description = Page::getPageContent('about_description');
+
+        return view('Website.pages.index', compact(['courses_types', 'faqs', 'testimonials', 'courses_categories', 'lessons_types', 'vision', 'message','about_description']));
     }
 
     #Teacher
@@ -143,12 +160,24 @@ class HomeController extends Controller
 
     public function instructions()
     {
-        return view('Website.pages.instructions');
+        $title = Page::getPageContent('teacher_instructions_title');
+        $description = Page::getPageContent('teacher_instructions_description');
+
+        return view('Website.pages.instructions', [
+            'description' => $title,
+            'title' => $description,
+        ]);
     }
 
     public function absencePolicy()
     {
-        return view('Website.pages.absence-policy');
+        $title = Page::getPageContent('teacher_absence_policy_title');
+        $description = Page::getPageContent('teacher_absence_policy_description');
+
+        return view('Website.pages.absence-policy', [
+            'title' => $title,
+            'description' => $description,
+        ]);
     }
 
 
@@ -158,12 +187,28 @@ class HomeController extends Controller
     #Main Pages
     public function aboutUs()
     {
-        return view('Website.pages.about_us');
+
+        $title = Page::getPageContent('about_title');
+        $description = Page::getPageContent('about_description');
+
+        return view('Website.pages.about_us', [
+            'description' => $description,
+            'title' => $title,
+        ]);
     }
 
     public function visionMision()
     {
-        return view('Website.pages.vision_mision');
+
+        $title = Page::getPageContent('vision_title');
+        $vision = Page::getPageContent('vision');
+        $message = Page::getPageContent('message');
+
+        return view('Website.pages.vision_mision', [
+            'vision' => $vision,
+            'message' => $message,
+            'title' => $title
+        ]);
     }
 
     public function courses()

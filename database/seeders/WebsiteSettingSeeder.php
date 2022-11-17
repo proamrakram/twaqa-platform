@@ -20,7 +20,7 @@ class WebsiteSettingSeeder extends Seeder
                 'value' => '1',
             ]
         );
-        
+
         DB::table('website_settings')->insert(
             [
                 'key' => 'balance_period_hold',

@@ -15,7 +15,7 @@ class WebsiteSetting extends Model
     ];
 
 
-    
+
     public function getValueAttribute($value)
     {
         if($this->key == 'platform_logo'){
@@ -23,6 +23,6 @@ class WebsiteSetting extends Model
         }
         return $value;
     }
- 
+
 
 }

@@ -82,11 +82,7 @@
             <h2 class='h1 fw-bold mb-3'>من نحن</h2>
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                    <p>
-                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث
-                        يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها
-                        التطبيق.
-                    </p>
+                    <p>{{ $about_description }}</p>
                 </div>
             </div>
         </div>
@@ -104,10 +100,7 @@
                         </div>
                         <div class="content mt-4">
                             <h2 class='mb-md-4 mb-2  mt-md-0 mt-5 pt-2 pt-md-0 clr-royal-blue fw-bolder'>رؤيتنا</h2>
-                            <p class='mx-5 mb-0 text-black'>
-                                نعمل على تيسير تعليم اللغة العربية والقرآن الكريم وعلومه لأي شخص في العالم بأفضل الطرق
-                                التربوية الصحيحة وخير المعلمين الأكفاء
-                            </p>
+                            <p class='mx-5 mb-0 text-black'>{{ $vision }}</p>
                         </div>
                     </div>
                 </div>
@@ -119,10 +112,7 @@
                         </div>
                         <div class="content mt-4">
                             <h2 class='mb-md-4  mb-2 mt-md-0 mt-5 pt-2 pt-md-0 clr-royal-blue fw-bolder'>رسالتنا</h2>
-                            <p class='mx-5 mb-0 text-black'>
-                                أفضل مؤسسة متكاملة في الشرق الأوسط لتعليم
-                                القرآن الكريم عن بُعْد بتقنيات حديثة و أساليب تعليم نوعية و احترافية ومفيدة.
-                            </p>
+                            <p class='mx-5 mb-0 text-black'>{{ $message }}</p>
                         </div>
                     </div>
                 </div>
@@ -136,33 +126,19 @@
         <div class="container">
             <h2 class="h1 fw-bold clr-royal-blue pb-5 mb-5"> المواد الدراسية </h2>
             <div class="row justify-content-center">
-                <div class="col-md-4 col-6">
-                    <a href="#"
-                        class="subject d-block text-decoration-none box shadow-box p-4 clr-royal-blue position-relative">
-                        <div class="hex">
-                            <img src="{{ asset('website/assets/img/icon-logo.png') }}" alt="">
-                        </div>
-                        <h3 class='mb-0 mt-5 pt-3'>القرآن الكريم</h3>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#"
-                        class="subject d-block text-decoration-none box shadow-box p-4 clr-royal-blue position-relative">
-                        <div class="hex">
-                            <img src="{{ asset('website/assets/img/icon-logo.png') }}" alt="">
-                        </div>
-                        <h3 class='mb-0 mt-5 pt-3'> السنة النبوية </h3>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#"
-                        class="subject d-block text-decoration-none box shadow-box p-4 clr-royal-blue position-relative">
-                        <div class="hex">
-                            <img src="{{ asset('website/assets/img/icon-logo.png') }}" alt="">
-                        </div>
-                        <h3 class='mb-0 mt-5 pt-3'> الفقه والعقيدة </h3>
-                    </a>
-                </div>
+
+                @foreach ($lessons_types as $lesson_type)
+                    <div class="col-md-4 col-6">
+                        <a href="#"
+                            class="subject d-block text-decoration-none box shadow-box p-4 clr-royal-blue position-relative">
+                            <div class="hex">
+                                <img src="{{ asset('website/assets/img/icon-logo.png') }}" alt="">
+                            </div>
+                            <h3 class='mb-0 mt-5 pt-3'>{{ $lesson_type->title }}</h3>
+                        </a>
+                    </div>
+                @endforeach
+
             </div>
         </div>
 
@@ -177,6 +153,7 @@
                 </filter>
             </defs>
         </svg>
+
     </section>
     <!-- End Subjects -->
 
@@ -336,17 +313,11 @@
                     </div>
                 </div>
             @endforeach
-
-
-
-
         </div>
 
         <div class="text-center my-3">
-            <a href="#" class="btn-green text-white d-inline-block btn-lg"> عرض المزيد </a>
+            <a href="{{ route('teachers') }}" class="btn-green text-white d-inline-block btn-lg"> عرض المزيد </a>
         </div>
-
-
 
 
         <!-- Modal Video vidInfoTeacher -->
@@ -365,7 +336,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- When Click Audio -->
         <div class="audio-player">
@@ -389,73 +359,23 @@
     <section class="testimonsails pt-5 pb-5 text-center">
         <h2 class="h1 clr-royal-blue fw-bold pt-3  mb-3"> ماذا قالوا عنا؟ </h2>
         <div class="owl-carousel">
-            <div class="item">
-                <div class="testimonal text-center position-relative shadow-box bg-white p-4 my-4 rounded-lg">
-                    <img src="{{ asset('website/assets/img/img_testimonal.png') }}" alt="">
-                    <i class="fa-solid fa-quote-right position-absolute top-50 start-50 translate-middle"></i>
-                    <div class="content position-relative">
-                        <p>
-                            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                            حيث يمكنك أن تولد مثل هذا النص
-                        </p>
-                        <h5 class='fw-bold'>محمد الأبنودي</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonal text-center position-relative shadow-box bg-white p-4 my-4 rounded-lg">
-                    <img src="{{ asset('website/assets/img/img_testimonal.png') }}" alt="">
-                    <i class="fa-solid fa-quote-right position-absolute top-50 start-50 translate-middle"></i>
-                    <div class="content position-relative">
-                        <p>
-                            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                            حيث يمكنك أن تولد مثل هذا النص
-                        </p>
-                        <h5 class='fw-bold'>محمد الأبنودي</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonal text-center position-relative shadow-box bg-white p-4 my-4 rounded-lg">
-                    <img src="{{ asset('website/assets/img/img_testimonal.png') }}" alt="">
-                    <i class="fa-solid fa-quote-right position-absolute top-50 start-50 translate-middle"></i>
-                    <div class="content position-relative">
-                        <p>
-                            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                            حيث يمكنك أن تولد مثل هذا النص
-                        </p>
-                        <h5 class='fw-bold'>محمد الأبنودي</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonal text-center position-relative shadow-box bg-white p-4 my-4 rounded-lg">
-                    <img src="{{ asset('website/assets/img/img_testimonal.png') }}" alt="">
-                    <i class="fa-solid fa-quote-right position-absolute top-50 start-50 translate-middle"></i>
-                    <div class="content position-relative">
-                        <p>
-                            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                            حيث يمكنك أن تولد مثل هذا النص
-                        </p>
-                        <h5 class='fw-bold'>محمد الأبنودي</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonal text-center position-relative shadow-box bg-white p-4 my-4 rounded-lg">
-                    <img src="{{ asset('website/assets/img/img_testimonal.png') }}" alt="">
-                    <i class="fa-solid fa-quote-right position-absolute top-50 start-50 translate-middle"></i>
-                    <div class="content position-relative">
-                        <p>
-                            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                            حيث يمكنك أن تولد مثل هذا النص
-                        </p>
-                        <h5 class='fw-bold'>محمد الأبنودي</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+            @foreach ($testimonials as $testimonial)
+                <div class="item">
+                    <div class="testimonal text-center position-relative shadow-box bg-white p-4 my-4 rounded-lg">
+                        <img src="{{ asset('website/assets/img/img_testimonal.png') }}" alt="">
+                        <i class="fa-solid fa-quote-right position-absolute top-50 start-50 translate-middle"></i>
+                        <div class="content position-relative">
+                            <p>
+                                {{ $testimonial->opinion }}
+                            </p>
+                            <h5 class='fw-bold'>{{ $testimonial->name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
     </section>
 
 
@@ -464,45 +384,21 @@
         <div class="container">
             <h2 class="h1 clr-royal-blue fw-bold pt-3  mb-5"> أقسام الأكاديمية </h2>
             <div class="row">
-                <div class="col-md-3 col-6">
-                    <a href="#"
-                        class="cat d-block shadow-box mb-3 bg-white p-3 rounded-lg clr-royal-blue text-decoration-none">
-                        <div class="img">
-                            <img src="{{ asset('website/assets/img/icon-child.png') }}" alt="">
-                        </div>
-                        <h4 class='mt-3 mb-0'>أطفال</h4>
-                    </a>
-                </div>
 
-                <div class="col-md-3 col-6">
-                    <a href="#"
-                        class="cat d-block shadow-box mb-3 bg-white p-3 rounded-lg clr-royal-blue text-decoration-none">
-                        <div class="img">
-                            <img src="{{ asset('website/assets/img/icon-women.png') }}" alt="">
-                        </div>
-                        <h4 class='mt-3 mb-0'>نساء</h4>
-                    </a>
-                </div>
 
-                <div class="col-md-3 col-6">
-                    <a href="#"
-                        class="cat d-block shadow-box mb-3 bg-white p-3 rounded-lg clr-royal-blue text-decoration-none">
-                        <div class="img">
-                            <img src="{{ asset('website/assets/img/icon-men.png') }}" alt="">
-                        </div>
-                        <h4 class='mt-3 mb-0'> رجال </h4>
-                    </a>
-                </div>
+                @foreach ($courses_categories as $course_category)
+                    <div class="col-md-3 col-6">
+                        <a href="#"
+                            class="cat d-block shadow-box mb-3 bg-white p-3 rounded-lg clr-royal-blue text-decoration-none">
+                            <div class="img">
+                                <img src="{{ asset('website/assets/img/icon-child.png') }}" alt="">
+                            </div>
+                            <h4 class='mt-3 mb-0'>{{ $course_category->title }}</h4>
+                        </a>
+                    </div>
+                @endforeach
 
-                <div class="col-md-3 col-6">
-                    <a href="#"
-                        class="cat d-block shadow-box mb-3 bg-white p-3 rounded-lg clr-royal-blue text-decoration-none">
-                        <div class="img">
-                            <img src="{{ asset('website/assets/img/icon-books.png') }}" alt="">
-                        </div>
-                        <h4 class='mt-3 mb-0'> إجازات </h4>
-                    </a>
-                </div>
+
             </div>
         </div>
     </section>
@@ -532,87 +428,24 @@
         <div class="container ">
             <h2 class="h1 clr-royal-blue fw-bold mb-4 text-center"> الأسئلة الشائعة </h2>
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_2">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
-                            هل يمكنني تجربة الالتحاق دون مقابل؟
-                        </button>
-                    </h2>
-                    <div id="collapse_1" class="accordion-collapse collapse show" aria-labelledby="heading_2"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                            الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
+
+                @foreach ($faqs as $faq)
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_{{ $faq->id }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse_{{ $faq->id }}" aria-expanded="false"
+                                aria-controls="collapse_{{ $faq->id }}">
+                                {{ $faq->question }}
+                            </button>
+                        </h2>
+                        <div id="collapse_{{ $faq->id }}" class="accordion-collapse collapse"
+                            aria-labelledby="heading_2" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                {{ $faq->answer }}
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_2" aria-expanded="false" aria-controls="collapse_2">
-                            هل يمكنني الاشتراك من أي مكان في العالم ؟
-                        </button>
-                    </h2>
-                    <div id="collapse_2" class="accordion-collapse collapse" aria-labelledby="heading_2"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                            الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_3">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_3" aria-expanded="false" aria-controls="collapse_3">
-                            هل يمكنني استرداد الاشتراك إن أردت لأي سبب؟
-                        </button>
-                    </h2>
-                    <div id="collapse_3" class="accordion-collapse collapse" aria-labelledby="heading_3"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                            الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_4">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
-                            متى يتم دفع الاشتراك ؟
-                        </button>
-                    </h2>
-                    <div id="collapse_4" class="accordion-collapse collapse" aria-labelledby="heading_4"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                            الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_5">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_5" aria-expanded="false" aria-controls="collapse_5">
-                            هل يوجد معلمات في قسم النساء ؟
-                        </button>
-                    </h2>
-                    <div id="collapse_5" class="accordion-collapse collapse" aria-labelledby="heading_5"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                            الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>

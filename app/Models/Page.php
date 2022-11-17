@@ -14,6 +14,17 @@ class Page extends Model
         'value',
     ];
 
+    public function scopeGetPageContent($query, $key)
+    {
+        $lang = session('lang');
+        $key = $key . '_' . $lang;
 
-    
+        if ($lang == 'ar') {$model = $query->where('key', $key)->first();}
+        if ($lang == 'en') {$model = $query->where('key', $key)->first();}
+        if ($lang == 'sp') {$model = $query->where('key', $key)->first();}
+
+        if ($model) {
+            return $model->value;
+        }
+    }
 }

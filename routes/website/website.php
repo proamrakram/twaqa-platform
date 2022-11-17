@@ -26,6 +26,7 @@ Route::controller(HomeController::class)->prefix('')->as('')->group(function () 
 
 
     Route::middleware('auth')->group(function () {
+
         #Teacher Pages
         Route::get('/teachers', 'teachers')->name('teachers');
         Route::get('/teacher-home', 'teacherHome')->name('teacher.home');

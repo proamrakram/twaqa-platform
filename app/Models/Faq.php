@@ -9,12 +9,16 @@ class Faq extends Model
 {
     use HasFactory;
 
-    
-    
     protected $fillable = [
         'question',
         'answer',
         'is_delete',
         'lang',
     ];
+
+    public function scopeGetQuestions($query)
+    {
+        $lang = session('lang');
+        return $query->where('lang', $lang)->get();
+    }
 }
