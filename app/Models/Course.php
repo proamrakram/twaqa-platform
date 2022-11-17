@@ -35,6 +35,8 @@ class Course extends Model
         'students' => 'array',
     ];
 
+
+
     public function student_currency()
     {
         return $this->belongsTo('App\Models\Currency', 'student_price_currency');
