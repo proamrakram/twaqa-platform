@@ -20,7 +20,7 @@ class Page extends Model
         $key = $key . '_' . $lang;
 
         $model = $query->where('key', $key)->first();
-
+        dd($model);
         if ($lang == 'ar') {
             $model = $query->where('key', $key)->first();
         }
