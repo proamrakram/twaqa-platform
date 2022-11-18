@@ -1,4 +1,4 @@
-<html lang="ar">
+<html lang="{{ session()->get('lang') }}">
 
 <head>
     <meta charset="utf-8">
@@ -86,14 +86,26 @@
                                         class='span-lang'>اللغة العربية</span> </span>
                             </a>
                             <ul>
+
+
                                 <li>
-                                    <a href=""> <img src="{{ asset('website/assets/img/united-kingdom.svg') }}"
+                                    <a href="{{ route('set.lang', ['lang' => 'sp']) }}"> <img
+                                            src="{{ asset('website/assets/img/united-kingdom.svg') }}"
                                             class='ms-1' /> اللغة
                                         الانجليزية </a>
                                 </li>
+
                                 <li>
-                                    <a href=""> <img src="{{ asset('website/assets/img/saudi-arabia.svg') }}"
+                                    <a href="{{ route('set.lang', ['lang' => 'en']) }}"> <img
+                                            src="{{ asset('website/assets/img/united-kingdom.svg') }}"
                                             class='ms-1' /> اللغة
+                                        الانجليزية </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('set.lang', ['lang' => 'ar']) }}"> <img
+                                            src="{{ asset('website/assets/img/saudi-arabia.svg') }}" class='ms-1' />
+                                        اللغة
                                         العربية </a>
                                 </li>
                             </ul>

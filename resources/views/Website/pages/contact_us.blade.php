@@ -6,8 +6,8 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="#"> الرئيسية </a></li>
-                        <li class="breadcrumb-item" aria-current="page"> <a href="#"> من نحن </a> </li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> الرئيسية </a></li>
+                        <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('about.us') }}"> من نحن </a> </li>
                         <li class="breadcrumb-item active" aria-current="page"> اتصل بنا </li>
                     </ol>
                 </nav>
@@ -44,14 +44,16 @@
                         </div>
                         <div class="col-md-6">
                             <div class=" p-5">
-                                <form action="">
-                                    <input type="text" placeholder='الاسم الكريم'>
-                                    <input type="text" placeholder='بريد الإلكتروني * '>
-                                    <input type="text" placeholder='رقم الهاتف *'>
-                                    <textarea placeholder='الاستفسار الخاص بك'></textarea>
+                                <form action="{{ route('store.call.us.message') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="name" placeholder='الاسم الكريم'>
+                                    <input type="text" name="email" placeholder='بريد الإلكتروني * '>
+                                    <input type="text" name="phone" placeholder='رقم الهاتف *'>
+                                    <textarea placeholder='الاستفسار الخاص بك' name="consultas"></textarea>
 
-                                    <div class="mt-5"><button
-                                            class='btn-green d-block w-100 text-white p-3'>إرسال</button></div>
+                                    <div class="mt-5">
+                                        <button type="submit" class='btn-green d-block w-100 text-white p-3'>إرسال</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

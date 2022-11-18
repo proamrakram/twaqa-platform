@@ -21,28 +21,28 @@
                             <div class="col-md-4 col-4  ">
                                 <div class="widget-footer">
                                     <ul>
-                                        <li><a href="#"> الرئيسية </a></li>
-                                        <li><a href="#"> إتصل بنا </a></li>
-                                        <li><a href="#"> المرئيات </a></li>
-                                        <li><a href="#"> المعلمون </a></li>
+                                        <li><a href="{{ route('home') }}"> الرئيسية </a></li>
+                                        <li><a href="{{ route('contact_us') }}"> إتصل بنا </a></li>
+                                        <li><a href="{{ route('vid_watch') }}"> المرئيات </a></li>
+                                        <li><a href="{{ route('teachers') }}"> المعلمون </a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="widget-footer">
                                     <ul>
-                                        <li><a href="">من نحن</a></li>
-                                        <li><a href="">الرؤية والرسالة</a></li>
-                                        <li><a href="">الكورسات</a></li>
-                                        <li><a href="">المواد الدراسية</a></li>
+                                        <li><a href="{{ route('about.us') }}">من نحن</a></li>
+                                        <li><a href="{{ route('vision.mision') }}">الرؤية والرسالة</a></li>
+                                        <li><a href="{{ route('courses') }}">الكورسات</a></li>
+                                        <li><a href="#">المواد الدراسية</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="widget-footer">
                                     <ul>
-                                        <li><a href=""> الأسعار </a></li>
-                                        <li><a href=""> الأخبار </a></li>
+                                        <li><a href="{{ route('packages') }}"> الأسعار </a></li>
+                                        <li><a href="{{ route('admin.teachers.new') }}"> الأخبار </a></li>
                                         <li><a href="">إنضم لعائلتنا</a></li>
                                         <li><a href="">إشترك الأن </a></li>
                                     </ul>
@@ -50,15 +50,16 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-5">
                         <div class="widget-footer widget-social">
                             <h4 class='mb-3 h5 text-white mt-md-0 mt-4'>تابعنا على مواقع التواصل الإجتماعي</h4>
                             <ul>
-                                <li><a href="#"> <i class="fa-brands fa-whatsapp"></i> </a></li>
-                                <li><a href="#"> <i class="fa-brands fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="fa-brands fa-youtube"></i> </a></li>
-                                <li><a href="#"> <i class="fa-brands fa-instagram"></i> </a></li>
-                                <li><a href="#"> <i class="fa-brands fa-square-facebook"></i> </a></li>
+                                <li><a href="{{getLink('whatsapp')}}"> <i class="fa-brands fa-whatsapp"></i> </a></li>
+                                <li><a href="{{getLink('twitter')}}"> <i class="fa-brands fa-twitter"></i> </a></li>
+                                <li><a href="{{getLink('youtube')}}"> <i class="fa-brands fa-youtube"></i> </a></li>
+                                <li><a href="{{getLink('instagram')}}"> <i class="fa-brands fa-instagram"></i> </a></li>
+                                <li><a href="{{getLink('facebook')}}"> <i class="fa-brands fa-square-facebook"></i> </a></li>
                             </ul>
                             <p class='text-white mb-2  '> جميع الحقوق محفوظة لأكاديمية تواقة </p>
                             <a href="https://www.akwade.com" target="_blank"

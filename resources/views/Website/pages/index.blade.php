@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', 'منصة تواقة - الصفحة الرئيسية')
 @section('content')
     <div class="latest-news overflow-hidden py-2 px-3 position-relative">
         <div class="container-fluid">

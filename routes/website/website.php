@@ -17,48 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/setLang', function () {
+    return redirect()->back()->with('message', 'لقد تم تغيراللغة بنجاح');
+})->name('set.lang');
 
-Route::controller(HomeController::class)->prefix('')->as('')->group(function () {
+
+Route::group([
+    // 'middleware' => ['auth'],
+    'controller' => HomeController::class,
+    'as' => '',
+    'prefix' => '',
+], function () {
+
     Route::get('/', 'index')->name('index');
     Route::post('/get-cities-by-country', 'getCitiesByCountry')->name('get.cities.by.country');
     Route::get('instructions', 'instructions')->name('instructions');
     Route::get('absence-policy', 'absencePolicy')->name('absence.policy');
-
-
-    Route::middleware('auth')->group(function () {
-
-        #Teacher Pages
-        Route::get('/teachers', 'teachers')->name('teachers');
-        Route::get('/teacher-home', 'teacherHome')->name('teacher.home');
-        Route::get('/teacher-data-basic', 'teacherDataBasic')->name('teacher.data.basic');
-        Route::get('/teacher-qualifications', 'teacherQualifications')->name('teacher.qualifications');
-        Route::get('/teacher-certificates', 'teacherCertificates')->name('teacher.certificates');
-        Route::get('/teacher-ejazat', 'teacherEjazat')->name('teacher.ejazat');
-        Route::get('/teacher-video-audio', 'teacherVideoAudio')->name('teacher.video.audio');
-        Route::get('/teacher-account-details', 'teacherAccountDetails')->name('teacher.account.details');
-        Route::get('/teacher-salary', 'teacherSalary')->name('teacher.salary');
-        Route::get('/teacher-courses', 'teacherCourses')->name('teacher-courses');
-        Route::get('/teacher-stds', 'teacherStds')->name('teacher.stds');
-        Route::get('/teacher-single/{teacher}', 'teacherSingle')->name('teacher.single');
-
-
-
-        Route::get('/books', 'books')->name('books');
-        Route::get('/videos', 'videos')->name('videos');
-        Route::get('/certificates', 'certificates')->name('certificates');
-        Route::get('/subjects', 'subjects')->name('subjects');
-        Route::get('/teacher-forms', 'teacherForms')->name('teacher.forms');
-
-        Route::get('/calander-lessons', 'calanderLessons')->name('calander.lessons');
-
-        #Teacher Updating Routes
-        Route::controller(ServicesController::class)->group(function () {
-            Route::post('/update-teacher/{form}/{id?}', 'updateTeacher')->name('teacher.update');
-            Route::post('/store-teacher/{form}', 'storeTeacher')->name('teacher.store');
-            Route::get('/delete-teacher/{form}/{id?}', 'deleteTeacher')->name('teacher.delete');
-        });
-    });
-
 
     Route::get('/about-us', 'aboutUs')->name('about.us');
     Route::get('/vision-mision', 'visionMision')->name('vision.mision');
@@ -68,10 +42,62 @@ Route::controller(HomeController::class)->prefix('')->as('')->group(function () 
     Route::get('/contact-us', 'contactUs')->name('contact_us');
     Route::get('/jobs', 'jobs')->name('jobs');
     Route::get('/all-subjects', 'allSubject')->name('all.subject');
+});
 
-    #Auth
-    Route::middleware('guest')->group(function () {
-        Route::get('/sign-in', 'signIn')->name('signin');
-        Route::get('/sign-up', 'signUp')->name('signup');
+
+Route::group([
+    'middleware' => ['auth'],
+    'controller' => HomeController::class,
+    'as' => '',
+    'prefix' => '',
+], function () {
+
+    #Teacher Pages
+    Route::get('/teachers', 'teachers')->name('teachers');
+    Route::get('/teacher-home', 'teacherHome')->name('teacher.home');
+    Route::get('/teacher-data-basic', 'teacherDataBasic')->name('teacher.data.basic');
+    Route::get('/teacher-qualifications', 'teacherQualifications')->name('teacher.qualifications');
+    Route::get('/teacher-certificates', 'teacherCertificates')->name('teacher.certificates');
+    Route::get('/teacher-ejazat', 'teacherEjazat')->name('teacher.ejazat');
+    Route::get('/teacher-video-audio', 'teacherVideoAudio')->name('teacher.video.audio');
+    Route::get('/teacher-account-details', 'teacherAccountDetails')->name('teacher.account.details');
+    Route::get('/teacher-salary', 'teacherSalary')->name('teacher.salary');
+    Route::get('/teacher-courses', 'teacherCourses')->name('teacher-courses');
+    Route::get('/teacher-stds', 'teacherStds')->name('teacher.stds');
+    Route::get('/teacher-single/{teacher}', 'teacherSingle')->name('teacher.single');
+
+    Route::get('/books', 'books')->name('books');
+    Route::get('/videos', 'videos')->name('videos');
+    Route::get('/certificates', 'certificates')->name('certificates');
+    Route::get('/subjects', 'subjects')->name('subjects');
+    Route::get('/teacher-forms', 'teacherForms')->name('teacher.forms');
+
+    Route::get('/calander-lessons', 'calanderLessons')->name('calander.lessons');
+});
+
+Route::group([
+    'middleware' => ['auth'],
+    'controller' => ServicesController::class,
+    'as' => '',
+    'prefix' => '',
+], function () {
+    Route::post('/update-teacher/{form}/{id?}', 'updateTeacher')->name('teacher.update');
+    Route::post('/store-teacher/{form}', 'storeTeacher')->name('teacher.store');
+    Route::get('/delete-teacher/{form}/{id?}', 'deleteTeacher')->name('teacher.delete');
+
+    Route::withoutMiddleware('auth')->group(function () {
+        Route::post('/store-call-us-message', 'storeCallUsMessage')->name('store.call.us.message');
     });
+});
+
+
+
+Route::group([
+    'middleware' => ['guest'],
+    'controller' => HomeController::class,
+    'as' => '',
+    'prefix' => '',
+], function () {
+    Route::get('/sign-in', 'signIn')->name('signin');
+    Route::get('/sign-up', 'signUp')->name('signup');
 });

@@ -5,6 +5,7 @@ use App\Models\Country;
 use App\Models\Course;
 use App\Models\CourseType;
 use App\Models\User;
+use App\Models\WebsiteSetting;
 
 if (!function_exists('getUserName')) {
     function getUserName()
@@ -92,6 +93,18 @@ if (!function_exists('getOutstandingTeachers')) {
     }
 }
 
+
+if (!function_exists('getLink')) {
+    function getLink($type)
+    {
+        $link = WebsiteSetting::where('key', $type)->first();
+        if ($link) {
+            return $link->value;
+        } else {
+            return 'not found';
+        }
+    }
+}
 
 
 

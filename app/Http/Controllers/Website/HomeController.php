@@ -180,17 +180,11 @@ class HomeController extends Controller
         ]);
     }
 
-
-
-
-
     #Main Pages
     public function aboutUs()
     {
-
         $title = Page::getPageContent('about_title');
         $description = Page::getPageContent('about_description');
-
         return view('Website.pages.about_us', [
             'description' => $description,
             'title' => $title,

@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', $title->value)
+@section('title', $title)
 @section('content')
 
     <div class="page page-data mb-5">
@@ -23,7 +23,7 @@
         <div class="profile-data page-videos">
             <div class="container">
                 <div class="bg-white p-4 rounded-lg border">
-                    {{$description->value}}
+                    {{$description}}
                 </div>
             </div>
         </div>

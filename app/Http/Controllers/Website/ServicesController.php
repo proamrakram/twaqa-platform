@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Services\CallUsService;
 use App\Http\Controllers\Services\UserService;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
     protected $user_service;
+    protected $callUsService;
 
-    public function __construct(UserService $user_service)
+    public function __construct(UserService $user_service, CallUsService $callUsService)
     {
         $this->user_service = $user_service;
+        $this->callUsService = $callUsService;
     }
 
     public function updateTeacher($form, $id = null)
@@ -64,5 +67,10 @@ class ServicesController extends Controller
         } elseif ($form == 'teacher-video-audio') {
             return $this->user_service->deleteTeacherVideoAudio($id);
         }
+    }
+
+    public function storeCallUsMessage()
+    {
+        return $this->callUsService->store();
     }
 }
