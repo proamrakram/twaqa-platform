@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', 'الصوت والفيديو')
 @section('content')
     @push('teacher-video-audio-style')
         <link href='{{ asset('website/assets/css/pekeUpload.css') }}' />

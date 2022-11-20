@@ -1,6 +1,5 @@
 @extends('Website.partials.layout')
 @section('title', 'الكورسات')
-
 @push('teacher-courses-styles')
     <link href='{{ asset('website/assets/css/pekeUpload.css') }}' />
 @endpush

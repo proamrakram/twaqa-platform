@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', 'البيانات الاساسية')
 @section('content')
     <div class="page page-data mb-5">
 

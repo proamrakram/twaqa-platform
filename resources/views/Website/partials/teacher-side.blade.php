@@ -20,6 +20,7 @@
     <a href="{{route('books')}}"> الكتب </a>
     <a href="{{route('videos')}}"> الفيديوهات </a>
     <form action="{{route('logout')}}" method="POST">
+        @csrf
         <button type="submit" style=" background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" class="logout me-4"> تسجبل الخروج </button>
     </form>
 </div>
