@@ -55,11 +55,11 @@
                         <div class="widget-footer widget-social">
                             <h4 class='mb-3 h5 text-white mt-md-0 mt-4'>تابعنا على مواقع التواصل الإجتماعي</h4>
                             <ul>
-                                <li><a href="{{getLink('whatsapp')}}"> <i class="fa-brands fa-whatsapp"></i> </a></li>
-                                <li><a href="{{getLink('twitter')}}"> <i class="fa-brands fa-twitter"></i> </a></li>
-                                <li><a href="{{getLink('youtube')}}"> <i class="fa-brands fa-youtube"></i> </a></li>
-                                <li><a href="{{getLink('instagram')}}"> <i class="fa-brands fa-instagram"></i> </a></li>
-                                <li><a href="{{getLink('facebook')}}"> <i class="fa-brands fa-square-facebook"></i> </a></li>
+                                <li><a target="_blank" href="{{getLink('whatsapp')}}"> <i class="fa-brands fa-whatsapp"></i> </a></li>
+                                <li><a target="_blank" href="{{getLink('twitter')}}"> <i class="fa-brands fa-twitter"></i> </a></li>
+                                <li><a target="_blank" href="{{getLink('youtube')}}"> <i class="fa-brands fa-youtube"></i> </a></li>
+                                <li><a target="_blank" href="{{getLink('instagram')}}"> <i class="fa-brands fa-instagram"></i> </a></li>
+                                <li><a target="_blank" href="{{getLink('facebook')}}"> <i class="fa-brands fa-square-facebook"></i> </a></li>
                             </ul>
                             <p class='text-white mb-2  '> جميع الحقوق محفوظة لأكاديمية تواقة </p>
                             <a href="https://www.akwade.com" target="_blank"
