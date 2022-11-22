@@ -19,14 +19,14 @@ class CountriesController extends Controller
   public function index()
   {
     $countries = Country::where('is_delete',0)->get();
-    return view('AdminPanel.settings.countries.index')->with('countries', $countries);
+    return view('AdminPanel.Settings.countries.index')->with('countries', $countries);
   }
 
 
   public function create()
   {
     
-    return view('AdminPanel.settings.countries.create');
+    return view('AdminPanel.Settings.countries.create');
     }
 
   public function store(Request $request)
@@ -68,7 +68,7 @@ class CountriesController extends Controller
       return redirect()->back();
     }
     
-    return view('AdminPanel.settings.countries.edit')->with('country', $country);
+    return view('AdminPanel.Settings.countries.edit')->with('country', $country);
   }
 
   public function update(Request $request, $id)
