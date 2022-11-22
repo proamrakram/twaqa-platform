@@ -20,14 +20,14 @@ class CitiesController extends Controller
   public function index()
   {
     $cities = City::where('is_delete',0)->get();
-    return view('AdminPanel.settings.cities.index')->with('cities', $cities);
+    return view('AdminPanel.Settings.cities.index')->with('cities', $cities);
   }
 
 
   public function create()
   {
     $countries = Country::where('is_delete',0)->get();
-    return view('AdminPanel.settings.cities.create')->with('countries',$countries);
+    return view('AdminPanel.Settings.cities.create')->with('countries',$countries);
     }
 
   public function store(Request $request)
@@ -69,7 +69,7 @@ class CitiesController extends Controller
       return redirect()->back();
     }
     
-    return view('AdminPanel.settings.cities.edit')->with('city', $city)->with('countries',$countries);
+    return view('AdminPanel.Settings.cities.edit')->with('city', $city)->with('countries',$countries);
   }
 
   public function update(Request $request, $id)
