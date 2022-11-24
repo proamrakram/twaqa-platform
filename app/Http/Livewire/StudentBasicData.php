@@ -128,7 +128,7 @@ class StudentBasicData extends Component
         $validated_data = $this->validate();
 
         $user = User::find(auth()->id());
-
+        dd($validated_data);
         $user->update([
             'full_name' => $validated_data['name'],
             'birthday' => $validated_data['birthday'],
