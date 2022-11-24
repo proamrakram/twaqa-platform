@@ -47,7 +47,7 @@
             <div class="input border-bottom p-3">
                 <label for="department"> القسم </label>
                 <select wire:model='department' class='form-input {{ $edit_1 }}'>
-                    <option value="men"> رجال </option>
+                    <option value="men" selected> رجال </option>
                     <option value="children"> أطفال </option>
                 </select>
                 @error('department')
