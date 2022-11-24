@@ -21,6 +21,8 @@ class CreateLessonsTable extends Migration
             $table->integer('course_id');
             $table->integer('teacher_id');
             $table->date('date');
+            $table->integer('status')->nullable();
+            $table->boolean('postponement')->default(0);
             $table->boolean('is_delete')->default(0);
             $table->timestamps();
         });

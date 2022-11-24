@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ServicesController;
+use App\Http\Controllers\Website\StdController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,6 +90,49 @@ Route::group([
         Route::post('/store-call-us-message', 'storeCallUsMessage')->name('store.call.us.message');
     });
 });
+
+
+
+Route::group([
+    'middleware' => ['auth', 'student'],
+    'controller' => StdController::class,
+    'as' => 'std.',
+    'prefix' => 'std',
+], function () {
+    Route::get('/home', 'home')->name('home');
+    Route::get('/data-basic', 'dataBasic')->name('data.basic');
+    // Route::get('/teacher.data.basic', '')->name('teacher.data.basic');
+    Route::get('/books', 'books')->name('books');
+    Route::get('/posts', 'posts')->name('posts');
+    Route::get('/balance', 'balance')->name('balance');
+    Route::get('/achievements', 'achievements')->name('achievements');
+    Route::get('/certificates', 'certificates')->name('certificates');
+    Route::get('/subscrption', 'subscrption')->name('subscrption');
+    Route::get('/chat', 'chat')->name('chat');
+    Route::get('/videos', 'videos')->name('videos');
+    Route::get('/teacher-quran', 'teacherQuran')->name('teacher.quran');
+    Route::get('/courses', 'courses')->name('courses');
+    Route::get('/academy-policy', 'academyPolicy')->name('academy.policy');
+    Route::get('/examps', 'examps')->name('examps');
+    Route::get('/absence', 'stdAbsence')->name('absence');
+    Route::get('/std-certificates-honors', 'stdCertificatesHonors')->name('certificates.honors');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

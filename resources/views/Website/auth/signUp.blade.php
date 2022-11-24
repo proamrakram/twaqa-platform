@@ -114,7 +114,7 @@
                                         <label for="user_type"> التسجيل كـ <span class='star'><i
                                                     class="fa-solid fa-star-of-life"></i></span> </label>
                                         <select name="user_type" id="user_type" class="select2 input-style">
-                                            {{-- <option value="student">طالب</option> --}}
+                                            <option value="student" selected>طالب</option>
                                             <option value="teacher">معلم</option>
                                         </select>
                                         @error('user_type')

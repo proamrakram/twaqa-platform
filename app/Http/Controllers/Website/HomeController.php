@@ -40,7 +40,7 @@ class HomeController extends Controller
         $message = Page::getPageContent('message');
         $about_description = Page::getPageContent('about_description');
 
-        return view('Website.pages.index', compact(['courses_types', 'faqs', 'testimonials', 'courses_categories', 'lessons_types', 'vision', 'message','about_description']));
+        return view('Website.pages.main-web.index', compact(['courses_types', 'faqs', 'testimonials', 'courses_categories', 'lessons_types', 'vision', 'message','about_description']));
     }
 
     #Teacher

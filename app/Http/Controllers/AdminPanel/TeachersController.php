@@ -80,7 +80,7 @@ class TeachersController extends Controller
       'qualification*.country_id' => 'required|exists:countries,id',
       'qualification*.year' => 'required|numeric',
 
-      
+
       'certificate.*.certificate_name' => 'required|string|max:255',
       'certificate*.university' => 'required|string|max:255',
       'certificate*.specialization' => 'required|string|max:255',

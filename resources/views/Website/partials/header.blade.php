@@ -23,6 +23,8 @@
     @stack('teacher-video-audio-style')
     @stack('teacher-courses-styles')
     @stack('calander-lessons-styles')
+    @stack('livewire-styles')
+
 
 </head>
 

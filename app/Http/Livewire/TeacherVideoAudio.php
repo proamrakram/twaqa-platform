@@ -13,7 +13,6 @@ class TeacherVideoAudio extends Component
     public $video;
     public $audio;
 
-
     public $video_link;
     public $audio_link;
 
