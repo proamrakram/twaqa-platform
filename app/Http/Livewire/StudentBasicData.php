@@ -107,7 +107,7 @@ class StudentBasicData extends Component
         $user  = User::find(auth()->id());
         $this->name = $user->full_name;
         $this->gender = $user->gender;
-        $this->department = $user->position;
+        $this->department = $user->department;
         $this->birthday = $user->birthday;
         $this->age = $user->age;
         $this->address = $user->address;
