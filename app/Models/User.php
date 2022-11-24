@@ -97,9 +97,9 @@ class User extends Authenticatable
     public function getImgAttribute($img)
     {
         if (is_null($img)) {
-            return   asset('assets/media/300-1.jpg');
+            return   $img;
         }
-        return $img;
+        return  null;
     }
 
 
