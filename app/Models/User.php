@@ -99,7 +99,7 @@ class User extends Authenticatable
         if (is_null($img)) {
             return   asset('assets/media/300-1.jpg');
         }
-        return asset('storage/images/profile') . '/' . $img;
+        return $img;
     }
 
 
