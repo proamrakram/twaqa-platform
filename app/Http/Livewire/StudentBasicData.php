@@ -105,6 +105,7 @@ class StudentBasicData extends Component
     public function setValues()
     {
         $user  = User::find(auth()->id());
+        dd($user->img);
         $this->name = $user->full_name;
         $this->gender = $user->gender;
         $this->department = $user->department;
