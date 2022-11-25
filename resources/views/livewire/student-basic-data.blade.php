@@ -59,7 +59,8 @@
             <div class="input border-bottom p-3">
                 <label for=""> تاريح الميلاد </label>
                 <input type="date" wire:model='birthday' value='Fri Sep 16 2022'
-                    class='form-input {{ $edit_1 }} font-number'>
+                    class='form-input {{ $edit_1 }} font-number'
+                    @if (!$edit_1) disabled @endif>
                 @error('birthday')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
