@@ -148,7 +148,7 @@ class StudentBasicData extends Component
         $user = User::find(auth()->id());
 
         $img = $validated_data['photo'];
-        dd($img,$validated_data);
+
         if ($img) {
             $img->store('images/profile', 'public');
             $user->update(['img' => $img->hashName()]);
