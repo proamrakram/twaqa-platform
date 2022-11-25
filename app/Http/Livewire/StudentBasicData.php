@@ -105,7 +105,6 @@ class StudentBasicData extends Component
     public function setValues()
     {
         $user  = User::find(auth()->id());
-        dd($user->img);
         $this->name = $user->full_name;
         $this->gender = $user->gender;
         $this->department = $user->department;
@@ -147,7 +146,14 @@ class StudentBasicData extends Component
     {
         $validated_data = $this->validate();
         $user = User::find(auth()->id());
-        $user->update(['img' => $validated_data['photo']]);
+
+        $img = $validated_data['photo'];
+
+        if ($img) {
+            $img->store('images/profile', 'public');
+            $user->update(['img' => $img->hashName()]);
+        }
+
         $user = $this->setValues();
         $this->edit_2 = '';
     }
