@@ -132,15 +132,28 @@ class User extends Authenticatable
     {
         $user = $query
             ->where('id', $this->id)
-            ->where('user_type', 'teacher')->first();
+            ->whereIn('user_type', ['teacher', 'student'])->first();
 
         if ($user) {
-            if (
-                !$user->birthday || !$user->description || !$user->position ||
-                !$user->phonenumber || !$user->phonenumber2 ||
-                !$user->whatsapp || !$user->facebook || !$user->twitter || !$user->full_name
-            ) {
-                return $user;
+
+            if ($user->user_type == 'student') {
+                if (
+                    !$user->birthday || !$user->parent_position || !$user->position ||
+                    !$user->phonenumber || !$user->phonenumber2 ||
+                    !$user->whatsapp || !$user->facebook || !$user->twitter || !$user->full_name
+                ) {
+                    return $user;
+                }
+            }
+
+            if ($user->user_type == 'teacher') {
+                if (
+                    !$user->birthday || !$user->description || !$user->position ||
+                    !$user->phonenumber || !$user->phonenumber2 ||
+                    !$user->whatsapp || !$user->facebook || !$user->twitter || !$user->full_name
+                ) {
+                    return $user;
+                }
             }
         }
 

@@ -25,7 +25,6 @@
     @stack('calander-lessons-styles')
     @stack('livewire-styles')
 
-
 </head>
 
 <body>
@@ -253,9 +252,8 @@
                             <ul class="menu-dropdown dropdown-lang ms-4">
                                 <li class="">
                                     <a href="#">
-                                        <img src="{{ asset('website/assets/img/img-std.png') }}"
-                                            style='width:30px;height:30px;padding:2px' class='rounded-circle border'
-                                            alt="">
+                                        <img src="{{ auth()->user()->img }}" style='width:30px;height:30px;padding:2px'
+                                            class='rounded-circle border' alt="">
                                     </a>
                                     <ul>
 
@@ -270,8 +268,6 @@
                                                 <a href="#"> الملف الشخصي </a>
                                             </li>
                                         @endif
-
-
 
                                         <li>
                                             <form action="{{ route('logout') }}" method="POST">
@@ -293,7 +289,16 @@
         </div>
     </nav>
 
-
+    @if ($errors->count())
+        @foreach ($errors->all() as $error)
+            <div class="container mt-4">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>إشعار! </strong>{{ $error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        @endforeach
+    @endif
 
     @if (session('success'))
         <div class="container mt-4">
@@ -303,6 +308,7 @@
             </div>
         </div>
     @endif
+
     @if (session('error'))
         <div class="container mt-4">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -312,10 +318,64 @@
         </div>
     @endif
 
+    @if (session('new_register'))
+        <div class="container mt-4">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>إشعار! </strong>{{ session('new_register') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
+    @if (session()->has('login_user'))
+        <div class="container mt-4">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>إشعار! </strong>{{ session('login_user') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
+    @if (session('logout_user'))
+        <div class="container mt-4">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>إشعار! </strong>{{ session('logout_user') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
     @auth
+        @if (auth()->user()->user_type == 'student')
+            @if (check_basic_teacher_data() || !check_qualifications())
+                <div class="container mt-4">
+                    <div class="alert alert-warning" role="alert">
+                        <h5 class='fw-bold'>أرجو منك عزيزي ان تقوم بإمكال بياناتك على ملفك الشخصي: </h5>
+                        <ul class='mb-0'>
+                            @if (check_basic_teacher_data())
+                                <li>
+                                    <a href="{{ route('std.data.basic') }}" class='text-decoration-none text-dark'>
+                                        إكمال
+                                        البيانات
+                                        الشخصية
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if (!check_qualifications())
+                                <li><a href="{{ route('std.qualifications') }}" class='text-decoration-none text-dark'>
+                                        إكمال المؤهلات
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            @endif
+        @endif
+
 
         @if (auth()->user()->user_type == 'teacher')
-
             @if (check_basic_teacher_data() || !check_qualifications() || !check_certificates() || !check_ejazats())
                 <div class="container mt-4">
 
@@ -366,5 +426,4 @@
                 </div>
             @endif
         @endif
-
     @endauth

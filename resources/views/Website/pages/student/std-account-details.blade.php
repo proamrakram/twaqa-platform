@@ -1,25 +1,28 @@
 @extends('Website.partials.layout')
-@section('title', 'البيانات الاساسية')
+@section('title', 'الرئيسية - بيانات الحساب')
 @section('content')
     @push('livewire-styles')
         @livewireStyles()
     @endpush
-    <div class="page page-data mb-5">
+    <div class="page page-data page-std mb-5">
+
         @include('Website.partials.header-heading-page')
+
         <div class="profile-data">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
                         <aside class="profile-aside">
-                            @include('Website.partials.teacher-side')
+                            @include('Website.partials.std-side')
                         </aside>
                     </div>
                     <div class="col-md-9">
-                        <div class="profile-data-user ">
-                            @include('Website.partials.data-user')
+                        <div class="profile-data-user">
+                            @include('Website.partials.std-data-user')
                         </div>
 
-                        @livewire('teach.teacher-basic-data')
+
+                        @livewire('std.account')
 
                     </div>
                 </div>

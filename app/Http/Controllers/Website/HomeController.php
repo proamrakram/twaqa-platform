@@ -40,72 +40,7 @@ class HomeController extends Controller
         $message = Page::getPageContent('message');
         $about_description = Page::getPageContent('about_description');
 
-        return view('Website.pages.main-web.index', compact(['courses_types', 'faqs', 'testimonials', 'courses_categories', 'lessons_types', 'vision', 'message','about_description']));
-    }
-
-    #Teacher
-    public function teachers()
-    {
-        $teachers = User::where('user_type', 'teacher')->get();
-        return view('Website.pages.teacher.teachers', compact(['teachers']));
-    }
-
-    public function teacherHome()
-    {
-        return view('Website.pages.teacher.teacher-home');
-    }
-
-    public function teacherDataBasic()
-    {
-        $user = auth()->user();
-        return view('Website.pages.teacher.teacher-data-basic', compact(['user']));
-    }
-
-    public function teacherQualifications()
-    {
-        $user = auth()->user();
-        $qualifications = $user->qualifications->where('is_delete', '0');
-        return view('Website.pages.teacher.teacher-qualifications', compact(['user', 'qualifications']));
-    }
-
-    public function teacherCertificates()
-    {
-        $user = auth()->user();
-        $teacher_certificates = $user->teacherCertificates->where('is_delete', '0');
-        return view('Website.pages.teacher.teacher-certificates', compact(['teacher_certificates', 'user']));
-    }
-
-    public function teacherEjazat()
-    {
-        $user = auth()->user();
-        $ejazats = $user->ejazats->where('is_delete', '0');
-        return view('Website.pages.teacher.teacher-ejazat', compact(['ejazats', 'user']));
-    }
-
-    public function teacherVideoAudio()
-    {
-        $user = auth()->user();
-        $ejazats = $user->ejazats->where('is_delete', '0');
-        return view('Website.pages.teacher.teacher-video-audio', compact(['ejazats', 'user']));
-    }
-
-    public function teacherAccountDetails()
-    {
-        $user = auth()->user();
-        return view('Website.pages.teacher.teacher-account-details', compact(['user']));
-    }
-
-    public function teacherSalary()
-    {
-        $user = auth()->user();
-        return view('Website.pages.teacher.teacher-salary', compact(['user']));
-    }
-
-    public function teacherCourses()
-    {
-        $user = auth()->user();
-        $courses = Course::where('teacher_id', $user->id)->get();
-        return view('Website.pages.teacher.teacher-courses', compact(['user', 'courses']));
+        return view('Website.pages.main-web.index', compact(['courses_types', 'faqs', 'testimonials', 'courses_categories', 'lessons_types', 'vision', 'message', 'about_description']));
     }
 
     public function getCitiesByCountry(Request $request)
@@ -114,58 +49,14 @@ class HomeController extends Controller
         return response()->json($data);
     }
 
-    public function teacherStds()
-    {
-        $user = auth()->user();
-        $courses_stds_ids = Course::where('teacher_id', $user->id)->get()->pluck('students')->toArray()[0];
-        $students = User::findMany($courses_stds_ids);
-        return view('Website.pages.teacher.teacher-stds', compact(['students']));
-    }
-
-    public function teacherSingle(User $teacher)
-    {
-        return view('Website.pages.teacher.teacher-single', compact(['teacher']));
-    }
-
-
-    public function calanderLessons()
-    {
-        return view('Website.pages.teacher.calander-lessons');
-    }
-
-    public function subjects()
-    {
-        return view('Website.pages.teacher.subjects');
-    }
-
-    public function teacherForms()
-    {
-        return view('Website.pages.teacher.teacher-forms');
-    }
-
-    public function certificates()
-    {
-        return view('Website.pages.certificates');
-    }
-
-    public function  books()
-    {
-        return view('Website.pages.books');
-    }
-
-    public function  videos()
-    {
-        return view('Website.pages.videos');
-    }
-
     public function instructions()
     {
         $title = Page::getPageContent('teacher_instructions_title');
         $description = Page::getPageContent('teacher_instructions_description');
 
-        return view('Website.pages.instructions', [
-            'description' => $title,
-            'title' => $description,
+        return view('Website.pages.main-web.instructions', [
+            'description' => $description,
+            'title' => $title,
         ]);
     }
 
@@ -174,7 +65,7 @@ class HomeController extends Controller
         $title = Page::getPageContent('teacher_absence_policy_title');
         $description = Page::getPageContent('teacher_absence_policy_description');
 
-        return view('Website.pages.absence-policy', [
+        return view('Website.pages.teacher.absence-policy', [
             'title' => $title,
             'description' => $description,
         ]);
@@ -185,9 +76,9 @@ class HomeController extends Controller
     {
         $title = Page::getPageContent('about_title');
         $description = Page::getPageContent('about_description');
-        return view('Website.pages.about_us', [
-            'description' => $description,
+        return view('Website.pages.main-web.about_us', [
             'title' => $title,
+            'description' => $description,
         ]);
     }
 
@@ -198,18 +89,21 @@ class HomeController extends Controller
         $vision = Page::getPageContent('vision');
         $message = Page::getPageContent('message');
 
-        return view('Website.pages.vision_mision', [
+        return view('Website.pages.main-web.vision_mision', [
+            'title' => $title,
             'vision' => $vision,
             'message' => $message,
-            'title' => $title
         ]);
     }
 
     public function courses()
     {
         $courses = Course::all();
-        return view('Website.pages.courses', compact(['courses']));
+        return view('Website.pages.main-web.courses', compact(['courses']));
     }
+
+
+
 
     public function packages()
     {

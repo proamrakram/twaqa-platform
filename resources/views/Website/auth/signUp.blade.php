@@ -160,7 +160,8 @@
                                             إشعار خصوصية المستخدم الخاص بنا.
                                         </p>
                                     </div>
-
+                                    <a class='text-dark text-decoration-none btn-have-account'
+                                        href="{{ route('signin') }}"> تسجيل الدخول </a>
                                     <div class="col-12 text-center">
                                         <button type="submit" class="btn-green ms-2 text-white p-3"> <i
                                                 class="fa-regular fa-user ms-2"></i> إنشاء حساب جديد </button>

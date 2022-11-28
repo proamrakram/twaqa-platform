@@ -82,7 +82,7 @@
 
 
 
-@stack('livewire-scripts')
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
@@ -101,6 +101,14 @@
 @stack('signUp')
 @stack('calander-lessons-scripts')
 @stack('std-teacher-quran')
+@stack('livewire-scripts')
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts />
+
 </body>
 
 </html>

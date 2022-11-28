@@ -14,7 +14,7 @@
                     </aside>
                 </div>
                 <div class="col-md-9">
-                    <div class="profile-data-user-boxes posts">  
+                    <div class="profile-data-user-boxes posts">
                        <div class=" post g-0 bg-white shadow-box border rounded-lg mb-3">
                             <div class="post-img text-center mb-3">
                                <img src="assets/img/posts_img.png" class='img-fluid' alt="">
@@ -37,7 +37,7 @@
                                                 </svg>
                                             </div>
                                             <span>96663 مشاهدة</span>
-                                        </div>                                    
+                                        </div>
                                    </div>
                                     <h3 class='mb-4'><a href="std-single-post.php" class='text-decoration-none text-dark'> عنوان المقال </a></h3>
                                     <p>
@@ -51,7 +51,7 @@
                                     </p>
                                     <p>
                                     هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
-                                    </p>                                                                                                            
+                                    </p>
                                 </div>
                             </div>
                        </div>
@@ -135,15 +135,15 @@
                                             </div>
                                         </div>
                                         <button class='replay'> رد </button>
-                                    </li>                                    
+                                    </li>
                                 </ul>
                                 <button class='replay'> رد </button>
                             </li>
-                            
+
                           </ul>
                        </div>
 
-                      
+
 
 
                     </div>
@@ -151,7 +151,7 @@
             </div>
         </div>
     </div>
- 
+
 
 </div> <!-- End Page -->
 

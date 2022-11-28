@@ -172,7 +172,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/cities/delete/{id}', [App\Http\Controllers\AdminPanel\CitiesController::class, 'destroy'])->name('admin.cities.delete');
     Route::get('/cities/change-status/{id}', [App\Http\Controllers\AdminPanel\CitiesController::class, 'change_status'])->name('admin.cities.changeStatus');
     /////////////////////////////////////////////
-    
+
 
 
     Route::get('/reports/profits', [App\Http\Controllers\AdminPanel\ReportsController::class, 'profits'])->name('admin.reports.profits');

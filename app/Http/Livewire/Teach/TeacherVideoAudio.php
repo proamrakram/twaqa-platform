@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Teach;
 
 use App\Models\User;
 use Livewire\Component;
@@ -18,7 +18,7 @@ class TeacherVideoAudio extends Component
 
     public function render()
     {
-        return view('livewire.teacher-video-audio');
+        return view('livewire.teach.teacher-video-audio');
     }
 
     public function saveVideo()

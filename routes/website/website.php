@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Services\StdService;
+use App\Http\Controllers\Services\TeacherService;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ServicesController;
 use App\Http\Controllers\Website\StdController;
@@ -47,8 +49,8 @@ Route::group([
 
 
 Route::group([
-    'middleware' => ['auth'],
-    'controller' => HomeController::class,
+    'middleware' => ['auth', 'teacher'],
+    'controller' => TeacherService::class,
     'as' => '',
     'prefix' => '',
 ], function () {
@@ -106,6 +108,8 @@ Route::group([
     Route::get('/posts', 'posts')->name('posts');
     Route::get('/balance', 'balance')->name('balance');
     Route::get('/achievements', 'achievements')->name('achievements');
+    Route::get('/qualifications', 'qualifications')->name('qualifications');
+    Route::get('/account-details', 'accountDetails')->name('account.details');
     Route::get('/certificates', 'certificates')->name('certificates');
     Route::get('/subscrption', 'subscrption')->name('subscrption');
     Route::get('/chat', 'chat')->name('chat');
@@ -119,7 +123,18 @@ Route::group([
 });
 
 
+Route::group([
+    'middleware' => ['auth'],
+    'controller' => StdService::class,
+    'as' => 'std.',
+    'prefix' => 'std',
+], function () {
+    Route::post('/save-qualifications', 'saveQualifications')->name('save.qualifications');
 
+    Route::withoutMiddleware('auth')->group(function () {
+        Route::post('/store-call-us-message', 'storeCallUsMessage')->name('store.call.us.message');
+    });
+});
 
 
 

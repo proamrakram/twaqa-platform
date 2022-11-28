@@ -22,7 +22,7 @@
                             @include('Website.partials.std-data-user')
                         </div>
 
-                        @livewire('student-basic-data')
+                        @livewire('std.student-basic-data')
 
                     </div>
                 </div>

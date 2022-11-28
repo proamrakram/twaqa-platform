@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Std;
 
 use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class StudentBasicData extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $name;
     public $gender;
@@ -38,7 +40,7 @@ class StudentBasicData extends Component
 
     public function render()
     {
-        return view('livewire.student-basic-data');
+        return view('livewire.std.student-basic-data');
     }
 
     public function edit($form_id)
@@ -60,14 +62,14 @@ class StudentBasicData extends Component
     protected function rules()
     {
         return [
-            'name' => ['nullable'],
-            'gender' => ['nullable'],
-            'department' => ['nullable'],
-            'birthday' => ['nullable'],
-            'age' => ['nullable'],
-            'address' => ['nullable'],
-            'position' => ['nullable'],
-            'parent_position' => ['nullable'],
+            'name' => ['required'],
+            'gender' => ['required'],
+            'department' => ['required'],
+            'birthday' => ['required'],
+            'age' => ['required'],
+            'address' => ['required'],
+            'position' => ['required'],
+            'parent_position' => ['required'],
             'photo' => ['nullable'],
             'phone_number1' => ['nullable'],
             'phone_number2' => ['nullable'],
@@ -128,6 +130,7 @@ class StudentBasicData extends Component
         $validated_data = $this->validate();
 
         $user = User::find(auth()->id());
+
         $user->update([
             'full_name' => $validated_data['name'],
             'birthday' => $validated_data['birthday'],
@@ -138,13 +141,25 @@ class StudentBasicData extends Component
             'gender' => $validated_data['gender'],
             'address' => $validated_data['address'],
         ]);
+
+
         $this->setValues();
+
+        $this->alert('success', 'تعديل البيانات الاساسية', [
+            'toast' => true,
+            'position' => 'center',
+            'timer' => 3000,
+            'text' => '👍 تم تعديل بياناتك  الاسياسية بنجاح صديقي',
+            'timerProgressBar' => true,
+        ]);
+
         $this->edit_1 = '';
     }
 
     public function image()
     {
         $validated_data = $this->validate();
+
         $user = User::find(auth()->id());
 
         $img = $validated_data['photo'];
@@ -155,6 +170,15 @@ class StudentBasicData extends Component
         }
 
         $user = $this->setValues();
+
+        $this->alert('success', 'تعديل الصورة', [
+            'toast' => true,
+            'position' => 'center',
+            'timer' => 3000,
+            'text' => '👍 تم تعديل صورتك الشخصية بنجاح صديقي',
+            'timerProgressBar' => true,
+        ]);
+
         $this->edit_2 = '';
     }
 
@@ -168,6 +192,15 @@ class StudentBasicData extends Component
             'whatsapp' => $validated_data['whatapp_number'],
         ]);
         $user = $this->setValues();
+
+        $this->alert('success', 'تعديل بيانات الاتصال', [
+            'toast' => true,
+            'position' => 'center',
+            'timer' => 3000,
+            'text' => '👍 تم تعديل بيانات الاتصال بنجاح صديقي',
+            'timerProgressBar' => true,
+        ]);
+
         $this->edit_3 = '';
     }
 
@@ -181,6 +214,15 @@ class StudentBasicData extends Component
         ]);
 
         $user = $this->setValues();
+
+        $this->alert('success', 'تعديل روابط  السوشيال ميديا', [
+            'toast' => true,
+            'position' => 'center',
+            'timer' => 3000,
+            'text' => '👍 تم تعديل رورابط السوشيال ميديا بنجاح صديقي',
+            'timerProgressBar' => true,
+        ]);
+
         $this->edit_4 = '';
     }
 }

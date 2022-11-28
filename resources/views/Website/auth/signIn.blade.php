@@ -49,6 +49,7 @@
                                         @enderror
                                     </div>
 
+
                                     <div class="col-12 text-center">
                                         <button type="submit" class="btn-green ms-2 text-white p-3">
                                             <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i> تسجيل الدخول
@@ -63,7 +64,7 @@
             </div>
         </div>
 
-
+        <!-- End  Forget Password -->
         <svg style="visibility: hidden; position: absolute;" width="0" height="0"
             xmlns="http://www.w3.org/2000/svg" version="1.1">
             <defs>

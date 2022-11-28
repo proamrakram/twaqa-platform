@@ -16,6 +16,15 @@ class TeacherMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $user = auth()->user();
+        if ($user) {
+            if ($user->user_type == 'teacher') {
+                return $next($request);
+            } else {
+                return abort(403);
+            }
+        }
+
+        return redirect()->route('home');
     }
 }

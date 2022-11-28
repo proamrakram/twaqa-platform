@@ -23,7 +23,7 @@
                             @include('Website.partials.data-user')
                         </div>
 
-                        @livewire('teacher-video-audio')
+                        @livewire('teach.teacher-video-audio')
 
                     </div>
                 </div>

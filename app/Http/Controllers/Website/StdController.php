@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
+use App\Models\Qualification;
 use Illuminate\Http\Request;
 
 class StdController extends Controller
@@ -46,10 +48,6 @@ class StdController extends Controller
         return view('Website.pages.student.std-certificates');
     }
 
-    public function subscrption()
-    {
-        return view('Website.pages.student.std-subscriptions');
-    }
 
     public function chat()
     {
@@ -74,21 +72,65 @@ class StdController extends Controller
 
     public function academyPolicy()
     {
-        return view('Website.pages.student.std-academy-policy');
+        $title = Page::getPageContent('user_privacy_title');
+        $description = Page::getPageContent('user_privacy_description');
+        return view('Website.pages.student.std-academy-policy', [
+            'title' => $title,
+            'description' => $description,
+        ]);
+    }
+
+
+    public function stdAbsence()
+    {
+        $title = Page::getPageContent('user_absence_title');
+        $description = Page::getPageContent('user_absence_description');
+        return view('Website.pages.student.std-absence', [
+            'title' => $title,
+            'description' => $description
+        ]);
     }
 
     public function examps()
     {
-        return view('Website.pages.student.std-examps');
+        $title = Page::getPageContent('user_exams_title');
+        $description = Page::getPageContent('user_exams_description');
+        return view('Website.pages.student.std-examps', [
+            'title' => $title,
+            'description' => $description
+        ]);
     }
 
-    public function stdAbsence()
+    public function subscrption()
     {
-        return view('Website.pages.student.std-absence');
+        $title = Page::getPageContent('user_subscriptions_title');
+        $description = Page::getPageContent('user_subscriptions_description');
+        return view('Website.pages.student.std-subscriptions', [
+            'title' => $title,
+            'description' => $description
+        ]);
     }
 
     public function stdCertificatesHonors()
     {
-        return view('Website.pages.student.std-certificates-honors');
+        $title = Page::getPageContent('user_certificates_title');
+        $description = Page::getPageContent('user_certificates_description');
+        return view('Website.pages.student.std-certificates-honors', [
+            'title' => $title,
+            'description' => $description
+        ]);
+    }
+
+    public function qualifications()
+    {
+        $qualifications = Qualification::data()->where('user_id', auth()->id())->get();
+        return view('Website.pages.student.std-qualifications', [
+            'qualifications' => $qualifications
+        ]);
+    }
+
+    public function accountDetails()
+    {
+        return view('Website.pages.student.std-account-details');
     }
 }

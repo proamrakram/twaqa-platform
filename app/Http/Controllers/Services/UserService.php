@@ -41,21 +41,7 @@ class UserService extends Controller
         return redirect()->back()->with('success', __('Your phone numbers has been updated successfully'));
     }
 
-    public function teacherBasic()
-    {
-        $user = User::find(auth()->id());
 
-        $user->update([
-            'name' => $this->request->name,
-            'gender' => $this->request->gender,
-            'description' => $this->request->description,
-            'birthday' => $this->request->birthday,
-            'age' => $this->request->age,
-            'position' => $this->request->position,
-        ]);
-
-        return redirect()->back()->with('success', __('Your basic data has been updated successfully'));
-    }
 
     public function teacherLinks()
     {

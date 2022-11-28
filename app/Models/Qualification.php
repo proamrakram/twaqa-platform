@@ -11,6 +11,7 @@ class Qualification extends Model
 
     protected $fillable = [
         'user_id',
+        'user_type',
         'qualification_degree',
         'specialization',
         'university',
@@ -34,5 +35,20 @@ class Qualification extends Model
         if ($this->country) {
             return $this->university . ',' . $this->country->country_name;
         };
+    }
+
+    public function scopeData($query)
+    {
+        return $query->select([
+            'id',
+            'user_id',
+            'user_type',
+            'qualification_degree',
+            'specialization',
+            'university',
+            'country_id',
+            'year',
+            'is_delete'
+        ])->where('is_delete', '0');
     }
 }

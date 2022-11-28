@@ -17,6 +17,7 @@ class CreateQualificationsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete()->nullable();
+            $table->enum('user_type', ['student', 'teacher']);
             $table->string('qualification_degree');
             $table->string('specialization')->nullable();
             $table->string('university');

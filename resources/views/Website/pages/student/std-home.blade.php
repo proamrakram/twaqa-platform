@@ -21,7 +21,7 @@
                                     <div
                                         class="box shadow-sm rounded-lg px-4 py-2 border bg-white d-flex align-items-center justify-content-between">
                                         <div class="title">
-                                            <h4 class='clr-baby-blue mb-0'> الموعيد القادمة </h4>
+                                            <h4 class='clr-baby-blue mb-0'> المواعيد القادمة </h4>
                                             <span class='gray-clr'> هذا الأسبوع </span>
                                         </div>
                                         <div class="number font-number fw-bold fs-4">

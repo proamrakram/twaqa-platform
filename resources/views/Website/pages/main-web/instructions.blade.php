@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', $title->value)
+@section('title', $title)
 @section('content')
 
 
@@ -20,7 +20,7 @@
 
                             <div class="bg-white p-4  rounded-lg border">
                                 <h3 class="h4 mb-3"> التعليمات </h3>
-                                {{ $description->value }}
+                                {{ $description }}
                             </div>
                         </div>
                     </div>
