@@ -115,7 +115,7 @@ class TeacherBasicData extends Component
         }
 
         if ($this->edit_2) {
-            return [];
+            return ['photo.nullable' => ''];
         }
 
         if ($this->edit_3) {
