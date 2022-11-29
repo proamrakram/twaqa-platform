@@ -13,9 +13,9 @@
                 <nav aria-label="breadcrumb">
 
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> الرئيسية </a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('about.us') }}"> من نحن </a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> الرؤية والرسالة </li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> {{ __('Main') }} </a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('about.us') }}"> {{ __('Who We Are') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('Vision and Mission') }} </li>
                     </ol>
 
                 </nav>
@@ -23,7 +23,8 @@
                 <div class="heading-page shadow-box  bg-white rounded-lg mb-4 p-4"
                     style='background-image: url(assets/img/img10.png); background-position: center left;background-size: cover;'>
 
-                    <h1 class="h1 clr-royal-blue text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> الرؤية والرسالة </h1>
+                    <h1 class="h1 clr-royal-blue text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3">
+                        {{ __('Vision and Mission') }}</h1>
 
                 </div>
 
@@ -41,17 +42,17 @@
 
                     <div class="box mb-4">
 
-                        <h2 class='h3'> رسالتنا </h2>
+                        <h2 class='h3'> {{ __('Mission') }} </h2>
 
-                        {{ $message }}
+                        {!! $message !!}
 
                     </div>
 
                     <div class="box">
 
-                        <h2 class='h3'> رؤيتنا </h2>
+                        <h2 class='h3'> {{ __('Vision') }} </h2>
 
-                        {{ $vision }}
+                        {!! $vision !!}
 
                     </div>
 

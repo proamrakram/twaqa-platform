@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الشهادات')
+@section('title', __('Testimonials'))
 @section('content')
 
     @push('livewire-styles')
@@ -66,13 +66,17 @@
                                                         </div>
 
                                                         <div class="col-6">
-                                                            <select name="country_id" id="country_id">
-                                                                <option value="1">دبي</option>
+                                                            <select name="country_id" id="country_id"
+                                                                style=" border: 1px solid #EEE !important; padding: 6px !important; box-shadow: none !important; font-size: 14px;">
+                                                                @foreach (getCountries() as $country)
+                                                                    <option value="{{ $country->id }}">
+                                                                        {{ $country->country_name }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
 
                                                         <div class="col-6">
-                                                            <input type="text" name="year" class='form-control mb-2'
+                                                            <input type="number" name="year" class='form-control mb-2'
                                                                 placeholder='السنة' />
                                                         </div>
 

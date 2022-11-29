@@ -22,9 +22,9 @@
                             </div>
 
                             <div class="bg-white p-4  rounded-lg border">
-                                <h3 class="h4 mb-3"> الشهادات والتكريمات </h3>
+                                <h3 class="h4 mb-3">{{ __('Certificates and Honors') }}</h3>
                                 <p>
-                                    {{ $description }}
+                                    {!! $description !!}
                                 </p>
 
                             </div>

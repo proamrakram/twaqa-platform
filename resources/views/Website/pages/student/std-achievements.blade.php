@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الانجازات')
+@section('title', __('Achievements'))
 @section('content')
 
 

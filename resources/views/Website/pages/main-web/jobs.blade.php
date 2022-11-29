@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', 'ابصر')
 @section('content')
     <div class="page page-data mb-5">
 
@@ -6,7 +7,7 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="#"> الملف الشخصي </a></li>
+                        <li class="breadcrumb-item"><a href="#"> {{ __('Profile Personly') }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page"> إسم المعلم </li>
                     </ol>
                 </nav>

@@ -23,10 +23,7 @@
 
                             <div class="bg-white p-4  rounded-lg border">
                                 <h3 class="h4 mb-3"> الإشتراكات </h3>
-                                <p>
-                                    {{ $description }}
-                                </p>
-
+                                {!! $description !!}
                             </div>
                         </div>
                     </div>

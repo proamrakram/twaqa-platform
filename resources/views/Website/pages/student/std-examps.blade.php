@@ -22,8 +22,8 @@
                             </div>
 
                             <div class="bg-white p-4  rounded-lg border">
-                                <h3 class="h4 mb-3"> الإمتحانات </h3>
-                                <p>{{ $description }}</p>
+                                <h3 class="h4 mb-3"> {{ __('Exams') }} </h3>
+                                {!! $description !!}
                             </div>
                         </div>
                     </div>

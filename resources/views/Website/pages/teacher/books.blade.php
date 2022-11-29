@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الكتب')
+@section('title', __('Books'))
 @section('content')
 
     <div class="page page-data mb-5">

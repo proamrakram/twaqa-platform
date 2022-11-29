@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'منصة تواقة - الصفحة الرئيسية')
+@section('title', __('Twaqa Academy - Main Page'))
 @section('content')
     <div class="latest-news overflow-hidden py-2 px-3 position-relative">
         <div class="container-fluid">
@@ -83,7 +83,7 @@
             <h2 class='h1 fw-bold mb-3'>من نحن</h2>
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                    <p>{{ $about_description }}</p>
+                    {!! $about_description !!}
                 </div>
             </div>
         </div>

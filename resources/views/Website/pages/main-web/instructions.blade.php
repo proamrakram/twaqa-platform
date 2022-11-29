@@ -19,8 +19,8 @@
                         <div class="profile-data-user-boxes content-user">
 
                             <div class="bg-white p-4  rounded-lg border">
-                                <h3 class="h4 mb-3"> التعليمات </h3>
-                                {{ $description }}
+                                <h3 class="h4 mb-3"> {{ __('Instructions') }} </h3>
+                                {!! $description !!}
                             </div>
                         </div>
                     </div>

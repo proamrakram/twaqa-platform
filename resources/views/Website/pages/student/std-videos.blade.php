@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الفيديوهات')
+@section('title', __('Vedios'))
 @section('content')
     <div class="page page-data page-std mb-5">
         @include('Website.partials.header-heading-page')

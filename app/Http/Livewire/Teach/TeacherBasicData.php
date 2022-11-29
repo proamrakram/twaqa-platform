@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Teach;
 
+use App\Models\City;
 use App\Models\User;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -24,6 +25,8 @@ class TeacherBasicData extends Component
     public $facebook;
     public $twitter;
     public $whatsapp;
+    public $country_id;
+    public $city_id;
 
     public $edit_1 = '';
     public $edit_2 = '';
@@ -35,6 +38,7 @@ class TeacherBasicData extends Component
 
     public function mount()
     {
+        $this->cities = City::where('country_id', $this->country_id)->get();
         $this->user = $this->setFields();
     }
 
@@ -57,7 +61,8 @@ class TeacherBasicData extends Component
         $this->facebook = $user->facebook;
         $this->twitter = $user->twitter;
         $this->whatsapp = $user->whatsapp;
-
+        $this->country_id = $user->country_id;
+        $this->city_id = $user->city_id;
         return $user;
     }
 
@@ -75,6 +80,8 @@ class TeacherBasicData extends Component
                 'birthday' => ['required'],
                 'age' => ['required'],
                 'position' => ['required'],
+                'country_id' => ['required'],
+                'city_id' => ['required'],
             ];
         }
 
@@ -111,6 +118,8 @@ class TeacherBasicData extends Component
                 'birthday.required' => 'هذا الحقل مطلوب',
                 'age.required' => 'هذا الحقل مطلوب',
                 'position.required' => 'هذا الحقل مطلوب',
+                'country_id.required' => 'هذا الحقل مطلوب',
+                'city_id.required' => 'هذا الحقل مطلوب',
             ];
         }
 
@@ -136,6 +145,10 @@ class TeacherBasicData extends Component
 
     public function updated($propertyName)
     {
+        $this->cities = City::where('country_id', $this->country_id)->get();
+        if ($this->cities->count()) {
+            $this->city_id = $this->cities->first()->id;
+        }
         $this->validateOnly($propertyName);
     }
 
@@ -152,6 +165,10 @@ class TeacherBasicData extends Component
             'birthday' => $validated_data['birthday'],
             'age' => $validated_data['age'],
             'position' => $validated_data['position'],
+            'age' => $validated_data['age'],
+            'position' => $validated_data['position'],
+            'country_id' => $validated_data['country_id'],
+            'city_id' => $validated_data['city_id'],
         ]);
 
         $this->setFields();

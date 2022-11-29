@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'بيانات الحساب')
+@section('title', __('Account Details'))
 @section('content')
     @push('livewire-styles')
         @livewireStyles()
@@ -22,7 +22,6 @@
                         </div>
 
                         @livewire('teach.account')
-
 
                     </div>
                 </div>

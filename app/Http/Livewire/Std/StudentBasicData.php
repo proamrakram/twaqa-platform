@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Std;
 
+use App\Models\City;
 use App\Models\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -27,7 +28,10 @@ class StudentBasicData extends Component
     public $facebook_link;
     public $twitter_link;
     public $subscription_type;
+    public $country_id  = 1;
+    public $city_id;
     public $user;
+
     public $edit_1 = '';
     public $edit_2 = '';
     public $edit_3 = '';
@@ -35,6 +39,7 @@ class StudentBasicData extends Component
 
     public function mount()
     {
+        $this->cities = City::where('country_id', $this->country_id)->get();
         $this->user = $this->setValues();
     }
 
@@ -76,7 +81,9 @@ class StudentBasicData extends Component
                 'age' => ['required'],
                 'address' => ['required'],
                 'position' => ['required'],
-                'parent_position' => ['required'],
+                'parent_position' => ['nullable'],
+                'country_id' => ['required'],
+                'city_id' => ['required'],
             ];
         }
 
@@ -114,7 +121,9 @@ class StudentBasicData extends Component
                 'age.required' => 'هذا الحقل مطلوب',
                 'address.required' => 'هذا الحقل مطلوب',
                 'position.required' => 'هذا الحقل مطلوب',
-                'parent_position.required' => 'هذا الحقل مطلوب',
+                // 'parent_position.nullable' => 'هذا الحقل مطلوب',
+                'country_id.required' => 'هذا الحقل مطلوب',
+                'city_id.required' => 'هذا الحقل مطلوب',
             ];
         }
 
@@ -142,6 +151,10 @@ class StudentBasicData extends Component
 
     public function updated($propertyName)
     {
+        $this->cities = City::where('country_id', $this->country_id)->get();
+        if ($this->cities->count()) {
+            $this->city_id = $this->cities->first()->id;
+        }
         $this->validateOnly($propertyName);
     }
 
@@ -162,6 +175,8 @@ class StudentBasicData extends Component
         $this->whatapp_number = $user->whatsapp;
         $this->facebook_link = $user->facebook;
         $this->twitter_link = $user->twitter;
+        $this->country_id = $user->country_id;
+        $this->city_id = $user->city_id;
         // $this->subscription_type;
         return $user;
     }
@@ -177,10 +192,12 @@ class StudentBasicData extends Component
             'birthday' => $validated_data['birthday'],
             'age' => $validated_data['age'],
             'position' => $validated_data['position'],
-            'parent_position' => $validated_data['parent_position'],
+            'parent_position' => $this->age > 20 ? null : $validated_data['parent_position'],
             'department' => $validated_data['department'],
             'gender' => $validated_data['gender'],
             'address' => $validated_data['address'],
+            'country_id' => $validated_data['country_id'],
+            'city_id' => $validated_data['city_id'],
         ]);
 
 

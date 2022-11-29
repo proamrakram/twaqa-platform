@@ -50,8 +50,8 @@ $(function () {
             }
         }
     })
-
-
+    
+    
     $('.testimonsails .owl-carousel').owlCarousel({
         loop:true,
         margin:15,
@@ -76,7 +76,7 @@ $(function () {
                 items:3,
             }
         }
-    })
+    }) 
 
     $('.page-videos .owl-carousel').owlCarousel({
         loop:true,
@@ -101,15 +101,15 @@ $(function () {
                 items:1,
             }
         }
-    })
-
-    //
-
-
+    })     
+    
+    // 
+    
+    
     const players_vid = Array.from(document.querySelectorAll('.playerTwaqaVid')).map((p) => new Plyr(p));
 
     $(document).on('click', '.page-videos .box-video .play-vid', function () {
-
+    
 
         let idVid =  $(this).data('id-vid')
             parentBox = $(this).closest('.box-video');
@@ -123,31 +123,31 @@ $(function () {
 
             // console.log(idVid)
 
-
-    });
-
-    // Form Edit
+        
+    });    
+    
+    // Form Edit 
     $(document).on('click', '.profile-data-user-boxes .icon-edit', function () {
-
+    
 
         let input =  $(this).closest('.box').find('.form-input');
 
         input.addClass('edit').removeAttr('disabled');
-
+        
         $(this).siblings('button').show();
         $('.reset-password i').show();
-
+        
     });
 
     $(document).on('click', '.edit-img-profile', function () {
-
+    
         $('.uploade-new-img').fadeIn();
-
+        
     });
 
-
+    
     $(document).on('keyup', '.std-age input', function () {
-
+        
         $val = $(this).val();
 
         $valNumber =isNumber($val);
@@ -160,8 +160,8 @@ $(function () {
             $('.your-father-job').show();
             $('.your-job').hide();
         }
-
-
+      
+        
     });
 
     $('.std-age input').each(function() {
@@ -174,71 +174,71 @@ $(function () {
         } else {
             $('.your-father-job').show();
             $('.your-job').hide();
-        }
-
-    });
-
+        }        
+        
+    }); 
+ 
     function isNumber(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
 
     $(document).on('click', '.icon-edit-repeater', function () {
-
+    
 
         let input =  $(this).closest('.repeater-edit').find('.form-input');
 
         input.addClass('edit').removeAttr('disabled');
-
+        
         $(this).siblings('button').show();
-
+        
     });
 
     // Show create form
     $(document).on('click', '.show-create-form', function () {
-
+    
         $(this).closest('.profile-data-user-boxes').find('.create-form').slideToggle();
         $(this).fadeOut();
-
+        
         $(this).closest('.profile-data-user-boxes').find('.icons-data-user button').fadeIn();
     });
 
     // Show Password As Text
     $(document).on('click', '.reset-password i', function () {
-
+        
         $(this).toggleClass('fa-eye-slash fa-eye');
-
+        
         if($(this).siblings('input').attr('type') == 'password') {
             $(this).siblings('input').attr('type', 'text');
         } else {
             $(this).siblings('input').attr('type', 'password');
         }
-
+      
     });
-
+    
     // Show Input Insert url
     $(document).on('change', '.upload-media', function () {
-
+        
        let $class = $(this).val();
 
         $(this).siblings(".hide-box").hide();
 
         $(this).siblings("." + $class).show();
-
-
+       
+      
     });
 
 
     // Wehn Click Fill Form Std
-    //
+    // 
     $(document).on('click', '.fill-form-std', function () {
-
+        
        let boxData  = $(this).closest('.std-lessong-desc'),
            title    = boxData.data('title'),
            type     = boxData.data('type'),
            user     = boxData.find('.std-user').html(),
            formData = $('#enterStdForm');
-
-
+           
+           
            formData.find('.title-lesson').html(title);
            formData.find('.title-type').html(type);
            formData.find('.std-user').html(user);
@@ -248,12 +248,12 @@ $(function () {
             width: '100%'
         });
 
-
+       
      });
 
      // Wehn Click Get data forms
      $(document).on('click', '.data-form-modal', function (e) {
-
+        
         let boxData  = $(this),
             titleLesson = boxData.data('title-lesson'),
             typeLesson  = boxData.data('type'),
@@ -271,14 +271,14 @@ $(function () {
             pastSoonFormNumb   = boxData.data('past-soon-form-number'),
             pastSoonToSora     = boxData.data('past-soon-to-sora'),
             PastSoonToNumb     = boxData.data('past-soon-to-number'),
-            pastSoonDegree     = boxData.data('past-soon-degree'),
-
-
+            pastSoonDegree     = boxData.data('past-soon-degree'), 
+            
+            
             saveLastFromSora   = boxData.data('save-last-form-sora'),
             saveLastFormNumb   = boxData.data('save-last-form-number'),
             saveLastToSora     = boxData.data('save-last-to-sora'),
             saveLastToNumb     = boxData.data('save-last-to-number'),
-            saveLastDegree     = boxData.data('save-last-degree'),
+            saveLastDegree     = boxData.data('save-last-degree'),  
 
             saveNewFromSora   = boxData.data('save-new-form-sora'),
             saveNewFormNumb   = boxData.data('save-new-form-number'),
@@ -294,11 +294,11 @@ $(function () {
             pastNextFormNumb   = boxData.data('past-next-form-number'),
             pastNextToSora     = boxData.data('past-next-to-sora'),
             pastNextToNumb     = boxData.data('past-next-to-number'),
-
+                       
 
             formData = $('#formsModal');
-
-
+            
+            
             formData.find('.title-lesson').html(titleLesson);
             formData.find('.title-type').html(typeLesson);
             formData.find('.std-user').find('a').text(userName);
@@ -315,13 +315,13 @@ $(function () {
             formData.find('.past-soon-form-number').text(pastSoonFormNumb);
             formData.find('.past-soon-to-sora').text(pastSoonToSora);
             formData.find('.past-soon-to-number').text(PastSoonToNumb);
-            formData.find('.past-soon-degree').text(pastSoonDegree);
+            formData.find('.past-soon-degree').text(pastSoonDegree);     
 
             formData.find('.save-last-form-sora').text(saveLastFromSora);
             formData.find('.save-last-form-number').text(saveLastFormNumb);
             formData.find('.save-last-to-sora').text(saveLastToSora);
             formData.find('.save-last-to-number').text(saveLastToNumb);
-            formData.find('.save-last-degree').text(saveLastDegree);
+            formData.find('.save-last-degree').text(saveLastDegree); 
 
             formData.find('.save-new-form-sora').text(saveNewFromSora);
             formData.find('.save-new-form-number').text(saveNewFormNumb);
@@ -340,7 +340,7 @@ $(function () {
 
         e.preventDefault();
       });
-
+ 
 
 
     //   Edit Image
@@ -353,10 +353,10 @@ $(function () {
           };
           reader.readAsDataURL(this.files[0]);
         }
-      });
+      });    
+ 
 
-
-    // Active Current Page
+    // Active Current Page 
     var window_location_href = window.location.href;
     window_location_href = window_location_href.endsWith('/') ? window_location_href.substr(0, window_location_href.length - 1) : window_location_href;
     var pgurl = window_location_href.substr(window_location_href.lastIndexOf("/") + 1);
@@ -368,11 +368,11 @@ $(function () {
         if (thisPage == pgurl)
             $(this).addClass("active").closest('.col').siblings().find('a').removeClass('active');
     });
-
+  
 
     $('.select2').select2({width: '100%'})
 
-    Scrollbar.initAll();
+    Scrollbar.initAll(); 
 
 
     $('.page').closest('body').addClass('bgGray');
@@ -407,14 +407,14 @@ $(function () {
             $('#vidInfoTeacher').find('.content').html(`<div id="player" data-plyr-provider="youtube" data-plyr-embed-id="${vidoeID}"></div> `);
             const playerModal = new Plyr('#player');
         }
-
+        
     });
 
     const playerWatch = new Plyr('#playerTwaqa');
     // const playerWatchClass = new Plyr($('.playerTwaqa'));
     const players = Array.from(document.querySelectorAll('.playerTwaqa')).map((p) => new Plyr(p));
 
-    const playerAudio = new Plyr('audio', {});
+    const playerAudio = new Plyr('audio', {});    
 
     $(document).on('click','.btn-play-audio', function (e) {
 
@@ -426,16 +426,16 @@ $(function () {
         playerAudio.play()
 
         e.preventDefault();
-    });
+    });   
 
 
 
     $(document).on('click','.audio-player i', function (e) {
         $('.audio-player').removeClass('show-plyr');
         playerAudio.pause()
-    });
+    });   
 
-    window.player = playerAudio;
+    window.player = playerAudio;     
 });
 
 
@@ -478,7 +478,7 @@ if ($chat) {
     (factory(global.jQuery));
   }(this, (function ($) {
     'use strict';
-
+  
     $.fn.datepicker.languages['ar-AE'] = {
       format: 'dd/mm/yyyy',
       days: ['الأحد', 'الأثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
@@ -489,7 +489,8 @@ if ($chat) {
       monthsShort: ['كانون الثاني', ' فبراير', 'مارس', 'أبريل', 'قد', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', ' اكتوبر', ' نوفمبر', 'ديسمبر'],
     };
   })));
-
+  
 
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+  

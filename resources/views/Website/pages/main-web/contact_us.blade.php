@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', __('Call Us'))
 @section('content')
     <div class="page page-data mb-5">
 
@@ -6,14 +7,15 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> الرئيسية </a></li>
-                        <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('about.us') }}"> من نحن </a> </li>
-                        <li class="breadcrumb-item active" aria-current="page"> اتصل بنا </li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> {{ __('Main') }} </a></li>
+                        <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('about.us') }}">
+                                {{ __('Who We Are') }}</a> </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('Call Us') }} </li>
                     </ol>
                 </nav>
                 <div class="heading-page shadow-box  bg-white rounded-lg mb-4 p-4"
                     style='background-image: url({{ asset('website/assets/img/img5.png') }});background-position: top center;background-size: 100%;'>
-                    <h1 class="h1 text-white text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> اتصل بنا </h1>
+                    <h1 class="h1 text-white text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3">{{ __('Call Us') }} </h1>
                 </div>
             </div>
         </header>

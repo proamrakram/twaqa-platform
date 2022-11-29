@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الرئيسية - بيانات الحساب')
+@section('title', __('Home - Account Information'))
 @section('content')
     @push('livewire-styles')
         @livewireStyles()

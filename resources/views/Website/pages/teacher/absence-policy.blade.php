@@ -20,7 +20,7 @@
                             <div class="bg-white p-4  rounded-lg border">
                                 <h3 class="h4 mb-3"> سياسة الغياب </h3>
 
-                                {{ $description }}
+                                {!! $description !!}
 
                             </div>
                         </div>

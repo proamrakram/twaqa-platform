@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', __('Packages'))
 @section('content')
     <div class="page page-data mb-5">
 
@@ -6,14 +7,14 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="#"> الرئيسية </a></li>
-                        <li class="breadcrumb-item" aria-current="page"> <a href="#"> من نحن </a> </li>
-                        <li class="breadcrumb-item active" aria-current="page"> الأسعار </li>
+                        <li class="breadcrumb-item"><a href="#"> {{ __('Main') }} </a></li>
+                        <li class="breadcrumb-item" aria-current="page"> <a href="#"> {{ __('Who We Are') }}</a> </li>
+                        <li class="breadcrumb-item active" aria-current="page"> {{ __('Packages') }} </li>
                     </ol>
                 </nav>
                 <div class="heading-page shadow-box  bg-white rounded-lg mb-4 p-4"
                     style='background-image: url({{ asset('website/assets/img/img13.png') }});background-position: center right;background-size: 100%;'>
-                    <h1 class="h1 text-white text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> الأسعار </h1>
+                    <h1 class="h1 text-white text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> {{ __('Packages') }} </h1>
                 </div>
             </div>
         </header>

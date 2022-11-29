@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الرئيسية - المعلم')
+@section('title', __('Main - Teacher'))
 @section('content')
     <div class="page page-data mb-5">
         @include('Website.partials.header-heading-page')

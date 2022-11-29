@@ -1783,6 +1783,43 @@ textarea[disabled]{border: 0}
 
 .clr-royal-blue {color: var(--mainRoyalBlueColor) !important; }
 
+.or-payment {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  display: block;
+  width: 30px;
+  text-align: center;
+  margin-top: -40px;
+  background: #FFF;
+  display: inline-block;
+  border: 1px solid #EEE;
+  border-radius: 50%;
+  height: 30px;
+  line-height: 30px;
+}
+
+.payment-subscribe .dm-uploader {min-height: 120px}
+
+.payment-subscribe .dm-uploader input {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.payment-subscribe .dm-uploader .text{
+  border: 1px dashed #D8D8D8;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background: none;
+}
+
 .fs-14px{font-size: 14px !important;}
 .fs-13px{font-size: 13px !important;}
 .fs-12px{font-size: 12px !important;}

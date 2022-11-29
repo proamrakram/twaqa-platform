@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الرئيسية - المؤهلات')
+@section('title', __('Main - Qualifications'))
 @section('content')
 
     @push('livewire-styles')
@@ -22,14 +22,17 @@
                             @include('Website.partials.std-data-user')
                         </div>
                         <div class="profile-data-user-boxes content-user mt-5">
-                            <h3 class="h4 mb-3"> المؤهلات الدراسية <span class='badge bg-secondary show-create-form'> انشاء
-                                    جديد </span> </h3>
+                            <h3 class="h4 mb-3"> {{ __('Qualifications') }}
+                                <span class='badge bg-secondary show-create-form'>
+                                    {{ __('Create New') }}
+                                </span>
+                            </h3>
                             <form action="{{ route('std.save.qualifications') }}" method="POST"
                                 class="repeater create-form mb-1">
                                 @csrf
                                 <div class="heading d-flex justify-content-end align-items-center mb-2">
                                     <div class="icons-data-user d-flex">
-                                        <button class='btn-green ms-1 text-white'> حفظ </button>
+                                        <button class='btn-green ms-1 text-white'> {{ __('Save') }} </button>
                                         <div class="icon add icon-edit" data-repeater-create>
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -49,15 +52,18 @@
                                                     <div class="row">
                                                         <div class="col-12"><input type="text"
                                                                 name="qualification_degree" class='form-control mb-2'
-                                                                placeholder='درجة المؤهل الدراسي' /></div>
+                                                                placeholder='{{ __('Academic qualification degree') }}' />
+                                                        </div>
                                                         <div class="col-6"><input type="text" name="specialization"
-                                                                class='form-control mb-2' placeholder='التخصص' /> </div>
+                                                                class='form-control mb-2'
+                                                                placeholder='{{ __('Specialization') }}' /> </div>
                                                         <div class="col-6"><input type="text" name="university"
-                                                                class='form-control mb-2' placeholder='المكان' /> </div>
+                                                                class='form-control mb-2'
+                                                                placeholder='{{ __('Place') }}' /> </div>
                                                         <div class="col-6">
 
                                                             <select name="country_id" class='form-control mb-2'
-                                                                placeholder='الدولة'
+                                                                placeholder='{{ __('Country') }}'
                                                                 style=" border: 1px solid #EEE !important; padding: 6px !important; box-shadow: none !important; font-size: 14px;">
                                                                 @foreach (getCountries() as $country)
                                                                     <option value="{{ $country->id }}">
@@ -68,7 +74,8 @@
 
                                                         </div>
                                                         <div class="col-6"> <input type="text" name="years"
-                                                                class='form-control mb-2' placeholder='السنة' /> </div>
+                                                                class='form-control mb-2'
+                                                                placeholder='{{ __('Year') }}' /> </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">

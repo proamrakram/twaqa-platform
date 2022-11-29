@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'المعلمون')
+@section('title', __('Teachers'))
 @section('content')
     <div class="page">
 
@@ -7,7 +7,7 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-4 mb-0">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">الرئيسية</a></li>
                         <li class="breadcrumb-item active" aria-current="page">المعلمون</li>
                     </ol>
                 </nav>

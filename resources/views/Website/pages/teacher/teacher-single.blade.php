@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'المعلم' . ' ' . $teacher->full_name)
+@section('title', __('Teacher') . ' ' . $teacher->full_name)
 @section('content')
 
 

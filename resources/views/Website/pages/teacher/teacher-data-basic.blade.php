@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'البيانات الاساسية')
+@section('title', __('Personal Data'))
 @section('content')
     @push('livewire-styles')
         @livewireStyles()

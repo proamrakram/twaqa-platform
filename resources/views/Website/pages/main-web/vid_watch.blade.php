@@ -1,4 +1,5 @@
 @extends('Website.partials.layout')
+@section('title', __('Vid_Watch'))
 @section('content')
     <div class="page page-data mb-5">
 
@@ -6,13 +7,14 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="#"> الملف الشخصي </a></li>
+                        <li class="breadcrumb-item"><a href="#"> {{ __('Profile Personly') }} </a></li>
                         <li class="breadcrumb-item active" aria-current="page"> إسم المعلم </li>
                     </ol>
                 </nav>
                 <div class="heading-page shadow-box  bg-white rounded-lg mb-4 p-4"
                     style='background-image: url({{ asset('website/assets/img/img12.png') }});background-size: cover;background-position: right center;'>
-                    <h1 class="h1 clr-royal-blue text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> المرئيات </h1>
+                    <h1 class="h1 clr-royal-blue text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> {{ __('Vid_Watch') }}
+                    </h1>
                 </div>
             </div>
         </header>

@@ -5,11 +5,12 @@
         @csrf
 
         <div class="heading d-flex justify-content-between align-items-center mb-2">
-            <h3 class="h4 mb-0"> البيانات الأساسية </h3>
+            <h3 class="h4 mb-0"> {{ __('Basic Information') }} </h3>
             <div class="d-flex">
 
                 @if ($edit_1)
-                    <button type="submit" class='btn-green ms-1 text-white' wire:click='storeBasicData'> حفظ </button>
+                    <button type="submit" class='btn-green ms-1 text-white' wire:click='storeBasicData'>
+                        {{ __('Save') }} </button>
                 @endif
 
                 <div class="icon icon-edit" wire:click='edit(1)'>
@@ -30,7 +31,7 @@
         <div class="bg-white rounded-lg">
 
             <div class="input border-bottom p-3">
-                <label for=""> الإسم </label>
+                <label for=""> {{ __('Name') }} </label>
                 <input type="text" class='form-input {{ $edit_1 }}' wire:model='full_name'>
                 @error('full_name')
                     <small class="text-danger">{{ $message }}</small>
@@ -38,10 +39,10 @@
             </div>
 
             <div class="input border-bottom p-3">
-                <label for="gender"> الجنس </label>
+                <label for="gender"> {{ __('Gender') }} </label>
                 <select wire:model='gender' class='form-input {{ $edit_1 }}'>
-                    <option value="male">ذكر </option>
-                    <option value="female">أنثي</option>
+                    <option value="male">{{ __('Male') }} </option>
+                    <option value="female">{{ __('Female') }}</option>
                 </select>
                 @error('gender')
                     <small class="text-danger">{{ $message }}</small>
@@ -49,7 +50,7 @@
             </div>
 
             <div class="input border-bottom p-3">
-                <label for="description"> وصف قصير </label>
+                <label for="description"> {{ __('Short Description') }} </label>
                 <textarea wire:model='description' class='form-input {{ $edit_1 }}'></textarea>
                 @error('description')
                     <small class="text-danger">{{ $message }}</small>
@@ -57,7 +58,7 @@
             </div>
 
             <div class="input border-bottom p-3">
-                <label for="birthday"> تاريح الميلاد </label>
+                <label for="birthday"> {{ __('Date of Birth') }} </label>
                 <input type="date" wire:model='birthday' value='Fri Sep 16 2022'
                     class='form-input {{ $edit_1 }} font-number'
                     @if (!$edit_1) disabled @endif>
@@ -67,20 +68,49 @@
                 @enderror
 
             </div>
+
             <div class="input border-bottom p-3">
-                <label for="age"> العمر </label>
+                <label for="age"> {{ __('Age') }} </label>
                 <input type="number" wire:model='age' class='form-input {{ $edit_1 }}'>
                 @error('age')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+
+
             <div class="input border-bottom p-3">
-                <label for="position"> الوظيفة </label>
+                <label for="position"> {{ __('Job') }} </label>
                 <input type="text" wire:model='position' class='form-input {{ $edit_1 }}'>
                 @error('position')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+
+            <div class="input border-bottom p-3">
+                <label for="country_id"> {{ __('Country') }} </label>
+                <select wire:model='country_id' class='form-input {{ $edit_1 }}'>
+                    @foreach (getCountries() as $country)
+                        <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                    @endforeach
+                </select>
+                @error('country_id')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="input border-bottom p-3">
+                <label for="city_id"> {{ __('City') }} </label>
+                <select wire:model='city_id' class='form-input {{ $edit_1 }}'>
+                    @foreach ($cities as $city)
+                        <option value="{{ $city->id }}">{{ $city->city_name }}</option>
+                    @endforeach
+                </select>
+
+                @error('city_id')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
         </div>
 
     </div>
@@ -91,11 +121,11 @@
         @csrf
 
         <div class="heading d-flex justify-content-between align-items-center mb-2">
-            <h3 class="h4 mb-0" id='editProfileImage'> الصورة الشخصية </h3>
+            <h3 class="h4 mb-0" id='editProfileImage'> {{ __('Personal Image') }}</h3>
             <div class="d-flex">
                 @if ($edit_2)
                     <button type="submit" class='btn-green ms-1 text-white' wire:click="storeImage" wire:ignore.self>
-                        حفظ </button>
+                        {{ __('Save') }} </button>
                 @endif
 
                 <div class="icon icon-edit edit-img-profile" wire:click='edit(2)'>
@@ -127,7 +157,7 @@
                     <label for="fusk" class='border p-3 d-inline-block rounded' wire:ignore.self>
                         @if ($edit_2)
                             <i class="fa-solid fa-upload ms-2"></i>
-                            تعديل الصورة الشخصية ...
+                            {{ __('Edit Personal Image ...') }}
                         @endif
                     </label>
                     <input id="fusk" type="file" wire:model="photo" wire:ignore.self>
@@ -144,12 +174,13 @@
     <div class="box mb-4">
 
         <div class="heading d-flex justify-content-between align-items-center mb-2">
-            <h3 class="h4 mb-0"> بيانات الإتصال </h3>
+            <h3 class="h4 mb-0"> {{ __('Contact Data') }} </h3>
             <div class="d-flex">
 
                 @if ($edit_3)
-                    <button type="button" class='btn-green ms-1 text-white' wire:click="storeCalling" wire:ignore.self>
-                        حفظ </button>
+                    <button type="button" class='btn-green ms-1 text-white' wire:click="storeCalling"
+                        wire:ignore.self>
+                        {{ __('Save') }} </button>
                 @endif
 
                 <div class="icon icon-edit" wire:click='edit(3)'>
@@ -169,14 +200,14 @@
 
         <div class="bg-white rounded-lg">
             <div class="input border-bottom p-3">
-                <label for="phonenumber"> رقم الهاتف (رئيسي) </label>
+                <label for="phonenumber"> {{ __('Phone Number') }} ({{ __('Basic') }}) </label>
                 <input type="tel" wire:model='phonenumber' class='form-input font-number {{ $edit_3 }}'>
                 @error('phonenumber')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
             <div class="input border-bottom p-3">
-                <label for="phonenumber2"> رقم الهاتف (ثانوي) </label>
+                <label for="phonenumber2"> {{ __('Phone Number') }} ({{ __('Secondary') }}) </label>
                 <input type="tel" wire:model='phonenumber2' class='form-input font-number {{ $edit_3 }}'>
                 @error('phonenumber2')
                     <small class="text-danger">{{ $message }}</small>
@@ -190,13 +221,13 @@
 
     <div class="box mb-4">
         <div class="heading d-flex justify-content-between align-items-center mb-2">
-            <h3 class="h4 mb-0"> روابط التواصل الإجتماعي </h3>
+            <h3 class="h4 mb-0"> {{ __('Social Networking Links') }}</h3>
 
             <div class="d-flex">
                 @if ($edit_4)
                     <button type="submit" class='btn-green ms-1 text-white' wire:click='storeLinks'
                         wire:ignore.self>
-                        حفظ </button>
+                        {{ __('Save') }} </button>
                 @endif
 
                 <div class="icon icon-edit" wire:click='edit(4)'>
@@ -217,7 +248,7 @@
         <div class="bg-white rounded-lg">
 
             <div class="input border-bottom p-3 input-icon position-relative">
-                <label for=""> رابط صفحة الفيسبوك </label>
+                <label for=""> {{ __('Facebook Link') }}</label>
                 <input type="text" wire:model="facebook" class='form-input font-number {{ $edit_4 }}'>
                 <i
                     class="fa-brands fa-square-facebook position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
@@ -227,7 +258,7 @@
             @enderror
 
             <div class="input border-bottom p-3 input-icon position-relative">
-                <label for=""> رابط صفحة التويتر</label>
+                <label for=""> {{ __('Twitter Link') }}</label>
                 <input type="text" wire:model="twitter" class='form-input font-number {{ $edit_4 }}'>
                 <i class="fa-brands fa-twitter position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
             </div>
@@ -237,7 +268,7 @@
             @enderror
 
             <div class="input border-bottom p-3 input-icon position-relative">
-                <label for=""> رابط الواتساب </label>
+                <label for=""> {{ __('Whatsapp Link') }}</label>
                 <input type="text" wire:model="whatsapp" class='form-input font-number {{ $edit_4 }}'>
                 <i
                     class="fa-brands fa-square-whatsapp position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>

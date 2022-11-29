@@ -1,7 +1,11 @@
 @extends('Website.partials.layout')
+@section('title', __('Twaqa Sign Up'))
 @section('content')
-    <div class="page page-data mb-5">
+    @push('livewire-styles')
+        @livewireStyles()
+    @endpush
 
+    <div class="page page-data mb-5">
         <header class="header-page">
             <div class="container">
                 <nav aria-label="breadcrumb">
@@ -19,162 +23,7 @@
         </header>
         <!-- End Header -->
 
-        <div class="profile-data pt-5 page-register">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="p-md-4 p-3 rounded-lg shadow-sm bg-white">
-                            <h4 class='text-center mb-4 clr-royal-blue'> تسجيل الإشتراك </h4>
-                            <form action="{{ route('register') }}" method="POST">
-                                @csrf
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <label for=""> الإسم الأول <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <input type="text" name="first_name" value="{{ old('first_name') }}"
-                                            class='input-style'>
-                                        @error('first_name')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-6">
-                                        <label for=""> الإسم الثاني <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <input type="text" name="second_name" value="{{ old('second_name') }}"
-                                            class='input-style'>
-                                        @error('second_name')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for=""> الجنس <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <select name="gender" id="gender" class="select2 input-style">
-                                            <option value="male">ذكر</option>
-                                            <option value="female">أنثى</option>
-                                        </select>
-                                        @error('gender')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for=""> الدولة
-                                            <span class='star'>
-                                                <i class="fa-solid fa-star-of-life"></i>
-                                            </span>
-                                        </label>
-                                        <select name="country_id" id="country_id" class="select2 input-style">
-                                            @foreach (getCountries() as $country)
-                                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('country_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for=""> المدينة
-                                            <span class='star'>
-                                                <i class="fa-solid fa-star-of-life"></i>
-                                            </span>
-                                        </label>
-
-                                        <select name="city_id" id="city_id" class="select2 input-style">
-
-                                            <option value="">اختار الدولة اولا</option>
-
-                                        </select>
-                                        @error('city_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for=""> البريد الإلكتروني <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <input type="text" name="email" value="{{ old('email') }}"
-                                            class='input-style'>
-                                        @error('email')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-6">
-                                        <label for=""> العمر <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <input type="number" name="age" value="{{ old('age') }}" min="10"
-                                            max="60" value="15" class='input-style'>
-                                        @error('age')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label for="user_type"> التسجيل كـ <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <select name="user_type" id="user_type" class="select2 input-style">
-                                            <option value="student" selected>طالب</option>
-                                            <option value="teacher">معلم</option>
-                                        </select>
-                                        @error('user_type')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-6 position-relative reset-password">
-                                        <label for=""> كلمة المرور
-                                            <span class='star'>
-                                                <i class="fa-solid fa-star-of-life"></i>
-                                            </span>
-                                        </label>
-
-                                        <input type="password" name="password" class='input-style'>
-                                        <i
-                                            class="fa-regular d-block fa-eye position-absolute top-50 start-0 translate-middle-y ps-4 pt-4"></i>
-                                        @error('password')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-
-
-                                    <div class="col-6 position-relative reset-password">
-                                        <label for=""> تأكيد كلمة المرور
-                                            <span class='star'>
-                                                <i class="fa-solid fa-star-of-life"></i>
-                                            </span>
-                                        </label>
-
-                                        <input type="password" name='password_confirmation' class='input-style'>
-                                        <i
-                                            class="fa-regular d-block fa-eye position-absolute top-50 start-0 translate-middle-y ps-4 pt-4"></i>
-                                        @error('password')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12">
-                                        <p class='text-center'>
-                                            من خلال إنشاء حساب ، فإنك توافق على اتفاقية المستخدم الخاصة بنا وتقر بقراءة
-                                            إشعار خصوصية المستخدم الخاص بنا.
-                                        </p>
-                                    </div>
-                                    <a class='text-dark text-decoration-none btn-have-account'
-                                        href="{{ route('signin') }}"> تسجيل الدخول </a>
-                                    <div class="col-12 text-center">
-                                        <button type="submit" class="btn-green ms-2 text-white p-3"> <i
-                                                class="fa-regular fa-user ms-2"></i> إنشاء حساب جديد </button>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @livewire('twaqa.sign-up')
 
         <svg style="visibility: hidden; position: absolute;" width="0" height="0"
             xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -190,8 +39,12 @@
 
     </div> <!-- End Page -->
 
-    @push('signUp')
-        <script>
+    @push('livewire-scripts')
+        @livewireScripts()
+    @endpush
+
+    {{--    @push('signUp')
+      <script>
             $(document).ready(function() {
                 $('#country_id').on('change', function() {
 
@@ -221,5 +74,5 @@
                 });
             });
         </script>
-    @endpush
+    @endpush --}}
 @endsection

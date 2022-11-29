@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الفيديوهات')
+@section('title', __('Vedios'))
 
 @section('content')
     <div class="page page-data mb-5">
@@ -57,7 +57,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                             </div>
                         </div>

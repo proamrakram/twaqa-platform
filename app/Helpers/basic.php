@@ -101,7 +101,7 @@ if (!function_exists('getLink')) {
         if ($link) {
             return $link->value;
         } else {
-            return 'not found';
+            return null;
         }
     }
 }

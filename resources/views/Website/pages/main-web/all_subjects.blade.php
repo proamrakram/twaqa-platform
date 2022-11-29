@@ -6,14 +6,14 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb py-3 mb-0">
-                        <li class="breadcrumb-item"><a href="#"> الرئيسية </a></li>
-                        <li class="breadcrumb-item" aria-current="page"> <a href="#"> من نحن </a> </li>
-                        <li class="breadcrumb-item active" aria-current="page"> المواد الدراسية </li>
+                        <li class="breadcrumb-item"><a href="#"> {{ __('Main') }} </a></li>
+                        <li class="breadcrumb-item" aria-current="page"> <a href="#"> {{ __('Who We Are') }} </a> </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('Subjects') }} </li>
                     </ol>
                 </nav>
                 <div class="heading-page shadow-box  bg-white rounded-lg mb-4 p-4"
                     style='background-image: url({{ asset('website/assets/img/img16.png') }});background-position: top center;background-size: 100%;'>
-                    <h1 class="h1 text-white text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3"> المواد الدراسية </h1>
+                    <h1 class="h1 text-white text-center fw-bold  mb-0 pt-md-5 pt-3 mt-md-3">{{ __('Subjects') }} </h1>
                 </div>
             </div>
         </header>

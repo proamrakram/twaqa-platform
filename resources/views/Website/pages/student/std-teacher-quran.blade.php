@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'المصحف المعلم')
+@section('title',  __('Teacher Quran'))
 @section('content')
 
     <div class="page page-data page-std mb-5">

@@ -107,22 +107,22 @@ class HomeController extends Controller
 
     public function packages()
     {
-        return view('Website.pages.packages');
+        return view('Website.pages.main-web.packages');
     }
 
     public function vidWatch()
     {
-        return view('Website.pages.vid_watch');
+        return view('Website.pages.main-web.vid_watch');
     }
 
     public function contactUs()
     {
-        return view('Website.pages.contact_us');
+        return view('Website.pages.main-web.contact_us');
     }
 
     public function jobs()
     {
-        return view('Website.pages.jobs');
+        return view('Website.pages.main-web.jobs');
     }
 
     public function signIn()
@@ -138,6 +138,6 @@ class HomeController extends Controller
 
     public function allSubject()
     {
-        return view('Website.pages.all_subjects');
+        return view('Website.pages.main-web.all_subjects');
     }
 }

@@ -1,7 +1,12 @@
 @extends('Website.partials.layout')
+@section('title', __('Twaqa Sign In'))
 @section('content')
-    <div class="page page-data mb-5">
 
+    @push('livewire-styles')
+        @livewireStyles()
+    @endpush
+
+    <div class="page page-data mb-5">
         <header class="header-page">
             <div class="container">
                 <nav aria-label="breadcrumb">
@@ -19,50 +24,9 @@
         </header>
         <!-- End Header -->
 
-        <div class="profile-data pt-5 page-register">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="p-md-4 p-3 rounded-lg shadow-sm bg-white">
-                            <h4 class='text-center mb-4 clr-royal-blue'> تسجيل الدخول </h4>
-                            <form action="{{ route('login') }}" method="POST">
-                                @csrf
-                                <div class="row g-3">
 
-                                    <div class="col-12">
-                                        <label for=""> البريد الإلكتروني <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <input type="email" name="email" class='input-style'>
-                                        @error('email')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+        @livewire('twaqa.sign-in')
 
-                                    <div class="col-12 position-relative reset-password">
-                                        <label for=""> كلمة المرور <span class='star'><i
-                                                    class="fa-solid fa-star-of-life"></i></span> </label>
-                                        <input type="password" name="password" class='input-style'>
-                                        <i
-                                            class="fa-regular d-block fa-eye position-absolute top-50 start-0 translate-middle-y ps-4 pt-4"></i>
-                                        @error('password')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-
-                                    <div class="col-12 text-center">
-                                        <button type="submit" class="btn-green ms-2 text-white p-3">
-                                            <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i> تسجيل الدخول
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- End  Forget Password -->
         <svg style="visibility: hidden; position: absolute;" width="0" height="0"
@@ -78,4 +42,8 @@
         </svg>
 
     </div> <!-- End Page -->
+
+    @push('livewire-scripts')
+        @livewireScripts()
+    @endpush
 @endsection

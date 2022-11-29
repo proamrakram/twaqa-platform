@@ -1,5 +1,5 @@
 @extends('Website.partials.layout')
-@section('title', 'الكورسات')
+@section('title', __('Courses'))
 @push('teacher-courses-styles')
     <link href='{{ asset('website/assets/css/pekeUpload.css') }}' />
 @endpush
@@ -59,8 +59,8 @@
                                     <div class="managment px-4 py-3 border-bottom">
                                         <span class='gray-clr fw-bold d-block mb-2'>المُشرف</span>
                                         <div class="imgs d-flex align-items-center">
-                                            <a href="#"> <img src="{{ $course->supervisor->img }}" class='rounded-3 ms-2'
-                                                    width='40px' height='40px'> </a>
+                                            <a href="#"> <img src="{{ $course->supervisor->img }}"
+                                                    class='rounded-3 ms-2' width='40px' height='40px'> </a>
                                             <a href="#" class='clr-royal-blue text-decoration-none'>
                                                 {{ $course->supervisor->full_name }}</a>
                                         </div>

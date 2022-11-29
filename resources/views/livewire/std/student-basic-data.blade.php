@@ -3,10 +3,11 @@
     <div class="box mb-4" wire:ignore.self>
         {{-- <form action="#" wire:ignore.self> --}}
         <div class="heading d-flex justify-content-between align-items-center mb-2">
-            <h3 class="h4 mb-0" wire:ignore.self> البيانات الأساسية </h3>
+            <h3 class="h4 mb-0" wire:ignore.self> {{ __('Basic Information') }}</h3>
             <div class="d-flex">
                 @if ($edit_1)
-                    <button type="button" class='btn-green ms-1 text-white' wire:click="basic" wire:ignore.self> حفظ
+                    <button type="button" class='btn-green ms-1 text-white' wire:click="basic" wire:ignore.self>
+                        {{ __('Save') }}
                     </button>
                 @endif
                 <div class="icon icon-edit" wire:click='edit(1)'>
@@ -26,18 +27,20 @@
         <div class="bg-white rounded-lg">
 
             <div class="input border-bottom p-3">
-                <label for="name"> الإسم </label>
-                <input type="text" wire:model='name' value='محمد عمران' class='form-input {{ $edit_1 }}'>
+                <label for="name"> {{ __('Name') }} </label>
+                <input type="text" wire:model='name' @if (!$edit_1) disabled @endif
+                    class='form-input {{ $edit_1 }}'>
                 @error('name')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <div class="input border-bottom p-3">
-                <label for=""> الجنس </label>
-                <select wire:model='gender' class='form-input {{ $edit_1 }}'>
-                    <option value="male"> ذكر </option>
-                    <option value="female"> أنثي </option>
+                <label for=""> {{ __('Gender') }} </label>
+                <select wire:model='gender' @if (!$edit_1) disabled @endif
+                    class='form-input {{ $edit_1 }}'>
+                    <option value="male"> {{ __('Male') }}</option>
+                    <option value="female"> {{ __('Female') }}</option>
                 </select>
                 @error('gender')
                     <small class="text-danger">{{ $message }}</small>
@@ -45,10 +48,11 @@
             </div>
 
             <div class="input border-bottom p-3">
-                <label for="department"> القسم </label>
-                <select wire:model='department' class='form-input {{ $edit_1 }}'>
-                    <option value="men" selected> رجال </option>
-                    <option value="children"> أطفال </option>
+                <label for="department"> {{ __('Department') }} </label>
+                <select wire:model='department' @if (!$edit_1) disabled @endif
+                    class='form-input {{ $edit_1 }}'>
+                    <option value="men" selected> {{ __('Men') }}</option>
+                    <option value="children"> {{ __('Children') }} </option>
                 </select>
                 @error('department')
                     <small class="text-danger">{{ $message }}</small>
@@ -57,9 +61,9 @@
 
 
             <div class="input border-bottom p-3">
-                <label for=""> تاريح الميلاد </label>
-                <input type="date" wire:model='birthday' value='Fri Sep 16 2022'
-                    class='form-input {{ $edit_1 }} font-number'
+                <label for=""> {{ __('Date of Birth') }}</label>
+                <input type="date" wire:model='birthday' @if (!$edit_1) disabled @endif
+                    value='Fri Sep 16 2022' class='form-input {{ $edit_1 }} font-number'
                     @if (!$edit_1) disabled @endif>
                 @error('birthday')
                     <small class="text-danger">{{ $message }}</small>
@@ -67,16 +71,17 @@
             </div>
 
             <div class="input border-bottom p-3 std-age">
-                <label for="age"> العمر </label>
-                <input type="text" wire:model='age' value='19' class='form-input {{ $edit_1 }}'>
+                <label for="age"> {{ __('Age') }} </label>
+                <input type="text" wire:model='age' @if (!$edit_1) disabled @endif value='19'
+                    class='form-input {{ $edit_1 }}'>
                 @error('age')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <div class="input border-bottom p-3">
-                <label for="address"> العنوان </label>
-                <input type="text" wire:model='address' value='الدولة , المحافظة , العنوان بالتفصيل'
+                <label for="address"> {{ __('Address') }} </label>
+                <input type="text" wire:model='address' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
                 @error('address')
                     <small class="text-danger">{{ $message }}</small>
@@ -84,32 +89,65 @@
             </div>
 
             <div class="input border-bottom p-3">
-                <label for="position">الوظيفة</label>
-                <input type="text" wire:model='position' value='الوظيفة' class='form-input {{ $edit_1 }}'>
+                <label for="position">{{ __('Job') }}</label>
+                <input type="text" wire:model='position' @if (!$edit_1) disabled @endif
+                    value='الوظيفة' class='form-input {{ $edit_1 }}'>
                 @error('position')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
+            @if ($user->age < 20 || $age < 20)
+                <div class="input border-bottom p-3">
+                    <label for="parent_position"> {{ __('Guardian function') }}</label>
+                    <input type="text" wire:model='parent_position'
+                        @if (!$edit_1) disabled @endif class='form-input {{ $edit_1 }}'>
+                    @error('parent_position')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            @endif
+
             <div class="input border-bottom p-3">
-                <label for="parent_position"> وظيفة ولي الأمر </label>
-                <input type="text" wire:model='parent_position' value='مُحاسب'
+                <label for="country_id"> {{ __('Country') }} </label>
+                <select wire:model='country_id' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
-                @error('parent_position')
+                    @foreach (getCountries() as $country)
+                        <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                    @endforeach
+                </select>
+                @error('country_id')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+
+            <div class="input border-bottom p-3">
+                <label for="city_id"> {{ __('City') }} </label>
+                <select wire:model='city_id' @if (!$edit_1) disabled @endif
+                    class='form-input {{ $edit_1 }}'>
+                    @foreach ($cities as $city)
+                        <option value="{{ $city->id }}">{{ $city->city_name }}</option>
+                    @endforeach
+                </select>
+
+                @error('city_id')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+
         </div>
     </div> <!-- End Box -->
 
     <div class="box mb-4" wire:ignore.self>
 
         <div class="heading d-flex justify-content-between align-items-center mb-2">
-            <h3 class="h4 mb-0" id='editProfileImage'> الصورة الشخصية </h3>
+            <h3 class="h4 mb-0" id='editProfileImage'> {{ __('Personal Image') }}</h3>
             <div class="d-flex">
 
                 @if ($edit_2)
-                    <button class='btn-green ms-1 text-white' wire:click="image" wire:ignore.self> حفظ </button>
+                    <button class='btn-green ms-1 text-white' wire:click="image" wire:ignore.self> {{ __('Save') }}
+                    </button>
                 @endif
 
                 <div class="icon icon-edit edit-img-profile" wire:click='edit(2)'>
@@ -139,7 +177,7 @@
                     <label for="fusk" class='border p-3 d-inline-block rounded' wire:ignore.self>
                         @if ($edit_2)
                             <i class="fa-solid fa-upload ms-2"></i>
-                            تعديل الصورة الشخصية ...
+                            {{ __('Edit Personal Image...') }}
                         @endif
                     </label>
                     <input id="fusk" type="file" wire:model="photo" wire:ignore.self>
@@ -151,11 +189,12 @@
 
     <div class="box mb-4" wire:ignore.self>
         <div class="heading d-flex justify-content-between align-items-center mb-2" wire:ignore.self>
-            <h3 class="h4 mb-0" wire:ignore.self> بيانات الإتصال </h3>
+            <h3 class="h4 mb-0" wire:ignore.self> {{ __('Contact Data') }}</h3>
             <div class=" d-flex" wire:ignore.self>
 
                 @if ($edit_3)
-                    <button class='btn-green ms-1 text-white' wire:click="calling" wire:ignore.self> حفظ </button>
+                    <button class='btn-green ms-1 text-white' wire:click="calling" wire:ignore.self>
+                        {{ __('Save') }} </button>
                 @endif
 
                 <div class="icon icon-edit" wire:click='edit(3)'>
@@ -174,27 +213,27 @@
 
         <div class="bg-white rounded-lg">
             <div class="input border-bottom p-3">
-                <label for=""> رقم الهاتف (رئيسي) </label>
-                <input type="text" wire:model='phone_number1' value='296-781-0803'
-                    class='form-input font-number {{ $edit_3 }}'>
+                <label for=""> {{ __('Phone Number') }} ({{ __('Basic') }}) </label>
+                <input type="text" wire:model='phone_number1' @if (!$edit_3) disabled @endif
+                    value='296-781-0803' class='form-input font-number {{ $edit_3 }}'>
                 @error('phone_number1')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <div class="input border-bottom p-3">
-                <label for=""> رقم الهاتف (ثانوي) </label>
-                <input type="text" wire:model='phone_number2' value='427-307-2779'
-                    class='form-input font-number {{ $edit_3 }}'>
+                <label for=""> {{ __('Phone Number') }} ({{ __('Secondary') }}) </label>
+                <input type="text" wire:model='phone_number2' @if (!$edit_3) disabled @endif
+                    value='427-307-2779' class='form-input font-number {{ $edit_3 }}'>
                 @error('phone_number2')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <div class="input border-bottom p-3">
-                <label for=""> رقم الواتساب </label>
-                <input type="text" wire:model='whatapp_number' value='427-307-2779'
-                    class='form-input font-number {{ $edit_3 }}'>
+                <label for=""> {{ __('Whatsapp Number') }}</label>
+                <input type="text" wire:model='whatapp_number' @if (!$edit_3) disabled @endif
+                    value='427-307-2779' class='form-input font-number {{ $edit_3 }}'>
                 @error('whatapp_number')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -206,11 +245,11 @@
     <div class="box mb-4" wire:ignore.self>
 
         <div class="heading d-flex justify-content-between align-items-center mb-2" wire:ignore.self>
-            <h3 class="h4 mb-0" wire:ignore.self> روابط التواصل الإجتماعي </h3>
+            <h3 class="h4 mb-0" wire:ignore.self> {{ __('Social Networking Links') }}</h3>
             <div class=" d-flex" wire:ignore.self>
 
                 @if ($edit_4)
-                    <button class='btn-green ms-1 text-white' wire:click="links"> حفظ </button>
+                    <button class='btn-green ms-1 text-white' wire:click="links"> {{ __('Save') }} </button>
                 @endif
 
                 <div class="icon icon-edit" wire:click='edit(4)'>
@@ -229,9 +268,9 @@
         <div class="bg-white rounded-lg">
 
             <div class="input border-bottom p-3 input-icon position-relative">
-                <label for="facebook_link"> رابط صفحة الفيسبوك </label>
-                <input type="text" wire:model='facebook_link' value='https://fb.com'
-                    class='form-input font-number {{ $edit_4 }}'>
+                <label for="facebook_link"> {{ __('Facebook Link') }}</label>
+                <input type="text" wire:model='facebook_link' @if (!$edit_4) disabled @endif
+                    value='https://fb.com' class='form-input font-number {{ $edit_4 }}'>
                 <i
                     class="fa-brands fa-square-facebook position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
             </div>
@@ -240,9 +279,9 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
             <div class="input border-bottom p-3 input-icon position-relative" wire:ignore.self>
-                <label for="twitter_link"> رابط صفحة التويتر</label>
-                <input type="text" wire:model='twitter_link' value='https://twitter.com'
-                    class='form-input font-number {{ $edit_4 }}'>
+                <label for="twitter_link"> {{ __('Twitter Link') }}</label>
+                <input type="text" wire:model='twitter_link' @if (!$edit_4) disabled @endif
+                    value='https://twitter.com' class='form-input font-number {{ $edit_4 }}'>
                 <i class="fa-brands fa-twitter position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
             </div>
             @error('twitter_link')
@@ -255,7 +294,7 @@
     <div class="box mb-4 mt-5" wire:ignore.self>
         <div class="bg-white rounded-lg" wire:ignore.self>
             <div class="input border-bottom p-3 input-icon position-relative" wire:ignore.self>
-                <label for="subscription_type"> نوع الإشتراك </label>
+                <label for="subscription_type"> {{ __('Subscription Type') }}</label>
                 <input type="text" wire:model='subscription_type' disabled class='form-input'>
             </div>
         </div>

@@ -28,11 +28,12 @@
 
 <div class="teacher-link mb-3">
     <div class="row g-0 align-items-center justify-content-center text-center bg-white menu-items">
-        <div class="col"><a href="{{ route('teacher.data.basic') }}" class=''> البيانات الأساسية </a></div>
-        <div class="col"><a href="{{ route('teacher.qualifications') }}"> المؤهلات الدراسية </a></div>
-        <div class="col"><a href="{{ route('teacher.certificates') }}"> الشهادات </a></div>
-        <div class="col"><a href="{{ route('teacher.ejazat') }} "> الإجازات </a></div>
-        <div class="col"><a href="{{ route('teacher.video.audio') }}"> الفيديو والصوت </a></div>
-        <div class="col"><a href="{{ route('teacher.account.details') }}"> بيانات الحساب </a></div>
+        <div class="col"><a href="{{ route('teacher.data.basic') }}">{{ __('Basic Information') }}</a>
+        </div>
+        <div class="col"><a href="{{ route('teacher.qualifications') }}"> {{ __('Qualifications') }} </a></div>
+        <div class="col"><a href="{{ route('teacher.certificates') }}"> {{ __('Testimonials') }} </a></div>
+        <div class="col"><a href="{{ route('teacher.ejazat') }} "> {{ __('Achievements') }} </a></div>
+        <div class="col"><a href="{{ route('teacher.video.audio') }}"> {{ __('Vedio and Audio') }} </a></div>
+        <div class="col"><a href="{{ route('teacher.account.details') }}"> {{ __('Account Details') }} </a></div>
     </div>
 </div>

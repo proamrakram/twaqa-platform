@@ -119,6 +119,6 @@ class Qualifications extends Component
     public function confirmDeleting()
     {
         $this->qualification->update(['is_delete' => '1']);
-        return redirect()->route('std.qualifications')->with('success', 'لقد تمت عملية الحذف بنجاح');
+        return redirect()->route('teacher.qualifications')->with('success', 'لقد تمت عملية الحذف بنجاح');
     }
 }
