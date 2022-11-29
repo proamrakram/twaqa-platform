@@ -56,6 +56,7 @@
                                                         <div class="col-6">
                                                             <select name="country_id" id="country_id"
                                                                 style=" border: 1px solid #EEE !important; padding: 6px !important; box-shadow: none !important; font-size: 14px;">
+
                                                                 @foreach (getCountries() as $country)
                                                                     <option value="{{ $country->id }}">
                                                                         {{ $country->country_name }}</option>

@@ -104,7 +104,7 @@ class UserService extends Controller
                 'certificate_name' => $certificate->certificate_name,
                 'specialization' => $certificate->specialization,
                 'university' => $certificate->university,
-                'country_id' => $certificate->country_id,
+                'country_id' => $certificate->country_id ?? 1,
                 'year' => $certificate->year,
             ]);
         }
