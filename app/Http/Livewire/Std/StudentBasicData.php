@@ -61,42 +61,78 @@ class StudentBasicData extends Component
 
     protected function rules()
     {
-        return [
-            'name' => ['required'],
-            'gender' => ['required'],
-            'department' => ['required'],
-            'birthday' => ['required'],
-            'age' => ['required'],
-            'address' => ['required'],
-            'position' => ['required'],
-            'parent_position' => ['required'],
-            'photo' => ['nullable'],
-            'phone_number1' => ['nullable'],
-            'phone_number2' => ['nullable'],
-            'whatapp_number' => ['nullable'],
-            'facebook_link' => ['nullable'],
-            'twitter_link' => ['nullable'],
-        ];
+
+        if ($this->edit_1) {
+            return [
+                'name' => ['required'],
+                'gender' => ['required'],
+                'department' => ['required'],
+                'birthday' => ['required'],
+                'age' => ['required'],
+                'address' => ['required'],
+                'position' => ['required'],
+                'parent_position' => ['required'],
+            ];
+        }
+
+        if ($this->edit_2) {
+            return [
+                'photo' => ['nullable'],
+            ];
+        }
+
+        if ($this->edit_3) {
+            return [
+                'phone_number1' => ['nullable'],
+                'phone_number2' => ['nullable'],
+                'whatapp_number' => ['nullable'],
+            ];
+        }
+
+        if ($this->edit_4) {
+            return [
+                'facebook_link' => ['nullable'],
+                'twitter_link' => ['nullable'],
+            ];
+        }
     }
 
     protected function messages()
     {
-        return [
-            'name.required' => 'هذا الحقل مطلوب',
-            'gender.required' => 'هذا الحقل مطلوب',
-            'department.required' => 'هذا الحقل مطلوب',
-            'birthday.required' => 'هذا الحقل مطلوب',
-            'age.required' => 'هذا الحقل مطلوب',
-            'address.required' => 'هذا الحقل مطلوب',
-            'position.required' => 'هذا الحقل مطلوب',
-            'parent_position.required' => 'هذا الحقل مطلوب',
-            'photo.required' => 'هذا الحقل مطلوب',
-            'phone_number1.required' => 'هذا الحقل مطلوب',
-            'phone_number2.required' => 'هذا الحقل مطلوب',
-            'whatapp_number.required' => 'هذا الحقل مطلوب',
-            'facebook_link.required' => 'هذا الحقل مطلوب',
-            'twitter_link.required' => 'هذا الحقل مطلوب',
-        ];
+
+        if ($this->edit_1) {
+            return [
+                'name.required' => 'هذا الحقل مطلوب',
+                'gender.required' => 'هذا الحقل مطلوب',
+                'department.required' => 'هذا الحقل مطلوب',
+                'birthday.required' => 'هذا الحقل مطلوب',
+                'age.required' => 'هذا الحقل مطلوب',
+                'address.required' => 'هذا الحقل مطلوب',
+                'position.required' => 'هذا الحقل مطلوب',
+                'parent_position.required' => 'هذا الحقل مطلوب',
+            ];
+        }
+
+        if ($this->edit_2) {
+            return [
+                'photo.required' => 'هذا الحقل مطلوب',
+            ];
+        }
+
+        if ($this->edit_3) {
+            return [
+                'phone_number1.required' => 'هذا الحقل مطلوب',
+                'phone_number2.required' => 'هذا الحقل مطلوب',
+                'whatapp_number.required' => 'هذا الحقل مطلوب',
+            ];
+        }
+
+        if ($this->edit_4) {
+            return [
+                'facebook_link.required' => 'هذا الحقل مطلوب',
+                'twitter_link.required' => 'هذا الحقل مطلوب',
+            ];
+        }
     }
 
     public function updated($propertyName)
