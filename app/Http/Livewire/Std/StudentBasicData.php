@@ -45,6 +45,11 @@ class StudentBasicData extends Component
 
     public function edit($form_id)
     {
+        $this->edit_1 = '';
+        $this->edit_2 = '';
+        $this->edit_3 = '';
+        $this->edit_4 = '';
+
         if ($form_id == 1) {
             $this->edit_1 = 'edit';
         }

@@ -245,6 +245,11 @@ class TeacherBasicData extends Component
 
     public function edit($edit)
     {
+        $this->edit_1 = '';
+        $this->edit_2 = '';
+        $this->edit_3 = '';
+        $this->edit_4 = '';
+
         if ($edit == 1) {
             $this->edit_1 = 'edit';
         }
