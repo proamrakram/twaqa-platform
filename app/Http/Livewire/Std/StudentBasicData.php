@@ -83,16 +83,16 @@ class StudentBasicData extends Component
 
         if ($this->edit_3) {
             return [
-                'phone_number1' => ['nullable'],
-                'phone_number2' => ['nullable'],
-                'whatapp_number' => ['nullable'],
+                'phone_number1' => ['required'],
+                'phone_number2' => ['required'],
+                'whatapp_number' => ['required'],
             ];
         }
 
         if ($this->edit_4) {
             return [
-                'facebook_link' => ['nullable'],
-                'twitter_link' => ['nullable'],
+                'facebook_link' => ['required'],
+                'twitter_link' => ['required'],
             ];
         }
     }
