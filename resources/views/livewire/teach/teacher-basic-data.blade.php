@@ -33,7 +33,7 @@
             <div class="input border-bottom p-3">
                 <label for=""> {{ __('Name') }} </label>
                 <input type="text" class='form-input {{ $edit_1 }}' wire:model='full_name'
-                    @if ($edit_1) disabled @endif>
+                    @if (!$edit_1) disabled @endif>
                 @error('full_name')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -41,7 +41,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="gender"> {{ __('Gender') }} </label>
-                <select wire:model='gender' @if ($edit_1) disabled @endif
+                <select wire:model='gender' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
                     <option value="male">{{ __('Male') }} </option>
                     <option value="female">{{ __('Female') }}</option>
@@ -53,7 +53,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="description"> {{ __('Short Description') }} </label>
-                <textarea wire:model='description' @if ($edit_1) disabled @endif
+                <textarea wire:model='description' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'></textarea>
                 @error('description')
                     <small class="text-danger">{{ $message }}</small>
@@ -62,7 +62,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="birthday"> {{ __('Date of Birth') }} </label>
-                <input type="date" wire:model='birthday' @if ($edit_1) disabled @endif
+                <input type="date" wire:model='birthday' @if (!$edit_1) disabled @endif
                     value='Fri Sep 16 2022' class='form-input {{ $edit_1 }} font-number'
                     @if (!$edit_1) disabled @endif>
 
@@ -74,7 +74,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="age"> {{ __('Age') }} </label>
-                <input type="number" wire:model='age' @if ($edit_1) disabled @endif
+                <input type="number" wire:model='age' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
                 @error('age')
                     <small class="text-danger">{{ $message }}</small>
@@ -84,7 +84,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="position"> {{ __('Job') }} </label>
-                <input type="text" wire:model='position' @if ($edit_1) disabled @endif
+                <input type="text" wire:model='position' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
                 @error('position')
                     <small class="text-danger">{{ $message }}</small>
@@ -93,7 +93,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="country_id"> {{ __('Country') }} </label>
-                <select wire:model='country_id' @if ($edit_1) disabled @endif
+                <select wire:model='country_id' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
                     @foreach (getCountries() as $country)
                         <option value="{{ $country->id }}">{{ $country->country_name }}</option>
@@ -106,7 +106,7 @@
 
             <div class="input border-bottom p-3">
                 <label for="city_id"> {{ __('City') }} </label>
-                <select wire:model='city_id' @if ($edit_1) disabled @endif
+                <select wire:model='city_id' @if (!$edit_1) disabled @endif
                     class='form-input {{ $edit_1 }}'>
                     @foreach ($cities as $city)
                         <option value="{{ $city->id }}">{{ $city->city_name }}</option>
@@ -168,7 +168,7 @@
                         @endif
                     </label>
                     <input id="fusk" type="file" wire:model="photo"
-                        @if ($edit_2) disabled @endif wire:ignore.self>
+                        @if (!$edit_2) disabled @endif wire:ignore.self>
                 </div>
 
             </div>
@@ -209,7 +209,7 @@
         <div class="bg-white rounded-lg">
             <div class="input border-bottom p-3">
                 <label for="phonenumber"> {{ __('Phone Number') }} ({{ __('Basic') }}) </label>
-                <input type="tel" wire:model='phonenumber' @if ($edit_3) disabled @endif
+                <input type="tel" wire:model='phonenumber' @if (!$edit_3) disabled @endif
                     class='form-input font-number {{ $edit_3 }}'>
                 @error('phonenumber')
                     <small class="text-danger">{{ $message }}</small>
@@ -217,7 +217,7 @@
             </div>
             <div class="input border-bottom p-3">
                 <label for="phonenumber2"> {{ __('Phone Number') }} ({{ __('Secondary') }}) </label>
-                <input type="tel" wire:model='phonenumber2' @if ($edit_3) disabled @endif
+                <input type="tel" wire:model='phonenumber2' @if (!$edit_3) disabled @endif
                     class='form-input font-number {{ $edit_3 }}'>
                 @error('phonenumber2')
                     <small class="text-danger">{{ $message }}</small>
@@ -259,7 +259,7 @@
 
             <div class="input border-bottom p-3 input-icon position-relative">
                 <label for=""> {{ __('Facebook Link') }}</label>
-                <input type="text" wire:model="facebook" @if ($edit_4) disabled @endif
+                <input type="text" wire:model="facebook" @if (!$edit_4) disabled @endif
                     class='form-input font-number {{ $edit_4 }}'>
                 <i
                     class="fa-brands fa-square-facebook position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
@@ -270,7 +270,7 @@
 
             <div class="input border-bottom p-3 input-icon position-relative">
                 <label for=""> {{ __('Twitter Link') }}</label>
-                <input type="text" wire:model="twitter" @if ($edit_4) disabled @endif
+                <input type="text" wire:model="twitter" @if (!$edit_4) disabled @endif
                     class='form-input font-number {{ $edit_4 }}'>
                 <i class="fa-brands fa-twitter position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
             </div>
@@ -281,7 +281,7 @@
 
             <div class="input border-bottom p-3 input-icon position-relative">
                 <label for=""> {{ __('Whatsapp Link') }}</label>
-                <input type="text" wire:model="whatsapp" @if ($edit_4) disabled @endif
+                <input type="text" wire:model="whatsapp" @if (!$edit_4) disabled @endif
                     class='form-input font-number {{ $edit_4 }}'>
                 <i
                     class="fa-brands fa-square-whatsapp position-absolute top-50 start-0 translate-middle-y ms-3 gray-clr"></i>
